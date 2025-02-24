@@ -4,7 +4,7 @@ import SelphIDComponent from './components/SelphIDComponent';
 import { useState } from 'react';
 
 export default function App() {
-	const licenseKey = import.meta.env.VITE_LICENSE_KEY || '';
+	const licenseKey = (import.meta as any).env.VITE_LICENSE_KEY || '';
 	const [widget, setWidget] = useState('selphi');
 
 	function handleEmitOperationId(event: CustomEvent<string>) {
@@ -14,18 +14,18 @@ export default function App() {
 
 	return (
 		<main>
-        <section className="sdk-section">
-			<facephi-sdk-provider 
-					apiKey={licenseKey} 
+			<section className='sdk-section'>
+				<facephi-sdk-provider
+					apiKey={licenseKey}
 					disabled
-					debug={false} 
+					debug={false}
 					language={Language.en}
 					onemitOperationId={handleEmitOperationId}
 				>
 					{widget === 'selphi' && <SelphiComponent setWidget={setWidget} />}
 					{widget === 'selphid' && <SelphIDComponent setWidget={setWidget} />}
-            		{widget === 'finish' && <div>The process has been completed</div>}	
-				</facephi-sdk-provider> 
+					{widget === 'finish' && <div>The process has been completed</div>}
+				</facephi-sdk-provider>
 			</section>
 		</main>
 	);

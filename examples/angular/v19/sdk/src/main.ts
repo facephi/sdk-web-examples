@@ -5,7 +5,7 @@ import { AppComponent } from './app/app.component';
 import '@facephi/sdk-web-wc';
 import { defineCustomElements } from '@facephi/sdk-web-wc/loader';
 
-bootstrapApplication(AppComponent, appConfig).catch((err) => console.error(err));
+bootstrapApplication(AppComponent, appConfig).catch((err: any) => console.error(err));
 
 // Bind the custom elements to the window object
 defineCustomElements(window);
