@@ -1,0 +1,9 @@
+<facephi-selphid-widget
+    [initialTip]="selphid.initialTip"
+    [disableExit]="selphid.disableExit"
+    [country]="selphid.country"
+
+    (extractionFinish)="onExtractionFinish($event)"
+    (exceptionCaptured)="onExceptionCaptured($event)"
+    (extractionTimeout)="onExtractionTimeout($event)"
+/>

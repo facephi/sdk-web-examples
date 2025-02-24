@@ -1,0 +1,20 @@
+<main>
+    <section class="sdk-section">
+        <!-- SDK Provider -->
+        <facephi-sdk-provider
+            [apikey]="provider.apiKey"
+            [customerId]="provider.customerId"
+            [disabled]="provider.disabled"
+            [language]="provider.language"
+
+            (emitError)="onEmitError($event)"
+            (emitOperationId)="onEmitOperationId($event)"
+            (emitSessionId)="onEmitSessionId($event)"
+
+            #sdkProvider
+        >
+            <!-- Video Recruitment Component -->
+            <app-video-recruitment *ngIf="providerIsLoaded" />
+        </facephi-sdk-provider>
+    </section>
+</main>

@@ -1,0 +1,11 @@
+:host {
+  width: 100%;
+  height: 100%;
+}
+/* SelphID Component styles */
+facephi-selphid {
+  --color-primary: #c3012f;
+  --color-hover: #c3012f77;
+  --color-loading: #c3012f;
+  --color-tutorial-background: #c3012f;
+}

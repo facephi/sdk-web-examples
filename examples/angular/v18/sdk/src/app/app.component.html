@@ -1,0 +1,20 @@
+<main>
+    <section class="sdk-section">
+        <!-- SDK Provider -->
+        <facephi-sdk-provider
+            [apikey]="provider.apiKey"
+            [steps]="provider.steps"
+            [type]="provider.type"
+            [customerId]="provider.customerId"
+            [disabled]="provider.disabled"
+            [language]="provider.language"
+
+            (emitError)="onEmitError($event)"
+            (emitOperationId)="onEmitOperationId($event)"
+            (emitSessionId)="onEmitSessionId($event)"
+        >
+            <!-- Router to redirect, first, to Selphi and then, SelphID -->
+            <router-outlet />
+        </facephi-sdk-provider>
+    </section>
+</main>

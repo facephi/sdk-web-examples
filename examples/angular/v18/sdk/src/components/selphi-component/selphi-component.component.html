@@ -1,0 +1,9 @@
+<facephi-selphi-widget
+    [initialTip]="selphi.initialTip"
+    [disableExit]="selphi.disableExit"
+    [stabilizationStage]="selphi.stabilizationStage"
+
+    (extractionFinish)="onExtractionFinish($event)"
+    (exceptionCaptured)="onExceptionCaptured($event)"
+    (extractionTimeout)="onExtractionTimeout($event)"
+/>
