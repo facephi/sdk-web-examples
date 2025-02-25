@@ -6,6 +6,7 @@ import type { ExtractionFinishEvent as SelphidExtractionFinishEvent } from '@fac
 import facephiLogo from '@/assets/facephi_logo.svg';
 import { ref } from 'vue';
 
+// state variable to control the starting widget
 const widget = ref('selphi');
 const licenseKey = import.meta.env.VITE_LICENSE_KEY || '';
 
@@ -19,6 +20,7 @@ function handleEmitOperationId(event: CustomEvent<string>) {
 function handleSelphiExtractionFinish(event: CustomEvent<SelphiExtractionFinishEvent>) {
 		const resultMessage = event.detail.detail?.extractionData?.bestImage?.data ? 'OK' : 'KO';
 		console.log('%c%s', 'color: cyan;', `[SELPHI] extractionFinish: ${resultMessage}`);
+    // setting the following widget
 		widget.value = 'selphid';
 	}
 
