@@ -12,17 +12,17 @@ const licenseKey = import.meta.env.VITE_LICENSE_KEY || '';
 
 // sdk-provider events
 function handleEmitOperationId(event: CustomEvent<string>) {
-		const result = event.detail;
-		console.log('%c%s', 'color: lime;', `[PROVIDER] onEmitOperationId: ${result}`);
+  const result = event.detail;
+  console.log('%c%s', 'color: lime;', `[PROVIDER] onEmitOperationId: ${result}`);
 }
 
 // selphi events
 function handleSelphiExtractionFinish(event: CustomEvent<SelphiExtractionFinishEvent>) {
-		const resultMessage = event.detail.detail?.extractionData?.bestImage?.data ? 'OK' : 'KO';
-		console.log('%c%s', 'color: cyan;', `[SELPHI] extractionFinish: ${resultMessage}`);
-    // setting the following widget
-		widget.value = 'selphid';
-	}
+  const resultMessage = event.detail.detail?.extractionData?.bestImage?.data ? 'OK' : 'KO';
+  console.log('%c%s', 'color: cyan;', `[SELPHI] extractionFinish: ${resultMessage}`);
+  // setting the following widget
+  widget.value = 'selphid';
+}
 
 // selphid events
 function handleSelphidExtractionFinish(event: CustomEvent<SelphidExtractionFinishEvent>) {
