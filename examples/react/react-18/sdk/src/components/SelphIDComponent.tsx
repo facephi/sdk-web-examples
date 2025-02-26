@@ -15,7 +15,7 @@ export default function SelphIDComponent({ setWidget }: { setWidget: React.Dispa
 			initialTip={true}
 			initialTipHeight={200}
 			initialTipWidth={200}
-			language={Language.en}
+			language={Language.es}
 			previewCapture={true}
 			onExtractionFinish={handleExtractionFinish}
 		/>

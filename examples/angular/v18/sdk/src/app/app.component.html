@@ -6,12 +6,10 @@
             [steps]="provider.steps"
             [type]="provider.type"
             [customerId]="provider.customerId"
-            [disabled]="provider.disabled"
             [language]="provider.language"
 
+            (emitData)="onEmitData($event)"
             (emitError)="onEmitError($event)"
-            (emitOperationId)="onEmitOperationId($event)"
-            (emitSessionId)="onEmitSessionId($event)"
         >
             <!-- Router to redirect, first, to Selphi and then, SelphID -->
             <router-outlet />

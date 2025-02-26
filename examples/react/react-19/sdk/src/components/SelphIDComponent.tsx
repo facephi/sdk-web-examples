@@ -16,7 +16,7 @@ export default function SelphIDComponent({
 
 	return (
 		<facephi-selphid-widget
-			language={Language.EN}
+			language={Language.ES}
 			previewCapture={true}
 			onextractionFinish={handleExtractionFinish}
 		/>

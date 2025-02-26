@@ -19,7 +19,7 @@ export default function App() {
 					apiKey={licenseKey}
 					disabled
 					debug={false}
-					language={Language.en}
+					language={Language.es}
 					onemitOperationId={handleEmitOperationId}
 				>
 					{widget === 'selphi' && <SelphiComponent setWidget={setWidget} />}

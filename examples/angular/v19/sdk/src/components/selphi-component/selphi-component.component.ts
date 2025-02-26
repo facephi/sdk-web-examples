@@ -1,10 +1,12 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import type {
-	ExceptionCapturedEvent,
-	ExtractionFinishEvent,
-	ExtractionTimeoutEvent,
-} from '@facephi/sdk-web-wc';
+import {
+	Language,
+	type ExceptionCapturedEvent,
+	type ExtractionFinishEvent,
+	type ExtractionTimeoutEvent,
+	type ErrorTimeoutEvent,
+} from '@facephi/selphi-web-component';
 
 @Component({
 	selector: 'app-selphi-component',
@@ -23,22 +25,36 @@ export class SelphiComponent {
 	// Selphi data
 	selphi = {
 		initialTip: true,
-		disableExit: false,
-		stabilizationStage: false,
+		initialTipHeight: 350,
+		initialTipWidth: 350,
+		stabilizationStage: true,
+		language: Language.ES,
+		interactible: true,
+		previewCapture: true,
+		timeout: 30000,
+		showLog: false,
 	};
 
 	// Selphi Events
-	onExtractionFinish(event: CustomEvent<ExtractionFinishEvent>) {
-		console.log('%c%s', 'color: cyan;', '[SELPHI] extractionFinish:', event.detail.detail);
+	handleExtractionFinish(event: CustomEvent<ExtractionFinishEvent>) {
+		const result = event.detail.detail;
+		console.log('%c%s', 'color: cyan;', '[SELPHI] extractionFinish:', result);
 		// Redirect to SelphID
 		this.router.navigate(['../selphid'], { relativeTo: this.currentRoute });
 	}
 
-	onExtractionTimeout(event: CustomEvent<ExtractionTimeoutEvent>) {
-		console.log('%c%s', 'color: cyan;', '[SELPHI] extractionTimeout:', event.detail.detail);
+	handleExtractionTimeout(event: CustomEvent<ExtractionTimeoutEvent>) {
+		const result = event.detail.detail;
+		console.log('%c%s', 'color: cyan;', '[SELPHI] extractionTimeout:', result);
 	}
 
-	onExceptionCaptured(event: CustomEvent<ExceptionCapturedEvent>) {
-		console.log('%c%s', 'color: cyan;', '[SELPHI] exceptionCaptured:', event.detail.detail);
+	handleExceptionCaptured(event: CustomEvent<ExceptionCapturedEvent>) {
+		const result = event.detail.detail;
+		console.log('%c%s', 'color: cyan;', '[SELPHI] exceptionCaptured:', result);
+	}
+
+	handleErrorTimeout(event: CustomEvent<ErrorTimeoutEvent>) {
+		const result = event.detail.detail;
+		console.log('%c%s', 'color: cyan;', '[SELPHI] errorTimeout:', result);
 	}
 }

@@ -15,7 +15,7 @@ export default function SelphiComponent({ setWidget }: { setWidget: React.Dispat
 			initialTip={true}
 			initialTipHeight={200}
 			initialTipWidth={200}
-			language={Language.en}
+			language={Language.es}
 			stabilizationStage={true}
 			previewCapture={true}
 			onExtractionFinish={handleExtractionFinish}

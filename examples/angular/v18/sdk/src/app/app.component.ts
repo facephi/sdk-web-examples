@@ -1,3 +1,15 @@
+/**
+ * Facephi SDK Provider Configuration Example
+ *
+ * WARNING:
+ * This is an example of the implementation of the Web SDK Library.
+ * All the properties, events and methods used in this examples are implemented as orientation to a better performance in coding.
+ *
+ * Please, consider to check the documentation before editing the code.
+ *
+ * We recommend to remove all the console logs and use actual code.
+ *
+ */
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { environment } from '../environments/environment';
@@ -13,25 +25,30 @@ import { Language, TypeFamily } from '@facephi/sdk-web-wc';
 export class AppComponent {
 	// Provider data
 	provider = {
-		apiKey: environment.apiKey, // Required
-		steps: 'START,SELPHI_WIDGET,SELPHID_WIDGET,FINISH',
-		type: TypeFamily.onboarding, // Selphi and SelphID
-		customerId: 'facephi-sdk-angular18-example',
-		language: Language.es, // Main language, by default is Spanish
-		disabled: true, // Disable tracking
+		apiKey: environment.apiKey, // Required license
+		steps: 'START,SELPHI_WIDGET,SELPHID_WIDGET,FINISH', //Order in platform
+		type: TypeFamily.onboarding, // onboarding or authentication
+		customerId: 'facephi-sdk-angular18-example', // Unique user id
+		language: Language.es, // Main language in sdk and widgets
 	};
 
 	// Provider Events
+	onEmitData(event: CustomEvent<{ operationId: string; sessionId: string; extraData: string }>) {
+		const result = event.detail;
+		console.log(
+			'%c%s',
+			'color: lime;',
+			`[PROVIDER] emitData: operationId(${result.operationId}), sessionId(${result.sessionId}), extraData(${result.extraData})`,
+		);
+	}
+
 	onEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
-		console.log('%c%s', 'color: lime;', '[PROVIDER] EmitError:', event.detail);
-	}
-
-	onEmitOperationId(event: CustomEvent<string>) {
-		console.log('%c%s', 'color: lime;', '[PROVIDER] EmitOperationId:', event.detail);
-	}
-
-	onEmitSessionId(event: CustomEvent<string>) {
-		console.log('%c%s', 'color: lime;', '[PROVIDER] EmitSessionId:', event.detail);
+		const result = event.detail;
+		console.log(
+			'%c%s',
+			'color: lime;',
+			`'[PROVIDER] EmitError: statusCode(${result.statusCode}), message(${result.message}) ',`,
+		);
 	}
 
 	// Angular lifecycle methods

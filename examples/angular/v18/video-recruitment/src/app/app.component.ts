@@ -25,26 +25,31 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 	// Provider data
 	provider = {
-		apiKey: environment.apiKey, // Required
-		customerId: 'facephi-sdk-angular-video-recruitment-example',
-		language: Language.es, // Main language, by default is Spanish
-		disabled: true, // Disable tracking
+		apiKey: environment.apiKey, // Required license
+		customerId: 'facephi-sdk-angular-video-recruitment-example', // Unique user id
+		language: Language.es, // Main language in sdk and widgets
 	};
 
 	// Variable to check if the provider has been loaded
 	providerIsLoaded = false;
 
 	// Provider Events
+	onEmitData(event: CustomEvent<{ operationId: string; sessionId: string; extraData: string }>) {
+		const result = event.detail;
+		console.log(
+			'%c%s',
+			'color: lime;',
+			`[PROVIDER] emitData: operationId(${result.operationId}), sessionId(${result.sessionId}), extraData(${result.extraData})`,
+		);
+	}
+
 	onEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
-		console.log('%c%s', 'color: lime;', '[PROVIDER] EmitError:', event.detail);
-	}
-
-	onEmitOperationId(event: CustomEvent<string>) {
-		console.log('%c%s', 'color: lime;', '[PROVIDER] EmitOperationId:', event.detail);
-	}
-
-	onEmitSessionId(event: CustomEvent<string>) {
-		console.log('%c%s', 'color: lime;', '[PROVIDER] EmitSessionId:', event.detail);
+		const result = event.detail;
+		console.log(
+			'%c%s',
+			'color: lime;',
+			`'[PROVIDER] EmitError: statusCode(${result.statusCode}), message(${result.message}) ',`,
+		);
 	}
 
 	// Angular lifecycle methods

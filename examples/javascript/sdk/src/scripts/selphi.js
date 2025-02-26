@@ -24,8 +24,12 @@ export function instanceSelphiWidget() {
 	widgetRef.setAttribute('initial-tip', true);
 	widgetRef.setAttribute('initial-tip-width', 350);
 	widgetRef.setAttribute('initial-tip-height', 350);
-	widgetRef.setAttribute('disable-exit', true);
 	widgetRef.setAttribute('stabilization-stage', true);
+	widgetRef.setAttribute('language', 'ES');
+	widgetRef.setAttribute('interactible', true);
+	widgetRef.setAttribute('preview-capture', true);
+	widgetRef.setAttribute('timeout', 30000);
+	widgetRef.setAttribute('show-log', false);
 
 	// Widget event subscriptions
 	widgetRef.addEventListener('extractionFinish', onExtractionFinish);
@@ -59,5 +63,6 @@ function onExceptionCaptured(eventData) {
 function onErrorTimeout(eventData) {
 	const result = eventData.detail.detail;
 	console.log('%c%s', 'color: cyan;', `[SELPHI] errorTimeout: ${result}`);
-	widgetContainer.innerHTML = 'Some error has occurred during the biometrical template extraction process.';
+	widgetContainer.innerHTML =
+		'Some error has occurred during the biometrical template extraction process.';
 }

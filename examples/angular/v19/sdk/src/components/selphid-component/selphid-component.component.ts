@@ -1,7 +1,12 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import type { ExceptionCapturedEvent } from '@facephi/sdk-web-wc';
-import type { ExtractionFinishEvent, ExtractionTimeoutEvent } from '@facephi/selphid-web-component';
+import {
+	Language,
+	type ExceptionCapturedEvent,
+	type ExtractionFinishEvent,
+	type ExtractionTimeoutEvent,
+	type ErrorTimeoutEvent,
+} from '@facephi/selphid-web-component';
 
 @Component({
 	selector: 'app-selphid-component',
@@ -20,22 +25,36 @@ export class SelphIDComponent {
 	// SelphID data
 	selphid = {
 		initialTip: true,
-		disableExit: false,
+		initialTipHeight: 350,
+		initialTipWidth: 350,
 		country: 'ES',
+		language: Language.ES,
+		previewCapture: true,
+		captureTimeout: 10,
+		captureRetries: 3,
+		showLog: true,
 	};
 
 	// SelphID Events
-	onExtractionFinish(event: CustomEvent<ExtractionFinishEvent>) {
-		console.log('%c%s', 'color: fuchsia;', '[SELPHID] extractionFinish:', event.detail.detail);
+	handleExtractionFinish(event: CustomEvent<ExtractionFinishEvent>) {
+		const result = event.detail.detail;
+		console.log('%c%s', 'color: fuchsia;', '[SELPHID] extractionFinish:', result);
 		// Redirect to the finish component
 		this.router.navigate(['../finish'], { relativeTo: this.currentRoute });
 	}
 
-	onExtractionTimeout(event: CustomEvent<ExtractionTimeoutEvent>) {
-		console.log('%c%s', 'color: fuchsia;', '[SELPHID] extractionTimeout:', event.detail.detail);
+	handleExtractionTimeout(event: CustomEvent<ExtractionTimeoutEvent>) {
+		const result = event.detail.detail;
+		console.log('%c%s', 'color: fuchsia;', '[SELPHID] extractionTimeout:', result);
 	}
 
-	onExceptionCaptured(event: CustomEvent<ExceptionCapturedEvent>) {
-		console.log('%c%s', 'color: fuchsia;', '[SELPHID] exceptionCaptured:', event.detail.detail);
+	handleExceptionCaptured(event: CustomEvent<ExceptionCapturedEvent>) {
+		const result = event.detail.detail;
+		console.log('%c%s', 'color: fuchsia;', '[SELPHID] exceptionCaptured:', result);
+	}
+
+	handleErrorTimeout(event: CustomEvent<ErrorTimeoutEvent>) {
+		const result = event.detail.detail;
+		console.log('%c%s', 'color: fuchsia;', '[SELPHID] errorTimeout:', result);
 	}
 }

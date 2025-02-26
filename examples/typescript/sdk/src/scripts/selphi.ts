@@ -10,25 +10,35 @@
  * We recommend to remove all the console logs and use actual code.
  *
  */
-import type { ErrorTimeoutEvent, ExtractionFinishEvent, ExtractionTimeoutEvent } from '@facephi/selphi-web-component';
+import {
+	ErrorTimeoutEvent,
+	ExceptionCapturedEvent,
+	ExtractionFinishEvent,
+	ExtractionTimeoutEvent,
+	Language,
+} from '@facephi/selphi-web-component';
 import { instanceSelphIDWidget } from './selphid';
 
 const widgetContainer = document.getElementById('widgetContainer') as HTMLElement;
 
 export function instanceSelphiWidget() {
-	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 	const widgetRef = document.createElement('facephi-selphi-widget') as any;
 
 	// Selphi config
 	widgetRef.setAttribute('initial-tip', true);
 	widgetRef.setAttribute('initial-tip-width', 350);
 	widgetRef.setAttribute('initial-tip-height', 350);
-	widgetRef.setAttribute('disable-exit', true);
 	widgetRef.setAttribute('stabilization-stage', true);
+	widgetRef.setAttribute('language', Language.ES);
+	widgetRef.setAttribute('interactible', true);
+	widgetRef.setAttribute('preview-capture', true);
+	widgetRef.setAttribute('timeout', 30000);
+	widgetRef.setAttribute('show-log', false);
 
 	// Widget event subscriptions
 	widgetRef.addEventListener('extractionFinish', onExtractionFinish);
 	widgetRef.addEventListener('extractionTimeout', onExtractionTimeout);
+	widgetRef.addEventListener('exceptionCaptured', onExceptionCaptured);
 	widgetRef.addEventListener('errorTimeout', onErrorTimeout);
 
 	// Add widget in DOM
@@ -49,8 +59,14 @@ function onExtractionTimeout(eventData: CustomEvent<ExtractionTimeoutEvent>) {
 	console.log('%c%s', 'color: cyan;', `[SELPHI] extractionTimeout: ${result}`);
 }
 
+function onExceptionCaptured(eventData: CustomEvent<ExceptionCapturedEvent>) {
+	const result = eventData.detail.detail;
+	console.log('%c%s', 'color: cyan;', `[SELPHI] exceptionCaptured: ${result}`);
+}
+
 function onErrorTimeout(eventData: CustomEvent<ErrorTimeoutEvent>) {
 	const result = eventData.detail.detail;
 	console.log('%c%s', 'color: cyan;', `[SELPHI] errorTimeout: ${result}`);
-	widgetContainer.innerHTML = 'Some error has occurred during the biometrical template extraction process.';
+	widgetContainer.innerHTML =
+		'Some error has occurred during the biometrical template extraction process.';
 }

@@ -4,14 +4,11 @@
         <facephi-sdk-provider
             [apikey]="provider.apiKey"
             [customerId]="provider.customerId"
-            [disabled]="provider.disabled"
             [language]="provider.language"
-
-            (emitError)="onEmitError($event)"
-            (emitOperationId)="onEmitOperationId($event)"
-            (emitSessionId)="onEmitSessionId($event)"
-
             #sdkProvider
+
+            (emitData)="onEmitData($event)"
+            (emitError)="onEmitError($event)"
         >
             <!-- Video Recruitment Component -->
             <app-video-recruitment *ngIf="providerIsLoaded" />

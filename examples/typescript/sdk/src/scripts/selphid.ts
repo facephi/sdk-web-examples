@@ -10,24 +10,28 @@
  * We recommend to remove all the console logs and use actual code.
  *
  */
-import type { ErrorTimeoutEvent, ExtractionFinishEvent, ExtractionTimeoutEvent } from "@facephi/selphid-web-component";
+import { ErrorTimeoutEvent, ExceptionCapturedEvent, ExtractionFinishEvent, ExtractionTimeoutEvent, Language } from "@facephi/selphid-web-component";
 
 const widgetContainer = document.getElementById("widgetContainer") as HTMLElement;
 
 export function instanceSelphIDWidget() {
-	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 	const widgetRef = document.createElement("facephi-selphid-widget") as any;
 
 	// Selphi config
 	widgetRef.setAttribute("initial-tip", true);
 	widgetRef.setAttribute("initial-tip-width", 350);
 	widgetRef.setAttribute("initial-tip-height", 350);
-	widgetRef.setAttribute("disable-exit", true);
 	widgetRef.setAttribute("country", ["ES"]);
+	widgetRef.setAttribute("language", Language.ES);
+	widgetRef.setAttribute("preview-capture", true);
+	widgetRef.setAttribute("capture-timeout", 10);
+	widgetRef.setAttribute("capture-retries", 3);
+	widgetRef.setAttribute("show-log", false);
 
 	// Widget event subscriptions
 	widgetRef.addEventListener("extractionFinish", onExtractionFinish);
 	widgetRef.addEventListener("extractionTimeout", onExtractionTimeout);
+	widgetRef.addEventListener("exceptionCaptured", onExceptionCaptured);
 	widgetRef.addEventListener("errorTimeout", onErrorTimeout);
 
 	// Add widget in DOM
@@ -44,6 +48,11 @@ function onExtractionFinish(eventData: CustomEvent<ExtractionFinishEvent>) {
 function onExtractionTimeout(eventData: CustomEvent<ExtractionTimeoutEvent>) {
 	const result = eventData.detail.detail;
 	console.log('%c%s', 'color: fuchsia;', `[SELPHID] extractionTimeout: ${result}`);
+}
+
+function onExceptionCaptured(eventData: CustomEvent<ExceptionCapturedEvent>) {
+	const result = eventData.detail.detail;
+	console.log('%c%s', 'color: fuchsia;', `[SELPHID] exceptionCaptured: ${result}`);
 }
 
 function onErrorTimeout(eventData: CustomEvent<ErrorTimeoutEvent>) {

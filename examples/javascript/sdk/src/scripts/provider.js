@@ -11,28 +11,32 @@
  *
  */
 
-import { instanceSelphiWidget } from "./selphi";
+import { instanceSelphiWidget } from './selphi';
 
 export function demo() {
-	const sdkProvider = document.getElementById("facephiSdkProvider");
+	const sdkProvider = document.getElementById('facephiSdkProvider');
 	const apiKey = import.meta.env.VITE_LICENSE_KEY;
 
 	// SDK Provider config
-	sdkProvider.setAttribute("apikey", apiKey);
-	sdkProvider.setAttribute("steps", "START,SELPHI_WIDGET,SELPHID_WIDGET,FINISH");
-	sdkProvider.setAttribute("type", "ONBOARDING");
-	sdkProvider.setAttribute("customerId", "sdk-wc-javascript-example");
-	sdkProvider.setAttribute("language", "es");
-	sdkProvider.setAttribute("disabled", "true");
+	sdkProvider.setAttribute('apikey', apiKey);
+	sdkProvider.setAttribute('steps', 'START,SELPHI_WIDGET,SELPHID_WIDGET,FINISH');
+	sdkProvider.setAttribute('type', 'ONBOARDING');
+	sdkProvider.setAttribute('customerId', 'sdk-wc-javascript-example');
+	sdkProvider.setAttribute('language', 'es');
+	sdkProvider.setAttribute('disabled', 'true');
 
 	// SDK Provider event subscriptions
-	sdkProvider.addEventListener("emitData", onEmitData);
-	sdkProvider.addEventListener("emitError", onEmitError);
+	sdkProvider.addEventListener('emitData', onEmitData);
+	sdkProvider.addEventListener('emitError', onEmitError);
 
 	// SDK Provider event handlers
 	function onEmitData(eventData) {
 		const result = eventData.detail;
-		console.log('%c%s', 'color: lime;', `[PROVIDER] emitData: operationId(${result.operationId}), sessionId(${result.sessionId})`);
+		console.log(
+			'%c%s',
+			'color: lime;',
+			`[PROVIDER] emitData: operationId(${result.operationId}), sessionId(${result.sessionId})`,
+		);
 	}
 
 	function onEmitError(eventData) {

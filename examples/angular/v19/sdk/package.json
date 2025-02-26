@@ -1,10 +1,9 @@
 {
   "name": "angular19-sdk",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "dev": "ng serve --port=3000 --open",
     "build": "ng build --configuration development",
-    "build:production": "ng build --configuration production",
     "ng": "ng",
     "start": "ng serve",
     "watch": "ng build --watch --configuration development",

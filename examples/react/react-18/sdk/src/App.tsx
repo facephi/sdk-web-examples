@@ -22,7 +22,7 @@ export default function App() {
             onEmitOperationId={handleEmitOperationId}
             disabled
             className="facephi-sdk-provider"
-            language={Language.en}
+            language={Language.es}
             type={TypeFamily.onboarding}
             theme={{
               fontName: 'Poppins',

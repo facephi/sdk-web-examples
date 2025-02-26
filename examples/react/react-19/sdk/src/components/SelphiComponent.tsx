@@ -15,7 +15,7 @@ export default function SelphiComponent({
 			initialTip={true}
 			initialTipHeight={200}
 			initialTipWidth={200}
-			language={Language.EN}
+			language={Language.ES}
 			stabilizationStage={true}
 			previewCapture={true}
 			onextractionFinish={handleExtractionFinish}
