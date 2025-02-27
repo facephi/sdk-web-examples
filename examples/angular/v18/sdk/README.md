@@ -36,70 +36,45 @@ Run `npm run dev` for a dev server. Navigate to `http://localhost:3000/`. The ap
 
 Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Angular Installation Guide
 
-Add the sdk-web-wc package dependency in the package.json file with the desired version:
 
-```json
-"dependencies": {
-    "@facephi/sdk-web-wc": "*",
-}
-```
+# SDK Web WebComponents in Angular 18
 
-For the widgets to work properly, you must add the web component declaration to the **main.ts** file:
+Integration with Angular 18
 
-```js
-import '@facephi/sdk-web-wc';
-import { defineCustomElements } from '@facephi/sdk-web-wc/loader';
+> [!NOTE]
+> More information about the widgets please check [SDK Web WebComponents](https://docs.identity-platform.io/docs/SDK_Web/Web_Components/)
 
-// Bind the custom elements to the window object
-defineCustomElements(window);
-```
+## Prod installation credentials
 
-Angular needs to know how to handle custom web components (e.g. `facephi-sdk-provider`, `facephi-selphi-widget`, `facephi-selphid-widget`), so it is mandatory to add support for CUSTOM_ELEMENTS_SCHEMA to **any component that renders a custom web component**, such as the **app.component.ts** file in this example: 
+Create a **.npmrc** file in the root project directory.
 
-```js
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+  ```bash
+  # Facephi registry credentials (prod)
+  @facephi:registry=https://facephicorp.jfrog.io/artifactory/api/npm/sdk-web-fphi/
+  //facephicorp.jfrog.io/artifactory/api/npm/sdk-web-fphi/:_password=PASSWORD
+  //facephicorp.jfrog.io/artifactory/api/npm/sdk-web-fphi/:username=NAME
+  //facephicorp.jfrog.io/artifactory/api/npm/sdk-web-fphi/:email=EMAIL
+  //facephicorp.jfrog.io/artifactory/api/npm/sdk-web-fphi/:always-auth=true
+  ```
 
-@Component({
-	selector: 'app-root',
-	standalone: true,
-	imports: [],
-	schemas: [CUSTOM_ELEMENTS_SCHEMA],
-	templateUrl: './app.component.html',
-})
-export class AppComponent { }
-```
+## Install dependencies
 
-Finally, the only thing left to do is to add the SDK provider that contains the rest of the components to the html, in this example, the **app.component.html** file:
+Run `npm install` or `npm i` to install the dependencies.
 
-```html
-<!-- SDK Provider -->
-<facephi-sdk-provider
-  [apikey]="provider.apiKey"
+> [!NOTE]
+> Other package managers such as Bun or Yarn can be used as well.
 
-  (emitOperationId)="onEmitOperationId($event)"
->
-    <!-- Widgets -->
-</facephi-sdk-provider>
-```
+## Development server
 
-The provider and the widgets, both Selphi and SelphID, will offer some events in order to control their performance.
+Run `npm run dev` for a dev server. Navigate to `http://localhost:3000/`. The application will automatically reload if you change any of the source files.
 
-```js
-// Provider Events
-onEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
-  console.log('%c%s', 'color: lime;', `[PROVIDER] EmitError: ${event.detail}`);
-}
+> [!IMPORTANT]
+> The widgets will not work unless you add the API key provided by the Facephi team to the **environment.ts** file in the `src/environments` folder.
 
-onEmitOperationId(event: CustomEvent<string>) {
-  console.log('%c%s', 'color: lime;', `[PROVIDER] EmitOperationId: ${event.detail}`);
-}
+## Build
 
-onEmitSessionId(event: CustomEvent<string>) {
-  console.log('%c%s', 'color: lime;', `[PROVIDER] EmitSessionId: ${event.detail}`);
-}
-```
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ## Widget Customisation in Angular 18
 
@@ -120,19 +95,4 @@ facephi-selphi {
 ```
 
 > [!IMPORTANT]
-> It is important to correctly configure the encapsulation of styles in the framework/component. For example, adding the encapsulation to the component file that renders the widget is required in Angular 18:
-
-```js
-// selphi-component.ts
-
-@Component({
-	selector: 'app-selphi-component',
-	standalone: true,
-	imports: [],
-	schemas: [CUSTOM_ELEMENTS_SCHEMA],
-	templateUrl: './selphi-component.component.html',
-	styleUrl: './selphi-component.component.css',
-	encapsulation: ViewEncapsulation.ShadowDom,
-})
-export class SelphiComponent {}
-```
+> It is important to correctly configure the encapsulation of styles in the framework/component. For example, adding the encapsulation to the component file that renders the widget is required in Angular 18.

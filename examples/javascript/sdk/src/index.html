@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Facephi - SDK WC</title>
+    <title>Facephi - SDK WC JavaScript</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
@@ -19,17 +19,19 @@
 
     <div id="app">
       <div class="title">
-          <div class="h2">SDK Web Components v3.x</div>
+        <h2>SDK Web Components v3.x</h2>
       </div>
   
       <section class="sdk-section">
-          <!-- SDK Provider -->
-          <facephi-sdk-provider id="facephiSdkProvider">
-
-            <!-- Widgets Section -->
-            <section id="widgetContainer"></section>
-
-          </facephi-sdk-provider>
+        <!-- SDK Provider -->
+        <facephi-sdk-provider
+          apikey="%VITE_LICENSE_KEY%"
+          steps="START,SELPHI_WIDGET,SELPHID_WIDGET,FINISH"
+          type="ONBOARDING"
+          customer-id="sdk-javascript-example"
+          language="es"				
+        >
+        </facephi-sdk-provider>
       </section>
     </div>
     
@@ -38,7 +40,8 @@
         <div><span id="copyright-year"></span> ©FacePhi. All rights reserved.</div>
         <div class="framework">JavaScript</div>
       </section>
-      <script type="module" src="./index.js"></script>
+      <script type="module" src="./main.js"></script>
+      <script type="module" src="./scripts/sdk-provider.js"></script>	
     </footer>
   </body>
 </html>

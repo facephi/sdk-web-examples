@@ -1,28 +1,40 @@
-# Web SDK Web implementation in React 18
+# SDK Web WebComponents in React 18
 
-This code is an example of Web SDK React implementation in React 18 Framework.
+Integration with React 18
+
+> [!NOTE]
+> More information about the widgets please check [SDK Web WebComponents](https://docs.identity-platform.io/docs/SDK_Web/Web_Components/)
+
+## Prod installation credentials
+
+Create a **.npmrc** file in the root project directory.
+
+  ```bash
+  # Facephi registry credentials (prod)
+  @facephi:registry=https://facephicorp.jfrog.io/artifactory/api/npm/sdk-web-fphi/
+  //facephicorp.jfrog.io/artifactory/api/npm/sdk-web-fphi/:_password=PASSWORD
+  //facephicorp.jfrog.io/artifactory/api/npm/sdk-web-fphi/:username=NAME
+  //facephicorp.jfrog.io/artifactory/api/npm/sdk-web-fphi/:email=EMAIL
+  //facephicorp.jfrog.io/artifactory/api/npm/sdk-web-fphi/:always-auth=true
+  ```
+
+## Install dependencies
+
+Run `npm install` or `npm i` to install the dependencies.
+
+> [!NOTE]
+> Other package managers such as Bun or Yarn can be used as well.
+
+## Development server
+
+Run `npm run dev` for a dev server. Navigate to `http://localhost:3000/`. The application will automatically reload if you change any of the source files.
+
+> [!IMPORTANT]
+> The widgets will not work unless you add the API key provided by the Facephi team to the **.env** file in the `root` folder.
+
+## Build
+
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 
-
-## Launch demo (Development server)
-
-First, run `bun install` to install the necessary dependencies, then run `bun run dev` for a development server. A new tab will open with the demo application at `http://localhost:3000/`. The application will automatically reload if you change any of the source files.
-
-
-## Requirements
-
-- Package loader (Bun in this example).
-
-- Web SDK credentials (given by Facephi team).
-
-- An React project (v 18.3.1 in this example).
-
-- Latests version of browsers.
-
-
-> [!NOTE]  
-> This code is an example and may vary depending on your project configuration
-
-
-For more information check the Web Widget Selphi Docs.
 

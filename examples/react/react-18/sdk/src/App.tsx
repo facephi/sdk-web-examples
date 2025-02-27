@@ -15,7 +15,7 @@ export default function App() {
 	}
 
   function handleEmitData(event: CustomEvent<{ operationId: string; sessionId: string; extraData: string; }>) {
-		const result = event.detail;
+		    const result = event.detail;
 		console.log(
 			'%c%s',
 			'color: lime;',

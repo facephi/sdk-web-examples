@@ -1,9 +1,9 @@
-# SDK Components Selphi and SelphID in Angular 19
+# SDK Web WebComponents in Angular 19
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 19.0.0. The purpose of this project is to show how to implement the SDK Components Selphi and SelphID in Angular 19. Older versions of the framework (Angular 16, 17 and 18) are also compatible with this example.
+Integration with Angular 19
 
 > [!NOTE]
-> More information about the widgets ([Selphi](https://docs.identity-platform.io/docs/SDK_Web/Web_Components/3.0.x/Components/SelphiWidget/) and [SelphID](https://docs.identity-platform.io/docs/SDK_Web/Web_Components/3.0.x/Components/SelphidWidget/)) shown in this example can be found in the [official documentation](https://docs.identity-platform.io/docs/SDK_Web/Web_Components/3.0.x/quick-start).
+> More information about the widgets please check [SDK Web WebComponents](https://docs.identity-platform.io/docs/SDK_Web/Web_Components/)
 
 ## Prod installation credentials
 
@@ -35,105 +35,3 @@ Run `npm run dev` for a dev server. Navigate to `http://localhost:3000/`. The ap
 ## Build
 
 Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Angular Installation Guide
-
-Add the sdk-web-wc package dependency in the package.json file with the desired version:
-
-```json
-"dependencies": {
-    "@facephi/sdk-web-wc": "*",
-}
-```
-
-For the widgets to work properly, you must add the web component declaration to the **main.ts** file:
-
-```js
-import '@facephi/sdk-web-wc';
-import { defineCustomElements } from '@facephi/sdk-web-wc/loader';
-
-// Bind the custom elements to the window object
-defineCustomElements(window);
-```
-
-Angular needs to know how to handle custom web components (e.g. `facephi-sdk-provider`, `facephi-selphi-widget`, `facephi-selphid-widget`), so it is mandatory to add support for CUSTOM_ELEMENTS_SCHEMA to **any component that renders a custom web component**, such as the **app.component.ts** file in this example: 
-
-```js
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
-@Component({
-	selector: 'app-root',
-	standalone: true,
-	imports: [],
-	schemas: [CUSTOM_ELEMENTS_SCHEMA],
-	templateUrl: './app.component.html',
-})
-export class AppComponent { }
-```
-
-Finally, the only thing left to do is to add the SDK provider that contains the rest of the components to the html, in this example, the **app.component.html** file:
-
-```html
-<!-- SDK Provider -->
-<facephi-sdk-provider
-  [apikey]="provider.apiKey"
-
-  (emitOperationId)="onEmitOperationId($event)"
->
-    <!-- Widgets -->
-</facephi-sdk-provider>
-```
-
-The provider and the widgets, both Selphi and SelphID, will offer some events in order to control their performance.
-
-```js
-// Provider Events
-onEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
-  console.log('%c%s', 'color: orange;', `[VIDEO RECRUITMENT] EmitError: ${event.detail}`);
-}
-
-onEmitOperationId(event: CustomEvent<string>) {
-  console.log('%c%s', 'color: orange;', `[VIDEO RECRUITMENT] EmitOperationId: ${event.detail}`);
-  
-}
-
-onEmitSessionId(event: CustomEvent<string>) {
-   console.log('%c%s', 'color: orange;', `[VIDEO RECRUITMENT] EmitSessionId: ${event.detail}`);
-}
-```
-
-## Widget Customisation in Angular 19
-
-Both widgets of Selphi and SelphID can be customised in Angular 19. To do this, you can use the CSS variables described in the official documentation for [Selphi](https://docs.identity-platform.io/docs/SDK_Web/Web_Components/3.0.x/Components/SelphiWidget/selphi-customization) and [SelphID](https://docs.identity-platform.io/docs/SDK_Web/Web_Components/3.0.x/Components/SelphidWidget/selphid-customization) and apply them to the CSS file of the component that renders the widget:
-
-```css
-/* selphi-component.component.css */
-
-/* Selphi Component styles */
-facephi-selphi {
-  --color-primary: #c3012f;
-  --color-progress-bar: #c3012f;
-  --color-hover: #c3012f77;
-  --color-loading: #c3012f;
-  --color-tutorial-tshirt: #c3012f;
-  --color-tutorial-progress: #c3012f;
-}
-```
-
-> [!IMPORTANT]
-> It is important to correctly configure the encapsulation of styles in the framework/component. For example, adding the encapsulation to the component file that renders the widget is required in Angular 19:
-
-```js
-// selphi-component.ts
-
-@Component({
-	selector: 'app-selphi-component',
-	standalone: true,
-	imports: [],
-	schemas: [CUSTOM_ELEMENTS_SCHEMA],
-	templateUrl: './selphi-component.component.html',
-	styleUrl: './selphi-component.component.css',
-	encapsulation: ViewEncapsulation.ShadowDom,
-})
-export class SelphiComponent {}
-```

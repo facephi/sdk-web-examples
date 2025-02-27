@@ -1,6 +1,6 @@
-# SDK Web WebComponents in React 19 and Javascript
+# SDK Web WebComponents in Javascript
 
-Integration with React 19 and Javascript
+Integration with Vanilla Javascript
 
 > [!NOTE]
 > More information about the widgets please check [SDK Web WebComponents](https://docs.identity-platform.io/docs/SDK_Web/Web_Components/)
@@ -30,7 +30,7 @@ Run `npm install` or `npm i` to install the dependencies.
 Run `npm run dev` for a dev server. Navigate to `http://localhost:3000/`. The application will automatically reload if you change any of the source files.
 
 > [!IMPORTANT]
-> The widgets will not work unless you add the API key provided by the Facephi team to the **.env** file in the `root` folder.
+> The widgets will not work unless you add the API key provided by the Facephi team to the **.env** file in the `src` folder.
 
 ## Build
 

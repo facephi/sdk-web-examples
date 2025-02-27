@@ -1,28 +1,37 @@
-# SDK Web implementation in Vue 3
+# SDK Web WebComponents in Vue 3
 
-This code is an example of Web SDK React implementation in Vue 3 Framework.
+Integration with Vanilla Vue 3
 
+> [!NOTE]
+> More information about the widgets please check [SDK Web WebComponents](https://docs.identity-platform.io/docs/SDK_Web/Web_Components/)
 
+## Prod installation credentials
 
-## Launch demo (Development server)
+Create a **.npmrc** file in the root project directory.
 
-First, run `bun install` to install the necessary dependencies, then run `bun run dev` for a development server. A new tab will open with the demo application at `http://localhost:3000/`. The application will automatically reload if you change any of the source files.
+  ```bash
+  # Facephi registry credentials (prod)
+  @facephi:registry=https://facephicorp.jfrog.io/artifactory/api/npm/sdk-web-fphi/
+  //facephicorp.jfrog.io/artifactory/api/npm/sdk-web-fphi/:_password=PASSWORD
+  //facephicorp.jfrog.io/artifactory/api/npm/sdk-web-fphi/:username=NAME
+  //facephicorp.jfrog.io/artifactory/api/npm/sdk-web-fphi/:email=EMAIL
+  //facephicorp.jfrog.io/artifactory/api/npm/sdk-web-fphi/:always-auth=true
+  ```
 
+## Install dependencies
 
-## Requirements
+Run `npm install` or `npm i` to install the dependencies.
 
-- Package loader (Bun in this example).
+> [!NOTE]
+> Other package managers such as Bun or Yarn can be used as well.
 
-- Web SDK credentials (given by Facephi team).
+## Development server
 
-- Vue 3 project (v 3.5.13 in this example).
+Run `npm run dev` for a dev server. Navigate to `http://localhost:3000/`. The application will automatically reload if you change any of the source files.
 
-- Latests version of browsers.
+> [!IMPORTANT]
+> The widgets will not work unless you add the API key provided by the Facephi team to the **.env** file in the `root` folder.
 
+## Build
 
-> [!NOTE]  
-> This code is an example and may vary depending on your project configuration
-
-
-For more information check the SDK Web Widget Docs.
-
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
