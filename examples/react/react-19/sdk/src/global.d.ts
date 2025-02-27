@@ -1,7 +1,7 @@
 import type { TrackingSteps, TypeFamily, FlowNode, FlowEdge, CameraRotation, CameraType, TemplateFormat} from '@facephi/sdk-web-wc';
 import type { VideoRecordQuality, AnonymizationMode, BarcodeSide, ExpectedSides, DocumentType } from '@facephi/sdk-web-wc';
 import type { ErrorTimeoutEvent, ExceptionCapturedEvent, ExtractionFinishEvent, ExtractionTimeoutEvent, TimeoutButtonClickEvent, TrackStatusEvent, UserCancelEvent} from '@facephi/sdk-web-wc';
-import type { ExtractionFinishEvent as SelphidExtractionFinishEvent } from '@facephi/selphid-web-component';
+import type { ExtractionFinishEvent as SelphidExtractionFinishEvent, ExtractionTimeoutEvent as SelphidExtractionTimeoutEvent } from '@facephi/selphid-web-component';
 
 declare module 'react/jsx-runtime' {
 		namespace JSX {
@@ -118,7 +118,7 @@ declare module 'react/jsx-runtime' {
 						errorTimer?: number;
 						externalCamera?: MediaStream | string;
 						imageQuality?: number;
-						initialTip?: string;
+						initialTip?: boolean;
 						initialTipHeight?: number;
 						initialTipWidth?: number;
 						keepEngineAlive?: boolean;
@@ -141,7 +141,7 @@ declare module 'react/jsx-runtime' {
 						onerrorTimeout?: (event: CustomEvent<ErrorTimeoutEvent>) => void;
 						onexceptionCaptured?: (event: CustomEvent<ExceptionCapturedEvent>) => void;
 						onextractionFinish?: (event: CustomEvent<SelphidExtractionFinishEvent>) => void;
-						onextractionTimeout?: (event: CustomEvent<ExtractionTimeoutEvent>) => void;
+						onextractionTimeout?: (event: CustomEvent<SelphidExtractionTimeoutEvent>) => void;
 						onmoduleLoaded?: (event: CustomEvent<any>) => void;
 						ontimeoutErrorButtonClick?: (event: CustomEvent<TimeoutButtonClickEvent>) => void;
 						ontrackStatus?: (event: CustomEvent<TrackStatusEvent>) => void;

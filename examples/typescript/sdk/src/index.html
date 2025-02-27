@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Facephi - SDK WC</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
-    <link rel="stylesheet" href="styles.css">
-  </head>
+<head>
+	<title>Facephi - SDK WC</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+	<link rel="stylesheet" href="styles.css">
+</head>
 
-  <body>
-    <header>
-      <section class="header">
-        <a class="logo" href="https://www.facephi.com/" title="FacePhi" target="https://facephi.com/">
-          <img src="assets/facephi_logo.svg" alt="Facephi logo" height="25" />
-        </a>
-      </section>
-    </header>
+<body>
+	<header>
+		<section class="header">
+			<a class="logo" href="https://www.facephi.com/" title="FacePhi" target="_blank" rel="noopener noreferrer">
+				<img src="assets/facephi_logo.svg" alt="Facephi logo" height="25" />
+			</a>
+		</section>
+	</header>
 
-    <div id="app">
-      <div class="title">
-          <div class="h2">SDK Web Components v3.x</div>
-      </div>
-  
-      <section class="sdk-section">
-          <!-- SDK Provider -->
-          <facephi-sdk-provider id="facephiSdkProvider">
+	<div id="app">
+		<div class="title">
+			<h2>SDK Web Components v3.x</h2>
+		</div>
 
-            <!-- Widgets Section -->
-            <section id="widgetContainer"></section>
-
-          </facephi-sdk-provider>
-      </section>
-    </div>
-    
-    <footer>
-      <section class="footer">
-        <div><span id="copyright-year"></span> ©FacePhi. All rights reserved.</div>
-        <div class="framework">TypeScript</div>
-      </section>
-      <script type="module" src="./index.js"></script>
-    </footer>
-  </body>
+		<section class="sdk-section">
+			<!-- SDK Provider -->
+			<facephi-sdk-provider
+				apikey="%VITE_LICENSE_KEY%"
+				steps="START,SELPHI_WIDGET,SELPHID_WIDGET,FINISH"
+				type="ONBOARDING"
+				customer-id="sdk-typescript-example"
+				language="es"				
+			>
+			</facephi-sdk-provider>
+		</section>
+	</div>
+	
+	<footer>
+		<section class="footer">
+			<div><span id="copyright-year"></span> ©FacePhi. All rights reserved.</div>
+			<div class="framework">TypeScript</div>
+		</section>
+		<script type="module" src="./main.ts"></script>
+		<script type="module" src="./scripts/sdk-provider.ts"></script>	
+	</footer>
+</body>
 </html>

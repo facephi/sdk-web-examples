@@ -8,9 +8,19 @@ export default function App() {
 	const licenseKey = (import.meta as any).env.VITE_LICENSE_KEY || '';
   const [widget, setWidget] = useState('selphi');
 
-	function handleEmitOperationId(event: CustomEvent<string>) {
+	// Provider Events
+  function handleEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
 		const result = event.detail;
-		console.log('%c%s', 'color: lime;', `[PROVIDER] onEmitOperationId: ${result}`);
+		console.log('%c%s', 'color: lime;', `[PROVIDER] onEmitError: ${result.message} (${result.statusCode})`);
+	}
+
+  function handleEmitData(event: CustomEvent<{ operationId: string; sessionId: string; extraData: string; }>) {
+		const result = event.detail;
+		console.log(
+			'%c%s',
+			'color: lime;',
+			`[PROVIDER] emitData: operationId(${result.operationId}), sessionId(${result.sessionId}), extraData(${result.extraData})`,
+		);
 	}
   
 	return (
@@ -19,19 +29,11 @@ export default function App() {
           <FacephiSdkProvider
             apikey={licenseKey}
             steps="START,SELPHI_WIDGET,SELPHID_WIDGET,FINISH"
-            onEmitOperationId={handleEmitOperationId}
-            disabled
-            className="facephi-sdk-provider"
-            language={Language.es}
             type={TypeFamily.onboarding}
-            theme={{
-              fontName: 'Poppins',
-              logo: '',
-              primaryColor: 'pink',
-              secondaryColor: 'blue',
-              tertiaryColor: 'orange',
-              backgroundColor: 'white',
-            }}
+            customerId='facephi-sdk-react18-example'
+            language={Language.es}
+            onEmitError={handleEmitError}
+            onEmitData={handleEmitData}
           >
             {widget === 'selphi' && <SelphiComponent setWidget={setWidget} />}
             {widget === 'selphid' && <SelphIDComponent setWidget={setWidget} />}
