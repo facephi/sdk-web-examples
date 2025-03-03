@@ -9,11 +9,19 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 })
 export class VideoRecruitmentComponent {
 	// Video Recruitment Widget Events
-	onFinishVideo(event: CustomEvent<boolean>) {
-		console.log('%c%s', 'color: orange;', `[VIDEO RECRUITMENT] EmitError: ${event.detail}`);
+	handleFinishVideo(event: CustomEvent<boolean>) {
+		const result = event;
+		console.log('%c%s', 'color: #FFA500;', '[VIDEO RECRUITMENT] FinishVideo: ', result);
+		console.log(event);
 	}
 
-	onUserCancel(event: Event) {
-		console.log('%c%s', 'color: orange;', `[VIDEO RECRUITMENT] EmitError: ${event}`);
+	handleUserCancel(event: Event) {
+		const result = event;
+		console.log('%c%s', 'color: #FFA500;', '[VIDEO RECRUITMENT] UserCancel: ', result);
+	}
+
+	handleErrorException(event: any) {
+		const result = event;
+		console.log('%c%s', 'color: #FFA500;', '[VIDEO RECRUITMENT] ErrorException: ', result);
 	}
 }

@@ -1,35 +1,48 @@
-import  {  FacephiSelphiWidget, Language  } from '@facephi/sdk-web-react';
-import type { ExtractionFinishEvent, ExtractionTimeoutEvent, ExceptionCapturedEvent } from '@facephi/selphi-web-component';
-
+import { FacephiSelphiWidget } from '@facephi/sdk-web-react';
+import {
+	type ExtractionFinishEvent,
+	type ExtractionTimeoutEvent,
+	type ExceptionCapturedEvent,
+	type ErrorTimeoutEvent,
+	Language,
+} from '@facephi/selphi-web-component';
 
 export default function SelphiComponent({ setWidget }: { setWidget: React.Dispatch<React.SetStateAction<string>> }) {
-
 	// Selphi Events
 	function handleExtractionFinish(event: CustomEvent<ExtractionFinishEvent>) {
-		const resultMessage = event.detail.detail?.extractionData?.bestImage?.data ? 'OK' : 'KO';
-		console.log('%c%s', 'color: cyan;', `[SELPHI] extractionFinish: ${resultMessage}`);
+		const result = event.detail.detail;
+		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] extractionFinish:', result);
+		// Redirect to SelphID
 		setWidget('selphid');
 	}
 
 	function handleExtractionTimeout(event: CustomEvent<ExtractionTimeoutEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: cyan;', `[SELPHI] extractionTimeout: ${result}`);
+		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] extractionTimeout:', result);
 	}
 
 	function handleExceptionCaptured(event: CustomEvent<ExceptionCapturedEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: cyan;', `[SELPHI] exceptionCaptured: ${result?.message}`);
+		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] exceptionCaptured:', result);
+	}
+
+	function handleErrorTimeout(event: CustomEvent<ErrorTimeoutEvent>) {
+		const result = event.detail.detail;
+		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] errorTimeout:', result);
 	}
 
 	return (
 		<FacephiSelphiWidget
-			initialTip={true}
-			disableExit={false}
-			stabilizationStage={false}
-			language={Language.es}
+			stabilizationStage={true}
+			language={Language.ES}
+			interactible={true}
+			previewCapture={true}
+			timeout={30000}
+			showLog={false}
 			onExtractionFinish={handleExtractionFinish}
 			onExtractionTimeout={handleExtractionTimeout}
 			onExceptionCaptured={handleExceptionCaptured}
+			onErrorTimeout={handleErrorTimeout}
 		/>
 	);
 }

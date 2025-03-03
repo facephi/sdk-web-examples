@@ -35,3 +35,8 @@ Run `npm run dev` for a dev server. Navigate to `http://localhost:3000/`. The ap
 ## Build
 
 Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+## Widget Customisation in Angular 19
+
+> [!IMPORTANT]
+> It is important to correctly configure the encapsulation of styles in the framework/component. For example, adding the encapsulation to the component file that renders the widget is required in Angular 19.

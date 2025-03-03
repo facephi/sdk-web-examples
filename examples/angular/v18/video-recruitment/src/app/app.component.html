@@ -7,8 +7,8 @@
             [language]="provider.language"
             #sdkProvider
 
-            (emitData)="onEmitData($event)"
-            (emitError)="onEmitError($event)"
+            (emitData)="handleEmitData($event)"
+            (emitError)="handleEmitError($event)"
         >
             <!-- Video Recruitment Component -->
             <app-video-recruitment *ngIf="providerIsLoaded" />

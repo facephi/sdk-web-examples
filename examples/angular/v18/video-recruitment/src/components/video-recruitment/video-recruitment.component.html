@@ -2,6 +2,7 @@
     full-screen
     language="es"
 
-    (finishVideo)="onFinishVideo($event)"
-    (userCancel)="onUserCancel($event)"
+    (finishVideo)="handleFinishVideo($event)"
+    (userCancel)="handleUserCancel($event)"
+    (errorException)="handleErrorException($event)"
 /> 

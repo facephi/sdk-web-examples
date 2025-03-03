@@ -36,23 +36,28 @@ export class AppComponent {
 	onEmitData(event: CustomEvent<{ operationId: string; sessionId: string; extraData: string }>) {
 		const result = event.detail;
 		console.log(
-			'%c%s',
-			'color: lime;',
-			`[PROVIDER] emitData: operationId(${result.operationId}), sessionId(${result.sessionId}), extraData(${result.extraData})`,
+			'%c%s%s\n%s\n%s\n%s',
+			'color: #00FF00;',
+			'[PROVIDER] onEmitData:',
+			'',
+			`operationId: ${result.operationId}`,
+			`sessionId: ${result.sessionId}`,
+			`extraData: ${result.extraData}`,
 		);
 	}
 
 	onEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
 		const result = event.detail;
 		console.log(
-			'%c%s',
-			'color: lime;',
-			`'[PROVIDER] EmitError: statusCode(${result.statusCode}), message(${result.message}) ',`,
+			'%c%s%s\n%s',
+			'color: #00FF00;',
+			'[PROVIDER] onEmitError:',
+			'',
+			`statusCode: ${result.statusCode}`,
+			`message: ${result.message}`,
 		);
 	}
 
 	// Angular lifecycle methods
-	ngOnInit() {
-		console.info('[DEMO] SDK WC Configuration:', this.provider);
-	}
+	ngOnInit() {}
 }

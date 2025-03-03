@@ -24,9 +24,6 @@ export class SelphiComponent {
 
 	// Selphi data
 	selphi = {
-		initialTip: true,
-		initialTipHeight: 350,
-		initialTipWidth: 350,
 		stabilizationStage: true,
 		language: Language.ES,
 		interactible: true,
@@ -38,23 +35,23 @@ export class SelphiComponent {
 	// Selphi Events
 	handleExtractionFinish(event: CustomEvent<ExtractionFinishEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: cyan;', '[SELPHI] extractionFinish:', result);
+		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] extractionFinish:', result);
 		// Redirect to SelphID
 		this.router.navigate(['../selphid'], { relativeTo: this.currentRoute });
 	}
 
 	handleExtractionTimeout(event: CustomEvent<ExtractionTimeoutEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: cyan;', '[SELPHI] extractionTimeout:', result);
+		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] extractionTimeout:', result);
 	}
 
 	handleExceptionCaptured(event: CustomEvent<ExceptionCapturedEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: cyan;', '[SELPHI] exceptionCaptured:', result);
+		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] exceptionCaptured:', result);
 	}
 
 	handleErrorTimeout(event: CustomEvent<ErrorTimeoutEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: cyan;', '[SELPHI] errorTimeout:', result);
+		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] errorTimeout:', result);
 	}
 }

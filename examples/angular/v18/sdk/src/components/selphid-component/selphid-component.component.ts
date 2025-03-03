@@ -24,9 +24,6 @@ export class SelphIDComponent {
 
 	// SelphID data
 	selphid = {
-		initialTip: true,
-		initialTipHeight: 350,
-		initialTipWidth: 350,
 		country: 'ES',
 		language: Language.ES,
 		previewCapture: true,
@@ -38,23 +35,23 @@ export class SelphIDComponent {
 	// SelphID Events
 	handleExtractionFinish(event: CustomEvent<ExtractionFinishEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: fuchsia;', '[SELPHID] extractionFinish:', result);
+		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] extractionFinish:', result);
 		// Redirect to the finish component
 		this.router.navigate(['../finish'], { relativeTo: this.currentRoute });
 	}
 
 	handleExtractionTimeout(event: CustomEvent<ExtractionTimeoutEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: fuchsia;', '[SELPHID] extractionTimeout:', result);
+		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] extractionTimeout:', result);
 	}
 
 	handleExceptionCaptured(event: CustomEvent<ExceptionCapturedEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: fuchsia;', '[SELPHID] exceptionCaptured:', result);
+		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] exceptionCaptured:', result);
 	}
 
 	handleErrorTimeout(event: CustomEvent<ErrorTimeoutEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: fuchsia;', '[SELPHID] errorTimeout:', result);
+		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] errorTimeout:', result);
 	}
 }

@@ -35,3 +35,8 @@ Run `npm run dev` for a dev server. Navigate to `http://localhost:3000/`. The ap
 ## Build
 
 Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+## Widget Customisation in React 19
+
+> [!IMPORTANT]
+> It is important to correctly configure the styling approach in React to avoid conflicts with the WebComponents. When using CSS modules or styled-components, ensure proper scoping of styles.

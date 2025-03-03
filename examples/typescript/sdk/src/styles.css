@@ -11,7 +11,9 @@
   padding: 0px;
 }
 
-html, body, #app {
+html,
+body,
+#app {
   width: 100%;
   height: 100%;
 }
@@ -20,11 +22,13 @@ body {
   flex-direction: column;
 }
 
-header, footer {
+header,
+footer {
   background-color: #343a40;
   color: #ffffff;
 }
-.header, .footer {
+.header,
+.footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35,7 +39,9 @@ header, footer {
   padding: 16px 0;
 }
 
-.header, .footer, #app {
+.header,
+.footer,
+#app {
   max-width: 1280px;
   margin: 0 auto;
 }
@@ -92,3 +98,29 @@ main {
   font-size: 14px;
 }
 
+.onboarding-finished {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-weight: bold;
+  color: #343a40;
+}
+
+/* Selphi and SelphID Component styles */
+facephi-selphi {
+  --color-primary: #3077c6;
+  --color-secondary: #ffffff;
+  --color-hover: #3077c677;
+  --color-progress-bar: #3077c6;
+  --color-loading: #3077c6;
+  --color-tutorial-tshirt: #3077c6;
+  --color-tutorial-progress: #3077c6;
+}
+
+facephi-selphid {
+  --color-primary: #3077c6;
+  --color-hover: #3077c677;
+  --color-loading: #3077c6;
+  --color-tutorial-background: #3077c6;
+}

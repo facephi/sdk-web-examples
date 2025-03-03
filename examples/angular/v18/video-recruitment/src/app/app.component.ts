@@ -1,3 +1,15 @@
+/**
+ * Facephi SDK Provider Configuration Example
+ *
+ * WARNING:
+ * This is an example of the implementation of the Web SDK Library.
+ * All the properties, events and methods used in this examples are implemented as orientation to a better performance in coding.
+ *
+ * Please, consider to check the documentation before editing the code.
+ *
+ * We recommend to remove all the console logs and use actual code.
+ *
+ */
 import {
 	type AfterViewInit,
 	ChangeDetectionStrategy,
@@ -34,28 +46,33 @@ export class AppComponent implements OnInit, AfterViewInit {
 	providerIsLoaded = false;
 
 	// Provider Events
-	onEmitData(event: CustomEvent<{ operationId: string; sessionId: string; extraData: string }>) {
+	handleEmitData(event: CustomEvent<{ operationId: string; sessionId: string; extraData: string }>) {
 		const result = event.detail;
 		console.log(
-			'%c%s',
-			'color: lime;',
-			`[PROVIDER] emitData: operationId(${result.operationId}), sessionId(${result.sessionId}), extraData(${result.extraData})`,
+			'%c%s%s\n%s\n%s\n%s',
+			'color: #00FF00;',
+			'[PROVIDER] onEmitData:',
+			'',
+			`operationId: ${result.operationId}`,
+			`sessionId: ${result.sessionId}`,
+			`extraData: ${result.extraData}`,
 		);
 	}
 
-	onEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
+	handleEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
 		const result = event.detail;
 		console.log(
-			'%c%s',
-			'color: lime;',
-			`'[PROVIDER] EmitError: statusCode(${result.statusCode}), message(${result.message}) ',`,
+			'%c%s%s\n%s',
+			'color: #00FF00;',
+			'[PROVIDER] onEmitError:',
+			'',
+			`statusCode: ${result.statusCode}`,
+			`message: ${result.message}`,
 		);
 	}
 
 	// Angular lifecycle methods
-	ngOnInit() {
-		console.info('[DEMO] SDK WC Configuration:', this.provider);
-	}
+	ngOnInit() {}
 
 	ngAfterViewInit() {
 		// Wait until provider is set to load the video recruitment component

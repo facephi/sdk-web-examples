@@ -1,5 +1,17 @@
+/**
+ * Facephi SDK Provider Configuration Example
+ *
+ * WARNING:
+ * This is an example of the implementation of the Web SDK Library.
+ * All the properties, events and methods used in this examples are implemented as orientation to a better performance in coding.
+ *
+ * Please, consider to check the documentation before editing the code.
+ *
+ * We recommend to remove all the console logs and use actual code.
+ *
+ */
 <script setup lang="ts">
-import { Language } from '@facephi/sdk-web-wc';
+import { Language, TypeFamily } from '@facephi/sdk-web-wc';
 import {
 	Language as LenguageSelphi,
 	type ExtractionFinishEvent as SelphiExtractionFinishEvent,
@@ -22,58 +34,76 @@ const widget = ref('selphi');
 const apiKey = (import.meta as any).env.VITE_LICENSE_KEY;
 
 // SDK Provider event handlers
-function handleEmitOperationId(event: CustomEvent<string>) {
+function handleEmitData(event: CustomEvent<{ operationId: string; sessionId: string; extraData: string }>) {
 	const result = event.detail;
-	console.log('%c%s', 'color: lime;', `[PROVIDER] onEmitOperationId: ${result}`);
+	console.log(
+		'%c%s%s\n%s\n%s\n%s',
+		'color: #00FF00;',
+		'[PROVIDER] onEmitData: ',
+		'',
+		`operationId: ${result.operationId}`,
+		`sessionId: ${result.sessionId}`,
+		`extraData: ${result.extraData}`,
+	);
+}
+
+function handleEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
+	const result = event.detail;
+	console.log(
+		'%c%s%s\n%s',
+		'color: #00FF00;',
+		'[PROVIDER] onEmitError:',
+		'',
+		`statusCode: ${result.statusCode}`,
+		`message: ${result.message}`,
+	);
 }
 
 // SELPHI event handlers
 function handleSelphiExtractionFinish(event: CustomEvent<SelphiExtractionFinishEvent>) {
-	const resultMessage = event.detail.detail?.extractionData?.bestImage?.data ? 'OK' : 'KO';
-	console.log('%c%s', 'color: cyan;', `[SELPHI] extractionFinish: ${resultMessage}`);
+	//const resultMessage = event.detail.detail?.extractionData?.bestImage?.data ? 'OK' : 'KO';
+	const result = event.detail.detail;
+	console.log('%c%s', 'color: #00FFFF;', '[SELPHI] extractionFinish: ', result);
+	// Redirect to SelphID
 	widget.value = 'selphid';
 }
 
-function handleSelphiExtractionTimeout(eventData: CustomEvent<SelphiExtractionTimeoutEvent>) {
-	const result = eventData.detail.detail;
-	console.log('%c%s', 'color: cyan;', `[SELPHI] extractionTimeout: ${result}`);
+function handleSelphiExtractionTimeout(event: CustomEvent<SelphiExtractionTimeoutEvent>) {
+	const result = event.detail.detail;
+	console.log('%c%s', 'color: #00FFFF;', '[SELPHI] extractionTimeout: ', result);
 }
 
-function handleSelphiExceptionCaptured(eventData: CustomEvent<SelphiExceptionCapturedEvent>) {
-	const result = eventData.detail.detail;
-	console.log('%c%s', 'color: cyan;', `[SELPHI] exceptionCaptured: ${result}`);
+function handleSelphiExceptionCaptured(event: CustomEvent<SelphiExceptionCapturedEvent>) {
+	const result = event.detail.detail;
+	console.log('%c%s', 'color: #00FFFF;', '[SELPHI] exceptionCaptured: ', result);
 }
 
-function handleSelphiErrorTimeout(eventData: CustomEvent<SelphiErrorTimeoutEvent>) {
-	const result = eventData.detail.detail;
-	console.log('%c%s', 'color: cyan;', `[SELPHI] errorTimeout: ${result}`);
+function handleSelphiErrorTimeout(event: CustomEvent<SelphiErrorTimeoutEvent>) {
+	const result = event.detail.detail;
+	console.log('%c%s', 'color: #00FFFF;', '[SELPHI] errorTimeout: ', result);
 }
 
 // SELPHID event handlers
-
-// selphid events
 function handleSelphidExtractionFinish(event: CustomEvent<SelphidExtractionFinishEvent>) {
-	const resultMessage =
-		event.detail.detail?.result?.images?.backDocument && event.detail.detail?.result?.images?.frontDocument
-			? 'OK'
-			: 'KO';
-	console.log('%c%s', 'color: fuchsia;', `[SELPHID] extractionFinish: ${resultMessage}`);
+	const result = event.detail.detail;
+	console.log('%c%s', 'color: #FF00FF;', '[SELPHID] extractionFinish: ', result);
+	// Redirect to the finish component
 	widget.value = 'finish';
 }
 
-function handleSelphidExtractionTimeout(eventData: CustomEvent<SelphidExtractionTimeoutEvent>) {
-	const result = eventData.detail.detail;
-	console.log('%c%s', 'color: cyan;', `[SELPHID] extractionTimeout: ${result}`);
+function handleSelphidExtractionTimeout(event: CustomEvent<SelphidExtractionTimeoutEvent>) {
+	const result = event.detail.detail;
+	console.log('%c%s', 'color: #FF00FF;', '[SELPHID] extractionTimeout: ', result);
 }
 
-function handleSelphidExceptionCaptured(eventData: CustomEvent<SelphidExceptionCapturedEvent>) {
-	const result = eventData.detail.detail;
-	console.log('%c%s', 'color: cyan;', `[SELPHID] exceptionCaptured: ${result}`);
+function handleSelphidExceptionCaptured(event: CustomEvent<SelphidExceptionCapturedEvent>) {
+	const result = event.detail.detail;
+	console.log('%c%s', 'color: #FF00FF;', '[SELPHID] exceptionCaptured: ', result);
 }
 
-function handleSelphidErrorTimeout(eventData: CustomEvent<SelphidErrorTimeoutEvent>) {
-	const result = eventData.detail.detail;
-	console.log('%c%s', 'color: cyan;', `[SELPHID] errorTimeout: ${result}`);
+function handleSelphidErrorTimeout(event: CustomEvent<SelphidErrorTimeoutEvent>) {
+	const result = event.detail.detail;
+	console.log('%c%s', 'color: #FF00FF;', '[SELPHID] errorTimeout: ', result);
 }
 </script>
 
@@ -89,16 +119,17 @@ function handleSelphidErrorTimeout(eventData: CustomEvent<SelphidErrorTimeoutEve
       <section class="sdk-section">
           <facephi-sdk-provider
             :apikey="apiKey"
-            debug="false"
-            :language="Language.es"         
-            @emitOperationId="handleEmitOperationId($event)"
+            steps= "START,SELPHI_WIDGET,SELPHID_WIDGET,FINISH"
+            :type="TypeFamily.onboarding"
+            customer-id="facephi-sdk-vue3-example"
+            :language="Language.es"
+
+            @emitData="handleEmitData($event)"
+            @emitError="handleEmitError($event)"
           >
 
             <facephi-selphi-widget
               v-if="widget === 'selphi'"
-              initial-tip="true"
-              initial-tip-height="350"
-              initial-tip-width="350"
               stabilization-stage="true"
               :language="LenguageSelphi.ES"
               interactible="true"
@@ -115,9 +146,6 @@ function handleSelphidErrorTimeout(eventData: CustomEvent<SelphidErrorTimeoutEve
 
             <facephi-selphid-widget
               v-if="widget === 'selphid'"
-              initial-tip="true"
-              initial-tip-height="350"
-              initial-tip-width="350"
               country="ES"
               :language="LenguageSelphid.ES"
               preview-capture="true"

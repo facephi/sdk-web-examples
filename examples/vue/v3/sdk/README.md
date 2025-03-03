@@ -35,3 +35,8 @@ Run `npm run dev` for a dev server. Navigate to `http://localhost:3000/`. The ap
 ## Build
 
 Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+## Widget Customisation in Vue 3
+
+> [!IMPORTANT]
+> It is important to correctly configure the styling approach in Vue 3 to avoid conflicts with the WebComponents. When using scoped styles or CSS modules, ensure to use the ::v-deep or :deep() selector when necessary to properly style Web Component elements.

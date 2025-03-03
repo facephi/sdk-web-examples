@@ -1,4 +1,5 @@
 import { defineCustomElements } from '@facephi/sdk-web-wc/loader';
+import './scripts/sdk-provider.js';
 
 defineCustomElements(window);
 

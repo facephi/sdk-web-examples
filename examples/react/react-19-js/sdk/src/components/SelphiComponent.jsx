@@ -1,31 +1,39 @@
-export default function SelphiComponent({ setWidget}) {
-
+export default function SelphiComponent({ setWidget }) {
 	// Selphi Events
 	function handleExtractionFinish(event) {
-		const resultMessage = event.detail.detail?.extractionData?.bestImage?.data ? 'OK' : 'KO';
-		console.log('%c%s', 'color: cyan;', `[SELPHI] extractionFinish: ${resultMessage}`);
+		const result = event.detail.detail;
+		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] extractionFinish:', result);
+		// Redirect to SelphID
 		setWidget('selphid');
 	}
 
 	function handleExtractionTimeout(event) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: cyan;', `[SELPHI] extractionTimeout: ${result}`);
+		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] extractionTimeout:', result);
 	}
 
 	function handleExceptionCaptured(event) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: cyan;', `[SELPHI] exceptionCaptured: ${result?.message}`);
+		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] exceptionCaptured:', result);
+	}
+
+	function handleErrorTimeout(event) {
+		const result = event.detail.detail;
+		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] errorTimeout:', result);
 	}
 
 	return (
 		<facephi-selphi-widget
-			initialTip={true}
-			disableExit={false}
-			stabilizationStage={false}
-			language="es"
+			stabilizationStage={true}
+			language='ES'
+			interactible={true}
+			previewCapture={true}
+			timeout={30000}
+			showLog={false}
 			onextractionFinish={handleExtractionFinish}
 			onextractionTimeout={handleExtractionTimeout}
 			onexceptionCaptured={handleExceptionCaptured}
+			onerrorTimeout={handleErrorTimeout}
 		/>
 	);
 }
