@@ -90,6 +90,7 @@ facephi-selphi {
   --color-loading: #3fb883;
   --color-tutorial-tshirt: #3fb883;
   --color-tutorial-progress: #3fb883;
+  --display-logo: "block";
 }
 
 facephi-selphid {
@@ -97,4 +98,5 @@ facephi-selphid {
   --color-hover: #3fb88377;
   --color-loading: #3fb883;
   --color-tutorial-background: #3fb883;
+  --display-logo: "block";
 }

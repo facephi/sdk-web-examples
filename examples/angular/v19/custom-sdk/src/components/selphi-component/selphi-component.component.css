@@ -1,0 +1,27 @@
+:host {
+  width: 100%;
+  height: 100%;
+}
+/* Selphi Component styles */
+facephi-selphi {
+  /* Colour styles */
+  --color-primary: #323232;
+  --color-progress-bar: #323232;
+  --color-hover: #323232b6;
+  --color-loading: #323232;
+  --color-background: #eae7dd;
+  /* Tutorial animation colours */
+  --color-tutorial-background: #ddd0c8;
+  --color-tutorial-tshirt: #99775c;
+  --color-tutorial-progress: #99775c;
+  --color-tutorial-earrings: #99775c;
+  /* Toggle Facephi logo */
+  --display-logo: "block";
+  /* Text */
+  --text-font-size: 1.2em;
+  --title-font-size: 1.4em;
+  --line-height: 1.5em;
+  /* Miscellaneous */
+  --progress-bar-width: 0.8em;
+  --border-radius: 1em;
+}

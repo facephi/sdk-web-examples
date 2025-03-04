@@ -1,0 +1,11 @@
+{
+  "es": {
+    "START": "EMPEZAR",
+    "YES, CONTINUE": "SÍ, QUIERO CONTINUAR",
+    "NO, RETRY": "NO, QUIERO REINTENTARLO",
+    "RETRY": "REINTENTAR",
+    "Close": "Cerrar",
+    "Enable audio": "Habilitar el audio",
+    "Disable audio": "Desabilitar el audio"
+  }
+}

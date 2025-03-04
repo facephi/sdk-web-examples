@@ -1,0 +1,27 @@
+:host {
+  width: 100%;
+  height: 100%;
+}
+/* SelphID Component styles */
+facephi-selphid {
+  /* Colour styles */
+  --color-primary: #323232;
+  --color-hover: #323232b6;
+  --color-loading: #323232;
+  --color-background: #eae7dd;
+  /* Loading animation color */
+  --color-loading: #323232;
+  /* Tutorial animation colours */
+  --color-tutorial-background: #ddd0c8;
+  /* Toggle Facephi logo */
+  --display-logo: "block";
+  /* Text */
+  --text-font-size: 1.2em;
+  --title-font-size: 1.4em;
+  --title-font-size-mobile: 1.2em;
+  --line-height: 1.5em;
+  /* Miscellaneous */
+  --document-border-width: 0.5em;
+  --diagnostic-border-width: 0.5em;
+  --border-radius: 1em;
+}
