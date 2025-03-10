@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SDK Video Provider Example</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <header>
+    <section class="header">
+      <a class="logo" href="https://www.facephi.com/" title="FacePhi" target="https://facephi.com/">
+        <img src="/facephi_logo.svg" alt="Facephi logo" height="25" />
+      </a>
+    </section>
+  </header>
+  <div id="app">
+    <app-root></app-root>
+  </div>
+  <footer>
+    <section class="footer">
+      <small id="copyright-year"> ©FacePhi. All rights reserved.</small>
+      <div class="framework">AngularJS 19</div>
+    </section>
+  </footer>
+  <script>
+    document.getElementById('copyright-year').insertAdjacentHTML('afterbegin', new Date().getFullYear());
+  </script>
+</body>
+</html>

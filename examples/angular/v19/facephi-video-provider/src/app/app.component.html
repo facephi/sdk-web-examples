@@ -1,0 +1,33 @@
+<main>
+    <section class="sdk-section">
+        <!-- SDK Provider -->
+        <facephi-sdk-provider
+            [apikey]="provider.apiKey"
+            [steps]="provider.steps"
+            [type]="provider.type"
+            [customerId]="provider.customerId"
+            [language]="provider.language"
+
+            (emitData)="onEmitData($event)"
+            (emitError)="onEmitError($event)"
+        >
+            <!-- Video Provider -->
+            <facephi-video-provider 
+                (changeChannel)="onChangeChannel($event)" 
+                (changeLoading)="onChangeLoading($event)"
+
+                #videoProvider
+            >
+                <!-- Router to redirect, first, to Selphi and then, SelphID -->
+                <router-outlet (activate)="onActivate()" />
+                <!-- Button to generate video in the browser console -->
+                <div id="getVideoBtnContainer" *ngIf="isFinished">
+                    <button (click)="fetchVideo()" id="getVideoBtn">
+                        Get video URL
+                    </button>
+                    <a href={{videoUrl}} target="_blank" id="videoUrl">{{videoUrl}}</a>
+                </div>
+            </facephi-video-provider>
+        </facephi-sdk-provider>
+    </section>
+</main>
