@@ -30,7 +30,7 @@ Run `npm install` or `npm i` to install the dependencies.
 Run `npm run dev` for a dev server. Navigate to `http://localhost:3000/`. The application will automatically reload if you change any of the source files.
 
 > [!IMPORTANT]
-> The video recruitment widget will not work unless you add the API key provided by the Facephi team to the **environment.ts** file in the `src/environments` folder.
+> The widgets will not work unless you add the API key provided by the Facephi team to the **.env** file. This file must be created by the user and must contain the variable **NG_APP_API_KEY** with the API key.
 
 ## Build
 

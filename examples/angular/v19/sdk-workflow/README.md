@@ -1,9 +1,9 @@
-# SDK Web WebComponents in Angular 19
+# SDK Workflow Web WebComponents in Angular 19
 
-This is an example of how to customise the widgets in Angular 19.
+This is an example of how to integrate the SDK Workflow with Angular 19.
 
 > [!NOTE]
-> For more information about the widgets please check [SDK Web WebComponents](https://docs.identity-platform.io/docs/SDK_Web/Web_Components/).
+> For more information about the widgets please check [SDK Web WebComponents](https://docs.identity-platform.io/docs/SDK_Web/Web_Components/)
 
 ## Prod installation credentials
 

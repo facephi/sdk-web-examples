@@ -12,7 +12,6 @@
  */
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { environment } from '../environments/environment';
 import { Language, TypeFamily } from '@facephi/sdk-web-wc';
 
 @Component({
@@ -25,7 +24,7 @@ import { Language, TypeFamily } from '@facephi/sdk-web-wc';
 export class AppComponent {
 	// Provider data
 	provider = {
-		apiKey: environment.apiKey, // Required license
+		apiKey: import.meta.env.NG_APP_API_KEY, // Required license
 		steps: 'START,SELPHI_WIDGET,SELPHID_WIDGET,FINISH', //Order in platform
 		type: TypeFamily.onboarding, // onboarding or authentication
 		customerId: 'facephi-sdk-angular19-example', //Unique user id

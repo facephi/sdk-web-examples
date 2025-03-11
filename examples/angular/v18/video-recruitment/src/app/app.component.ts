@@ -22,7 +22,6 @@ import {
 import { Language } from '@facephi/sdk-web-wc';
 import { VideoRecruitmentComponent } from '../components/video-recruitment/video-recruitment.component';
 import { NgIf, NgFor } from '@angular/common';
-import { environment } from '../environments/environment';
 
 @Component({
 	selector: 'app-root',
@@ -37,7 +36,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 	// Provider data
 	provider = {
-		apiKey: environment.apiKey, // Required license
+		apiKey: import.meta.env.NG_APP_API_KEY, // Required license
 		customerId: 'facephi-sdk-angular-video-recruitment-example', // Unique user id
 		language: Language.es, // Main language in sdk and widgets
 	};

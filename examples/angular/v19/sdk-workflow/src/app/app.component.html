@@ -1,0 +1,19 @@
+<main>
+    <section class="sdk-section">
+        <!-- SDK Provider -->
+        <facephi-sdk-provider
+            [apikey]="provider.apiKey"
+            [steps]="provider.steps"
+            [type]="provider.type"
+            [customerId]="provider.customerId"
+            [language]="provider.language"
+            [workflow]="provider.workflow"
+            [waitRequest]="provider.waitRequest"
+
+            (emitData)="onEmitData($event)"
+            (emitError)="onEmitError($event)"
+            (emitWorkflowEvent)="onEmitWorkflowEvent($event)"
+        >
+        </facephi-sdk-provider>
+    </section>
+</main>
