@@ -1,0 +1,23 @@
+{
+  "name": "next12-sdk-video-recruitment",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "clean": "rm -rf .next out node_modules package-lock.json bun.lockb yarn.lock bun.lock"
+  },
+  "dependencies": {
+    "@facephi/sdk-web-react": "*",
+    "next": "12.3.4",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "22.7.9",
+    "@types/react": "17.0.83",
+    "@types/react-dom": "19.0.2",
+    "typescript": "5.7.3"
+  }
+}

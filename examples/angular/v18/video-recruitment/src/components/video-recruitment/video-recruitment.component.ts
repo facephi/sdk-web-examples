@@ -12,7 +12,6 @@ export class VideoRecruitmentComponent {
 	handleFinishVideo(event: CustomEvent<boolean>) {
 		const result = event;
 		console.log('%c%s', 'color: #FFA500;', '[VIDEO RECRUITMENT] FinishVideo: ', result);
-		console.log(event);
 	}
 
 	handleUserCancel(event: Event) {

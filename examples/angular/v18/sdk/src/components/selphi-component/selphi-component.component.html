@@ -6,8 +6,13 @@
     [timeout]="selphi.timeout"
     [showLog]="selphi.showLog"
 
+    (moduleLoaded)="handleModuleLoaded($event)"
     (extractionFinish)="handleExtractionFinish($event)"
     (extractionTimeout)="handleExtractionTimeout($event)"
     (exceptionCaptured)="handleExceptionCaptured($event)"
     (errorTimeout)="handleErrorTimeout($event)"
+    (timeoutErrorButtonClick)="handleTimeoutErrorButtonClick($event)"
+    (userCancel)="handleUserCancel($event)"
+	(trackStatus)="hanldeTrackStatus($event)"
+	(stabilizing)="handleStabilizing($event)"
 />

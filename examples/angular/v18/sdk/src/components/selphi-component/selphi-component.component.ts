@@ -6,6 +6,11 @@ import {
 	type ExtractionFinishEvent,
 	type ExtractionTimeoutEvent,
 	type ErrorTimeoutEvent,
+	type WidgetLoadedEvent,
+	type StabilizingEvent,
+	type TrackStatusEvent,
+	type UserCancelEvent,
+	type TimeoutButtonClickEvent,
 } from '@facephi/selphi-web-component';
 
 @Component({
@@ -33,6 +38,10 @@ export class SelphiComponent {
 	};
 
 	// Selphi Events
+	handleModuleLoaded(event: CustomEvent<WidgetLoadedEvent>) {
+		const result = event.detail.detail;
+		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] widgetLoaded:', result);
+	}
 	handleExtractionFinish(event: CustomEvent<ExtractionFinishEvent>) {
 		const result = event.detail.detail;
 		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] extractionFinish:', result);
@@ -53,5 +62,25 @@ export class SelphiComponent {
 	handleErrorTimeout(event: CustomEvent<ErrorTimeoutEvent>) {
 		const result = event.detail.detail;
 		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] errorTimeout:', result);
+	}
+
+	handleTimeoutErrorButtonClick(event: CustomEvent<TimeoutButtonClickEvent>) {
+		const result = event.detail.detail;
+		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] timeoutErrorButtonClick:', result);
+	}
+
+	handleUserCancel(event: CustomEvent<UserCancelEvent>) {
+		const result = event.detail.detail;
+		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] userCancel:', result);
+	}
+
+	hanldeTrackStatus(event: CustomEvent<TrackStatusEvent>) {
+		const result = event.detail.detail;
+		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] trackStatus:', result);
+	}
+
+	handleStabilizing(event: CustomEvent<StabilizingEvent>) {
+		const result = event.detail.detail;
+		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] stabilizing:', result);
 	}
 }

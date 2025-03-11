@@ -6,6 +6,10 @@ import {
 	type ExtractionFinishEvent,
 	type ExtractionTimeoutEvent,
 	type ErrorTimeoutEvent,
+	type WidgetLoadedEvent,
+	type TrackStatusEvent,
+	type UserCancelEvent,
+	type TimeoutButtonClickEvent,
 } from '@facephi/selphid-web-component';
 
 @Component({
@@ -33,6 +37,11 @@ export class SelphIDComponent {
 	};
 
 	// SelphID Events
+	handleModuleLoaded(event: CustomEvent<WidgetLoadedEvent>) {
+		const result = event.detail.detail;
+		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] widgetLoaded:', result);
+	}
+
 	handleExtractionFinish(event: CustomEvent<ExtractionFinishEvent>) {
 		const result = event.detail.detail;
 		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] extractionFinish:', result);
@@ -53,5 +62,19 @@ export class SelphIDComponent {
 	handleErrorTimeout(event: CustomEvent<ErrorTimeoutEvent>) {
 		const result = event.detail.detail;
 		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] errorTimeout:', result);
+	}
+	handleTimeoutErrorButtonClick(event: CustomEvent<TimeoutButtonClickEvent>) {
+		const result = event.detail.detail;
+		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] timeoutErrorButtonClick:', result);
+	}
+
+	handleUserCancel(event: CustomEvent<UserCancelEvent>) {
+		const result = event.detail.detail;
+		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] userCancel:', result);
+	}
+
+	hanldeTrackStatus(event: CustomEvent<TrackStatusEvent>) {
+		const result = event.detail.detail;
+		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] trackStatus:', result);
 	}
 }

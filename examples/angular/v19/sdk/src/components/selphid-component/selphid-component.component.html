@@ -6,8 +6,11 @@
     [captureRetries]="selphid.captureRetries"
     [showLog]="selphid.showLog"
 
+    (moduleLoaded)="handleModuleLoaded($event)"
     (extractionFinish)="handleExtractionFinish($event)"
-    (exceptionCaptured)="handleExceptionCaptured($event)"
     (extractionTimeout)="handleExtractionTimeout($event)"
+    (exceptionCaptured)="handleExceptionCaptured($event)"
     (errorTimeout)="handleErrorTimeout($event)"
+    (userCancel)="handleUserCancel($event)"
+	(trackStatus)="hanldeTrackStatus($event)"
 />

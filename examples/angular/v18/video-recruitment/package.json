@@ -7,7 +7,7 @@
     "ng": "ng",
     "start": "ng serve",
     "watch": "ng build --watch --configuration development",
-    "clean": "rm -rf .angular dist node_modules package-lock.json bun.lockb yarn.lock"
+    "clean": "rm -rf .angular dist node_modules package-lock.json bun.lock"
   },
   "private": true,
   "dependencies": {
