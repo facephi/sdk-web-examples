@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!-- <link rel="icon" href="%PUBLIC_URL%/favicon.ico" /> -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <title>Facephi - SDK React 19 CRA</title>
+  </head>
+  <body>
+    <header>
+      <section class="header">
+        <a class="logo" href="https://www.facephi.com/" title="FacePhi" target="https://facephi.com/">
+          <img src="assets/facephi_logo.svg" alt="Facephi logo" height="25" />
+        </a>
+      </section>
+    </header>
+
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+
+    <footer>
+      <section class="footer">
+        <div><span id="copyright-year"></span> ©FacePhi. All rights reserved.</div>
+        <div class="framework">React 19 CRA</div>
+      </section>
+      <script>
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+      </script>
+      <!-- <script type="module" src="../src/index.jsx"></script> -->
+    </footer>
+
+  </body>
+</html>

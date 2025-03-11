@@ -1,5 +1,6 @@
 export default function SelphIDComponent({ setWidget }) {
 	// SelphID Events
+
 	function handleModuleLoaded(event) {
 		const result = event.detail.detail;
 		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] widgetLoaded:', result);
@@ -41,7 +42,7 @@ export default function SelphIDComponent({ setWidget }) {
 		const result = event.detail.detail;
 		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] userCancel:', result);
 	}
-
+	
 	return (
 		<facephi-selphid-widget
 			country={'ES'}
@@ -59,5 +60,5 @@ export default function SelphIDComponent({ setWidget }) {
 			ontrackStatus={hanldeTrackStatus}
 			onuserCancel={handleUserCancel}
 		/>
-	);
+	)
 }

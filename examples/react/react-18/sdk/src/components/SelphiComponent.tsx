@@ -1,14 +1,24 @@
 import { FacephiSelphiWidget } from '@facephi/sdk-web-react';
 import {
-	type ExtractionFinishEvent,
-	type ExtractionTimeoutEvent,
-	type ExceptionCapturedEvent,
-	type ErrorTimeoutEvent,
+	ExtractionFinishEvent,
+	ExtractionTimeoutEvent,
+	ExceptionCapturedEvent,
+	ErrorTimeoutEvent,
 	Language,
+	TimeoutButtonClickEvent,
+	UserCancelEvent,
+	TrackStatusEvent,
+	WidgetLoadedEvent,
 } from '@facephi/selphi-web-component';
 
 export default function SelphiComponent({ setWidget }: { setWidget: React.Dispatch<React.SetStateAction<string>> }) {
 	// Selphi Events
+	// Selphi Events
+	function handleModuleLoaded(event: CustomEvent<WidgetLoadedEvent>) {
+		const result = event.detail.detail;
+		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] widgetLoaded:', result);
+	}
+
 	function handleExtractionFinish(event: CustomEvent<ExtractionFinishEvent>) {
 		const result = event.detail.detail;
 		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] extractionFinish:', result);
@@ -31,6 +41,21 @@ export default function SelphiComponent({ setWidget }: { setWidget: React.Dispat
 		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] errorTimeout:', result);
 	}
 
+	function hanldeTimeoutButtonClick(event: CustomEvent<TimeoutButtonClickEvent>) {
+		const result = event.detail.detail;
+		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] timeoutButtonClick:', result);
+	}
+
+	function handleUserCancel(event: CustomEvent<UserCancelEvent>) {
+		const result = event.detail.detail;
+		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] userCancel:', result);
+	}
+
+	function hanldeTrackStatus(event: CustomEvent<TrackStatusEvent>) {
+		const result = event.detail.detail;
+		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] trackStatus:', result);
+	}
+
 	return (
 		<FacephiSelphiWidget
 			stabilizationStage={true}
@@ -39,10 +64,14 @@ export default function SelphiComponent({ setWidget }: { setWidget: React.Dispat
 			previewCapture={true}
 			timeout={30000}
 			showLog={false}
+			onModuleLoaded={handleModuleLoaded}
 			onExtractionFinish={handleExtractionFinish}
 			onExtractionTimeout={handleExtractionTimeout}
 			onExceptionCaptured={handleExceptionCaptured}
 			onErrorTimeout={handleErrorTimeout}
+			onTimeoutErrorButtonClick={hanldeTimeoutButtonClick}
+			onTrackStatus={hanldeTrackStatus}
+			onUserCancel={handleUserCancel}
 		/>
 	);
 }
