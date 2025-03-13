@@ -1,0 +1,26 @@
+<main>
+    <section class="sdk-section">
+        <!-- SDK Provider -->
+        <facephi-sdk-provider
+            [apikey]="provider.apiKey"
+            [steps]="provider.steps"
+            [type]="provider.type"
+            [customerId]="provider.customerId"
+            [language]="provider.language"
+
+            (emitData)="onEmitData($event)"
+            (emitError)="onEmitError($event)"
+        >
+            <!-- Video Provider -->
+            <facephi-video-provider 
+                (changeChannel)="onChangeChannel($event)" 
+                (changeLoading)="onChangeLoading($event)"
+
+                #videoProvider
+            >
+                <!-- Router to redirect, first, to SelphID and then, Selphi -->
+                <router-outlet (activate)="onActivate()" />
+            </facephi-video-provider>
+        </facephi-sdk-provider>
+    </section>
+</main>

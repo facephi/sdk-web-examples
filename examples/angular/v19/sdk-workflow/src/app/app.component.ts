@@ -32,7 +32,7 @@ export class AppComponent {
 	// Provider data
 	provider = {
 		apiKey: import.meta.env.NG_APP_API_KEY, // Required license
-		steps: 'START,SELPHI_WIDGET,SELPHID_WIDGET,FINISH', // Order in platform
+		steps: 'START,SELPHID_WIDGET,SELPHI_WIDGET,FINISH', // Order in platform
 		type: TypeFamily.onboarding, // onboarding or authentication
 		customerId: 'facephi-sdk-workflow-angular19-example', // Unique user id
 		language: Language.es, // Main language in sdk and widgets
@@ -58,43 +58,8 @@ export class AppComponent {
 				targetPosition: 'left',
 			},
 			{
-				id: `reactflow__edge-${this.idStart}null-${this.idSelphi}null`,
+				id: `reactflow__edge-${this.idStart}null-${this.idSelphID}null`,
 				source: this.idStart,
-				target: this.idSelphi,
-				sourceHandle: null,
-				targetHandle: null,
-				arrowHeadType: 'arrowclosed',
-			},
-			// SELPHI
-			{
-				id: this.idSelphi,
-				data: {
-					label: null,
-					widgetId: '6152cce0c01f0c1eb6deedb7',
-					draggable: true,
-					widgetName: 'SELPHI_WIDGET',
-					configuration: {
-						general: {
-							//Selphi Widget Config
-							stabilizationStage: true,
-							language: SelphiLanguage.ES,
-							interactible: true,
-							previewCapture: true,
-							timeout: 30000,
-							showLog: false,
-						},
-					},
-				},
-				position: {
-					x: 1023.9999999999999,
-					y: 203,
-				},
-				sourcePosition: 'right',
-				targetPosition: 'left',
-			},
-			{
-				id: `reactflow__edge-${this.idSelphi}null-${this.idSelphID}null`,
-				source: this.idSelphi,
 				target: this.idSelphID,
 				sourceHandle: null,
 				targetHandle: null,
@@ -128,8 +93,43 @@ export class AppComponent {
 				targetPosition: 'left',
 			},
 			{
-				id: `reactflow__edge-${this.idSelphID}null-${this.idFinish}null`,
+				id: `reactflow__edge-${this.idSelphID}null-${this.idSelphi}null`,
 				source: this.idSelphID,
+				target: this.idSelphi,
+				sourceHandle: null,
+				targetHandle: null,
+				arrowHeadType: 'arrowclosed',
+			},
+			// SELPHI
+			{
+				id: this.idSelphi,
+				data: {
+					label: null,
+					widgetId: '6152cce0c01f0c1eb6deedb7',
+					draggable: true,
+					widgetName: 'SELPHI_WIDGET',
+					configuration: {
+						general: {
+							//Selphi Widget Config
+							stabilizationStage: true,
+							language: SelphiLanguage.ES,
+							interactible: true,
+							previewCapture: true,
+							timeout: 30000,
+							showLog: false,
+						},
+					},
+				},
+				position: {
+					x: 1023.9999999999999,
+					y: 203,
+				},
+				sourcePosition: 'right',
+				targetPosition: 'left',
+			},
+			{
+				id: `reactflow__edge-${this.idSelphi}null-${this.idFinish}null`,
+				source: this.idSelphi,
 				target: this.idFinish,
 				sourceHandle: null,
 				targetHandle: null,
