@@ -7,29 +7,25 @@ export default function Document() {
 				<title>Facephi - SDK Next 12</title>
 			</Head>
 			<body>
-				<header>
-					<section className='header'>
-						<a href='https://www.facephi.com/' title='FacePhi' target='https://facephi.com/'>
-							<img src='/facephi_logo.svg' alt='Facephi logo' height='25' />
-						</a>
-					</section>
+				<header className='header'>
+					<img src='/facephi_logo.svg' alt='Facephi logo' height='60' className='logo' />
 				</header>
 
-				<main>
+				<main className='main'>
 					<section className='sdk-section'>
 						<Main />
 					</section>
 				</main>
 
-				<footer>
-					<section className='footer'>
-						<div>
-							<span id='copyright-year'>{new Date().getFullYear()}</span> ©FacePhi. All rights reserved.
-						</div>
-
-						<div className='framework'>NextJS 12</div>
-					</section>
+				<footer className='footer'>
+					<div>
+						<p>{new Date().getFullYear()} ©FacePhi. All rights reserved.</p>
+					</div>
+					<div className='framework'>
+						<p>NextJS 12</p>
+					</div>
 				</footer>
+
 				<NextScript />
 			</body>
 		</Html>

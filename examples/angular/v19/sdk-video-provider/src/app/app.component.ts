@@ -12,6 +12,7 @@
  */
 import { Component, CUSTOM_ELEMENTS_SCHEMA, type ElementRef, inject, ViewChild } from '@angular/core';
 import { Language, TypeFamily } from '@facephi/sdk-web-wc';
+import { Logger, LoggerType } from '../utils/Logger';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -46,41 +47,26 @@ export class AppComponent {
 	// Provider Events
 	onEmitData(event: CustomEvent<{ operationId: string; sessionId: string; extraData: string }>) {
 		const result = event.detail;
-		console.log(
-			'%c%s%s\n%s\n%s\n%s',
-			'color: #00FF00;',
-			'[PROVIDER] onEmitData:',
-			'',
-			`operationId: ${result.operationId}`,
-			`sessionId: ${result.sessionId}`,
-			`extraData: ${result.extraData}`,
-		);
+		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitData', result);
 
 		this.operationId = result.operationId;
 	}
 
 	onEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
 		const result = event.detail;
-		console.log(
-			'%c%s%s\n%s',
-			'color: #00FF00;',
-			'[PROVIDER] onEmitError:',
-			'',
-			`statusCode: ${result.statusCode}`,
-			`message: ${result.message}`,
-		);
+		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitError', result);
 	}
 
 	// Facephi Video Provider Events
 	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 	onChangeChannel(event: CustomEvent<any>) {
 		const result = event.detail;
-		console.log('%c%s', 'color: #735DA5;', '[VIDEO PROVIDER] onChangeChannel:', result);
+		Logger.printLog(LoggerType.VIDEO_PROVIDER, 'onChangeChannel', result);
 	}
 
 	onChangeLoading(event: CustomEvent<boolean>) {
 		const result = event.detail;
-		console.log('%c%s', 'color: #735DA5;', '[VIDEO PROVIDER] onChangeLoading:', result);
+		Logger.printLog(LoggerType.VIDEO_PROVIDER, 'onChangeLoading', result);
 		// Check if the video provider has finished loading
 		if (!result) {
 			this.router.navigate(['/selphid'], { relativeTo: this.currentRoute });

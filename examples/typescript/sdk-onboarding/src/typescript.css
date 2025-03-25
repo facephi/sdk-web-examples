@@ -1,0 +1,42 @@
+@import "./global.css";
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.framework {
+  background-color: #3178c6;
+  color: #ffffff;
+}
+
+.onboarding-finished {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-weight: bold;
+  color: #343a40;
+}
+
+/* Selphi and SelphID Component styles */
+facephi-selphi {
+  --color-primary: #3077c6;
+  --color-secondary: #ffffff;
+  --color-hover: #3077c677;
+  --color-progress-bar: #3077c6;
+  --color-loading: #3077c6;
+  --color-tutorial-tshirt: #3077c6;
+  --color-tutorial-progress: #3077c6;
+  --display-logo: "block";
+}
+
+facephi-selphid {
+  --color-primary: #3077c6;
+  --color-hover: #3077c677;
+  --color-loading: #3077c6;
+  --color-tutorial-background: #3077c6;
+  --display-logo: "block";
+}

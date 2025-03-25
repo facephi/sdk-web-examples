@@ -1,4 +1,5 @@
 import { initSelphiWidget } from './selphi-widget.js';
+import { Logger, LoggerType } from '../utils/Logger.js';
 
 const SELPHID_CONFIG = `
     <facephi-selphid-widget 
@@ -18,24 +19,25 @@ export function initSelphidWidget(sdkProvider) {
 	// SELPHID EVENTS
 	function handleExtractionFinish(event) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] extractionFinish:', result);
+		Logger.printLog(LoggerType.SELPHID, 'extractionFinish', result);
 		// Initialize Selphi
 		initSelphiWidget(sdkProvider);
 	}
 
 	function handleExtractionTimeout(event) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] extractionTimeout:', result);
+		Logger.printLog(LoggerType.SELPHID, 'extractionTimeout', result);
+		Logger.printLog(LoggerType.SELPHID, 'extractionFinish', result);
 	}
 
 	function handleExceptionCaptured(event) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] exceptionCaptured:', result);
+		Logger.printLog(LoggerType.SELPHID, 'exceptionCaptured', result);
 	}
 
 	function handleErrorTimeout(event) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] errorTimeout:', result);
+		Logger.printLog(LoggerType.SELPHID, 'errorTimeout', result);
 	}
 
 	if (selphidWidget) {

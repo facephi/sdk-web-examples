@@ -1,46 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Facephi - SDK WC JavaScript</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
-    <link rel="stylesheet" href="styles.css">
-  </head>
 
-  <body>
-    <header>
-      <section class="header">
-        <a class="logo" href="https://www.facephi.com/" title="FacePhi" target="https://facephi.com/">
-          <img src="assets/facephi_logo.svg" alt="Facephi logo" height="25" />
-        </a>
-      </section>
-    </header>
+<head>
+  <title>Facephi - SDK WC JavaScript</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+  <link rel="stylesheet" href="javascript.css">
+</head>
 
-    <div id="app">
-      <div class="title">
-        <h2>SDK Web Components v3.x</h2>
-      </div>
-  
+<body>
+  <header class="header">
+    <img src="./assets/facephi_logo.svg" alt="Facephi logo" height="60" class="logo" />
+  </header>
+
+  <div id="app">
+    <main class="main">
       <section class="sdk-section">
         <!-- SDK Provider -->
-        <facephi-sdk-provider
-          apikey="%VITE_LICENSE_KEY%"
-          steps="START,SELPHID_WIDGET,SELPHI_WIDGET,FINISH"
-          type="ONBOARDING"
-          customer-id="sdk-javascript-example"
-          language="es"		
-        >
+        <facephi-sdk-provider apikey="%VITE_LICENSE_KEY%" steps="START,SELPHID_WIDGET,SELPHI_WIDGET,FINISH"
+          type="ONBOARDING" customer-id="sdk-javascript-example" language="es">
         </facephi-sdk-provider>
       </section>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div>
+      <p id="copyright-year"> ©FacePhi. All rights reserved.</p>
     </div>
-    
-    <footer>
-      <section class="footer">
-        <div><span id="copyright-year"></span> ©FacePhi. All rights reserved.</div>
-        <div class="framework">JavaScript</div>
-      </section>
-    </footer>
-    <script type="module" src="./main.js"></script>
-  </body>
+    <div class="framework">
+      <p>Javascript</p>
+    </div>
+  </footer>
+  <script type="module" src="./main.js"></script>
+</body>
+
 </html>

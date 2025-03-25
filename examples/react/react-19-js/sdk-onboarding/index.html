@@ -5,33 +5,31 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/react.css">
   <title>Facephi - SDK React 19 JS</title>
 </head>
 
 <body>
 
-  <header>
-    <section class="header">
-      <a class="logo" href="https://www.facephi.com/" title="FacePhi" target="https://facephi.com/">
-        <img src="assets/facephi_logo.svg" alt="Facephi logo" height="25" />
-      </a>
-    </section>
+  <header class="header">
+    <img src="/assets/facephi_logo.svg" alt="Facephi logo" height="60" class="logo" />
   </header>
 
   <!-- App -->
   <div id="app"></div>
 
-  <footer>
-    <section class="footer">
-      <div><span id="copyright-year"></span> ©FacePhi. All rights reserved.</div>
-      <div class="framework">React 19 JS</div>
-    </section>
-    <script>
-      document.getElementById('copyright-year').textContent = new Date().getFullYear();
-    </script>
+  <footer class="footer">
+    <div>
+      <p id="copyright-year"> ©FacePhi. All rights reserved.</p>
+    </div>
+    <div class="framework">
+      <p>React 19 JS</p>
+    </div>
   </footer>
-  <script type="module" src="/src/main.jsx"></script>
+  <script>
+    document.getElementById('copyright-year').insertAdjacentHTML('afterbegin', new Date().getFullYear());
+  </script>
+  <script type="module" src="./src/main.jsx"></script>
 </body>
 
 </html>

@@ -11,6 +11,7 @@
  *
  */
 import { initSelphidWidget } from './selphid-widget.js';
+import { Logger, LoggerType } from '../utils/Logger.js';
 
 (async () => {
 	await customElements.whenDefined('facephi-sdk-provider');
@@ -18,27 +19,12 @@ import { initSelphidWidget } from './selphid-widget.js';
 	// SDK Provider event handlers
 	function handleEmitData(event) {
 		const result = event.detail;
-		console.log(
-			'%c%s%s\n%s\n%s\n%s',
-			'color: #00FF00;',
-			'[PROVIDER] onEmitData:',
-			'',
-			`operationId: ${result.operationId}`,
-			`sessionId: ${result.sessionId}`,
-			`extraData: ${result.extraData}`,
-		);
+		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitData', result);
 	}
 
 	function handleEmitError(event) {
 		const result = event.detail;
-		console.log(
-			'%c%s%s\n%s',
-			'color: #00FF00;',
-			'[PROVIDER] onEmitError:',
-			'',
-			`statusCode: ${result.statusCode}`,
-			`message: ${result.message}`,
-		);
+		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitError', result);
 	}
 
 	const sdkProvider = document.querySelector('facephi-sdk-provider');

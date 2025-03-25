@@ -22,7 +22,7 @@ import {
 import { Language } from '@facephi/sdk-web-wc';
 import { VideoRecruitmentComponent } from '../components/video-recruitment/video-recruitment.component';
 import { NgIf, NgFor } from '@angular/common';
-
+import { Logger, LoggerType } from '../utils/Logger';
 @Component({
 	selector: 'app-root',
 	standalone: true,
@@ -47,27 +47,12 @@ export class AppComponent implements OnInit, AfterViewInit {
 	// Provider Events
 	handleEmitData(event: CustomEvent<{ operationId: string; sessionId: string; extraData: string }>) {
 		const result = event.detail;
-		console.log(
-			'%c%s%s\n%s\n%s\n%s',
-			'color: #00FF00;',
-			'[PROVIDER] onEmitData:',
-			'',
-			`operationId: ${result.operationId}`,
-			`sessionId: ${result.sessionId}`,
-			`extraData: ${result.extraData}`,
-		);
+		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitData', result);
 	}
 
 	handleEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
 		const result = event.detail;
-		console.log(
-			'%c%s%s\n%s',
-			'color: #00FF00;',
-			'[PROVIDER] onEmitError:',
-			'',
-			`statusCode: ${result.statusCode}`,
-			`message: ${result.message}`,
-		);
+		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitError', result);
 	}
 
 	// Angular lifecycle methods

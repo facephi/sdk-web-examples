@@ -1,5 +1,5 @@
 import { createApp } from 'vue';
-import './assets/main.css';
+import './assets/vue.css';
 import App from './App.vue';
 import { defineCustomElements } from '@facephi/sdk-web-wc/loader';
 

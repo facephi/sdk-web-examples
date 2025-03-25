@@ -12,6 +12,7 @@ import {
 	type StabilizingEvent,
 	Language,
 } from '@facephi/selphi-web-component';
+import { Logger, LoggerType } from '../../utils/Logger';
 
 interface SelphiProps {
 	onComplete: () => void;
@@ -21,48 +22,48 @@ export default function Selphi({ onComplete }: SelphiProps) {
 	// SELPHI Events
 	function handleModuleLoaded(event: CustomEvent<WidgetLoadedEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] widgetLoaded:', result);
+		Logger.printLog(LoggerType.SELPHI, 'widgetLoaded', result);
 	}
 
 	function handleExtractionFinish(event: CustomEvent<ExtractionFinishEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] extractionFinish:', result);
+		Logger.printLog(LoggerType.SELPHI, 'extractionFinish', result);
 		onComplete();
 	}
 
 	function handleExtractionTimeout(event: CustomEvent<ExtractionTimeoutEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] extractionTimeout:', result);
+		Logger.printLog(LoggerType.SELPHI, 'extractionTimeout', result);
 	}
 
 	function handleExceptionCaptured(event: CustomEvent<ExceptionCapturedEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] exceptionCaptured:', result);
+		Logger.printLog(LoggerType.SELPHI, 'exceptionCaptured', result);
 	}
 
 	function handleTimeoutButtonClick(event: CustomEvent<TimeoutButtonClickEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] timeoutButtonClick:', result);
+		Logger.printLog(LoggerType.SELPHI, 'timeoutButtonClick', result);
 	}
 
 	function handleErrorTimeout(event: CustomEvent<ErrorTimeoutEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] errorTimeout:', result);
+		Logger.printLog(LoggerType.SELPHI, 'errorTimeout', result);
 	}
 
 	function handleUserCancel(event: CustomEvent<UserCancelEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] userCancel:', result);
+		Logger.printLog(LoggerType.SELPHI, 'userCancel', result);
 	}
 
 	function handleTrackStatus(event: CustomEvent<TrackStatusEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] trackStatus:', result);
+		Logger.printLog(LoggerType.SELPHI, 'trackStatus', result);
 	}
 
 	function handleStabilizing(event: CustomEvent<StabilizingEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] stabilizing:', result);
+		Logger.printLog(LoggerType.SELPHI, 'stabilizing', result);
 	}
 
 	return (

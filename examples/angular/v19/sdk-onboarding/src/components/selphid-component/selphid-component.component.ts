@@ -1,5 +1,6 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Logger, LoggerType } from '../../utils/Logger';
 import {
 	Language,
 	type ExceptionCapturedEvent,
@@ -38,38 +39,39 @@ export class SelphIDComponent {
 	// SelphID Events
 	handleModuleLoaded(event: CustomEvent<WidgetLoadedEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] widgetLoaded:', result);
+		Logger.printLog(LoggerType.SELPHID, 'widgetLoaded', result);
 	}
 
 	handleExtractionFinish(event: CustomEvent<ExtractionFinishEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] extractionFinish:', result);
+		Logger.printLog(LoggerType.SELPHID, 'extractionFinish', result);
 		// Redirect to Selphi
 		this.router.navigate(['/selphi']);
 	}
 
 	handleExtractionTimeout(event: CustomEvent<ExtractionTimeoutEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] extractionTimeout:', result);
+		Logger.printLog(LoggerType.SELPHID, 'extractionTimeout', result);
+		Logger.printLog(LoggerType.SELPHID, 'extractionFinish', result);
 	}
 
 	handleExceptionCaptured(event: CustomEvent<ExceptionCapturedEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] exceptionCaptured:', result);
+		Logger.printLog(LoggerType.SELPHID, 'exceptionCaptured', result);
 	}
 
 	handleErrorTimeout(event: CustomEvent<ErrorTimeoutEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] errorTimeout:', result);
+		Logger.printLog(LoggerType.SELPHID, 'errorTimeout', result);
 	}
 
 	handleUserCancel(event: CustomEvent<UserCancelEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] userCancel:', result);
+		Logger.printLog(LoggerType.SELPHID, 'userCancel', result);
 	}
 
 	handleTrackStatus(event: CustomEvent<TrackStatusEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] trackStatus:', result);
+		Logger.printLog(LoggerType.SELPHID, 'trackStatus', result);
 	}
 }

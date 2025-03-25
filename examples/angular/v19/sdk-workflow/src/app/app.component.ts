@@ -14,6 +14,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Language, TypeFamily, type WorkflowEvent, WorkflowEventType, Widgets } from '@facephi/sdk-web-wc';
 import { Language as SelphiLanguage } from '@facephi/selphi-web-component';
 import { Language as SelphIDLanguage } from '@facephi/selphid-web-component';
+import { Logger, LoggerType } from '../utils/Logger';
 
 @Component({
 	selector: 'app-root',
@@ -159,63 +160,48 @@ export class AppComponent {
 	// Provider Events
 	onEmitData(event: CustomEvent<{ operationId: string; sessionId: string; extraData: string }>) {
 		const result = event.detail;
-		console.log(
-			'%c%s%s\n%s\n%s\n%s',
-			'color: #00FF00;',
-			'[PROVIDER] onEmitData:',
-			'',
-			`operationId: ${result.operationId}`,
-			`sessionId: ${result.sessionId}`,
-			`extraData: ${result.extraData}`,
-		);
+		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitData', result);
 	}
 
 	onEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
 		const result = event.detail;
-		console.log(
-			'%c%s%s\n%s',
-			'color: #00FF00;',
-			'[PROVIDER] onEmitError:',
-			'',
-			`statusCode: ${result.statusCode}`,
-			`message: ${result.message}`,
-		);
+		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitError', result);
 	}
 
 	onEmitWorkflowEvent(event: CustomEvent<WorkflowEvent>) {
 		const result = event.detail;
 		switch (result.type) {
 			case WorkflowEventType.start:
-				console.log('%c%s', 'color: #00CC66;', '[WORKFLOW] start: ', result);
+				Logger.printLog(LoggerType.WORKFLOW, 'start', result);
 				break;
 			case WorkflowEventType.cancel:
-				console.log('%c%s', 'color: #00CC66;', '[WORKFLOW] userCancel: ', result.data);
+				Logger.printLog(LoggerType.WORKFLOW, 'userCancel', result.data);
 				break;
 			case WorkflowEventType.finish:
-				console.log('%c%s', 'color: #00CC66;', '[WORKFLOW] finish: ', result);
+				Logger.printLog(LoggerType.WORKFLOW, 'finish', result);
 				break;
 			case WorkflowEventType.changeStep:
 				if (result.data?.widget) {
 					const widget = result.data.widget;
 					if (widget.data.widgetId === Widgets.selphi) {
 						// SELPHI
-						console.log('%c%s', 'color: #00CC66;', '[WORKFLOW] changeStep: ', widget);
+						Logger.printLog(LoggerType.WORKFLOW, 'changeStep', widget);
 					} else if (widget.data.widgetId === Widgets.selphid) {
 						// SELPHID
-						console.log('%c%s', 'color: #00CC66;', '[WORKFLOW] changeStep: ', widget);
+						Logger.printLog(LoggerType.WORKFLOW, 'changeStep', widget);
 					}
 				}
 				break;
 			case WorkflowEventType.selphiCapture: {
 				const selphiData = result.data;
 				// SELPHI FINISH
-				console.log('%c%s', 'color: #00FFFF;', '[SELPHI] extractionFinish: ', selphiData);
+				Logger.printLog(LoggerType.WORKFLOW, 'extractionFinish', selphiData);
 				break;
 			}
 			case WorkflowEventType.selphidCapture: {
 				const selphidData = result.data;
 				// SELPHID FINISH
-				console.log('%c%s', 'color: #FF00FF;', '[SELPHID] extractionFinish: ', selphidData);
+				Logger.printLog(LoggerType.WORKFLOW, 'extractionFinish', selphidData);
 				break;
 			}
 		}

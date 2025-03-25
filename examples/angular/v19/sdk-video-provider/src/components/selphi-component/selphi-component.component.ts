@@ -1,5 +1,6 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Logger, LoggerType } from '../../utils/Logger';
 import {
 	Language,
 	type ExceptionCapturedEvent,
@@ -35,23 +36,23 @@ export class SelphiComponent {
 	// Selphi Events
 	handleExtractionFinish(event: CustomEvent<ExtractionFinishEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] extractionFinish:', result);
+		Logger.printLog(LoggerType.SELPHI, 'extractionFinish', result);
 		// Redirect to the finish component
 		this.router.navigate(['/finish']);
 	}
 
 	handleExtractionTimeout(event: CustomEvent<ExtractionTimeoutEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] extractionTimeout:', result);
+		Logger.printLog(LoggerType.SELPHI, 'extractionTimeout', result);
 	}
 
 	handleExceptionCaptured(event: CustomEvent<ExceptionCapturedEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] exceptionCaptured:', result);
+		Logger.printLog(LoggerType.SELPHI, 'exceptionCaptured', result);
 	}
 
 	handleErrorTimeout(event: CustomEvent<ErrorTimeoutEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] errorTimeout:', result);
+		Logger.printLog(LoggerType.SELPHI, 'errorTimeout', result);
 	}
 }

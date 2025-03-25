@@ -1,3 +1,4 @@
+import { Logger, LoggerType } from '../utils/Logger.js';
 const SELPHI_CONFIG = `
     <facephi-selphi-widget 
         stabilization-stage="true" 
@@ -16,24 +17,24 @@ export function initSelphiWidget(sdkProvider) {
 	//SELPHI EVENTS
 	function handleExtractionFinish(event) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] extractionFinish:', result);
+		Logger.printLog(LoggerType.SELPHI, 'extractionFinish', result);
 
 		sdkProvider.innerHTML = '<div class="onboarding-finished">ONBOARDING FINISHED</div>';
 	}
 
 	function handleExtractionTimeout(event) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] extractionTimeout:', result);
+		Logger.printLog(LoggerType.SELPHI, 'extractionTimeout', result);
 	}
 
 	function handleExceptionCaptured(event) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] exceptionCaptured:', result);
+		Logger.printLog(LoggerType.SELPHI, 'exceptionCaptured', result);
 	}
 
 	function handleErrorTimeout(event) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] errorTimeout:', result);
+		Logger.printLog(LoggerType.SELPHI, 'errorTimeout', result);
 	}
 
 	if (selphiWidget) {

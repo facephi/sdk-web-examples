@@ -6,6 +6,7 @@ import {
 	type ExtractionTimeoutEvent,
 } from '@facephi/selphid-web-component';
 import { initSelphiWidget } from './selphi-widget';
+import { Logger, LoggerType } from '../utils/Logger';
 
 const SELPHID_CONFIG = `
     <facephi-selphid-widget 
@@ -25,7 +26,7 @@ export function initSelphidWidget(sdkProvider: { innerHTML: string }) {
 	// SELPHID EVENTS
 	function handleExtractionFinish(event: CustomEvent<ExtractionFinishEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] extractionFinish:', result);
+		Logger.printLog(LoggerType.SELPHID, 'extractionFinish', result);
 
 		// Initialize Selphi
 		initSelphiWidget(sdkProvider);
@@ -33,17 +34,18 @@ export function initSelphidWidget(sdkProvider: { innerHTML: string }) {
 
 	function handleExtractionTimeout(event: CustomEvent<ExtractionTimeoutEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] extractionTimeout:', result);
+		Logger.printLog(LoggerType.SELPHID, 'extractionTimeout', result);
+		Logger.printLog(LoggerType.SELPHID, 'extractionFinish', result);
 	}
 
 	function handleExceptionCaptured(event: CustomEvent<ExceptionCapturedEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] exceptionCaptured:', result);
+		Logger.printLog(LoggerType.SELPHID, 'exceptionCaptured', result);
 	}
 
 	function handleErrorTimeout(event: CustomEvent<ErrorTimeoutEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] errorTimeout:', result);
+		Logger.printLog(LoggerType.SELPHID, 'errorTimeout', result);
 	}
 
 	if (selphidWidget) {

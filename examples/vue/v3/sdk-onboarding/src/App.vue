@@ -27,6 +27,7 @@ import {
 	type ErrorTimeoutEvent as SelphidErrorTimeoutEvent,
 } from '@facephi/selphid-web-component';
 import facephiLogo from '@/assets/facephi_logo.svg';
+import { Logger, LoggerType } from './utils/Logger';
 import { ref } from 'vue';
 
 // state variable to control the starting widget
@@ -37,87 +38,69 @@ const apiKey = (import.meta as any).env.VITE_LICENSE_KEY;
 // SDK Provider event handlers
 function handleEmitData(event: CustomEvent<{ operationId: string; sessionId: string; extraData: string }>) {
 	const result = event.detail;
-	console.log(
-		'%c%s%s\n%s\n%s\n%s',
-		'color: #00FF00;',
-		'[PROVIDER] onEmitData: ',
-		'',
-		`operationId: ${result.operationId}`,
-		`sessionId: ${result.sessionId}`,
-		`extraData: ${result.extraData}`,
-	);
+	Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitData', result);
 }
 
 function handleEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
 	const result = event.detail;
-	console.log(
-		'%c%s%s\n%s',
-		'color: #00FF00;',
-		'[PROVIDER] onEmitError:',
-		'',
-		`statusCode: ${result.statusCode}`,
-		`message: ${result.message}`,
-	);
+	Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitError', result);
 }
 
 // SELPHI event handlers
 function handleSelphiExtractionFinish(event: CustomEvent<SelphiExtractionFinishEvent>) {
-	//const resultMessage = event.detail.detail?.extractionData?.bestImage?.data ? 'OK' : 'KO';
 	const result = event.detail.detail;
-	console.log('%c%s', 'color: #00FFFF;', '[SELPHI] extractionFinish: ', result);
+	Logger.printLog(LoggerType.SELPHI, 'extractionFinish', result);
 	// Redirect to the finish component
 	widget.value = 'finish';
 }
 
 function handleSelphiExtractionTimeout(event: CustomEvent<SelphiExtractionTimeoutEvent>) {
 	const result = event.detail.detail;
-	console.log('%c%s', 'color: #00FFFF;', '[SELPHI] extractionTimeout: ', result);
+	Logger.printLog(LoggerType.SELPHI, 'extractionTimeout', result);
 }
 
 function handleSelphiExceptionCaptured(event: CustomEvent<SelphiExceptionCapturedEvent>) {
 	const result = event.detail.detail;
-	console.log('%c%s', 'color: #00FFFF;', '[SELPHI] exceptionCaptured: ', result);
+	Logger.printLog(LoggerType.SELPHI, 'exceptionCaptured', result);
 }
 
 function handleSelphiErrorTimeout(event: CustomEvent<SelphiErrorTimeoutEvent>) {
 	const result = event.detail.detail;
-	console.log('%c%s', 'color: #00FFFF;', '[SELPHI] errorTimeout: ', result);
+	Logger.printLog(LoggerType.SELPHI, 'errorTimeout', result);
 }
 
 // SELPHID event handlers
 function handleSelphidExtractionFinish(event: CustomEvent<SelphidExtractionFinishEvent>) {
 	const result = event.detail.detail;
-	console.log('%c%s', 'color: #FF00FF;', '[SELPHID] extractionFinish: ', result);
+	Logger.printLog(LoggerType.SELPHID, 'extractionFinish', result);
 	// Redirect to Selphi
 	widget.value = 'selphi';
 }
 
 function handleSelphidExtractionTimeout(event: CustomEvent<SelphidExtractionTimeoutEvent>) {
 	const result = event.detail.detail;
-	console.log('%c%s', 'color: #FF00FF;', '[SELPHID] extractionTimeout: ', result);
+	Logger.printLog(LoggerType.SELPHID, 'extractionTimeout', result);
 }
 
 function handleSelphidExceptionCaptured(event: CustomEvent<SelphidExceptionCapturedEvent>) {
 	const result = event.detail.detail;
-	console.log('%c%s', 'color: #FF00FF;', '[SELPHID] exceptionCaptured: ', result);
+	Logger.printLog(LoggerType.SELPHID, 'exceptionCaptured', result);
 }
 
 function handleSelphidErrorTimeout(event: CustomEvent<SelphidErrorTimeoutEvent>) {
 	const result = event.detail.detail;
-	console.log('%c%s', 'color: #FF00FF;', '[SELPHID] errorTimeout: ', result);
+	Logger.printLog(LoggerType.SELPHID, 'errorTimeout', result);
 }
 </script>
 
 <template>
-  <header>
-      <section class="header">
-        <a href="https://www.facephi.com/" title="FacePhi" target="https://facephi.com/">
-          <img :src="facephiLogo" alt="Facephi Logo" height="30" />
-        </a>
-      </section>
+  <div class="layout">
+    <header class="header">
+      <img :src="facephiLogo" alt="Facephi Logo" height="60" class="logo" />
     </header>
-  <main>
-      <section class="sdk-section">
+
+  <main class="main">
+    <section class="sdk-section">
           <facephi-sdk-provider
             :apikey="apiKey"
             steps= "START,SELPHID_WIDGET,SELPHI_WIDGET,FINISH"
@@ -164,10 +147,15 @@ function handleSelphidErrorTimeout(event: CustomEvent<SelphidErrorTimeoutEvent>)
             <div v-if="widget === 'finish'">The process has been completed</div>
             
           </facephi-sdk-provider>
-      </section>
+        </section>
   </main>
-  <footer>
-      <p>{{ new Date().getFullYear() }} ©FacePhi. All rights reserved.</p>
-      <div class="framework">VueJS 3</div>
+  <footer class="footer">
+    <div>
+      <p id="copyright-year"> ©FacePhi. All rights reserved.</p>
+    </div>
+    <div class="framework">
+      <p>Vue 3</p>
+    </div>
   </footer>
+</div>
 </template>

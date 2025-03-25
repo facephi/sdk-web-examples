@@ -10,16 +10,17 @@ import {
 	type TrackStatusEvent,
 	type UserCancelEvent,
 } from '@facephi/selphid-web-component';
+import { Logger, LoggerType } from '../utils/Logger';
 
 export default function SelphIDComponent({ setWidget }: { setWidget: React.Dispatch<React.SetStateAction<string>> }) {
 	// SelphID Events
 	function handleModuleLoaded(event: CustomEvent<WidgetLoadedEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] widgetLoaded:', result);
+		Logger.printLog(LoggerType.SELPHID, 'widgetLoaded', result);
 	}
 	function handleExtractionFinish(event: CustomEvent<ExtractionFinishEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] extractionFinish:', result);
+		Logger.printLog(LoggerType.SELPHID, 'extractionFinish', result);
 
 		// Redirect to Selphi
 		setWidget('selphi');
@@ -27,32 +28,33 @@ export default function SelphIDComponent({ setWidget }: { setWidget: React.Dispa
 
 	function handleExtractionTimeout(event: CustomEvent<ExtractionTimeoutEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] extractionTimeout:', result);
+		Logger.printLog(LoggerType.SELPHID, 'extractionTimeout', result);
+		Logger.printLog(LoggerType.SELPHID, 'extractionFinish', result);
 	}
 
 	function handleExceptionCaptured(event: CustomEvent<ExceptionCapturedEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] exceptionCaptured:', result);
+		Logger.printLog(LoggerType.SELPHID, 'exceptionCaptured', result);
 	}
 
 	function handleTimeoutButtonClick(event: CustomEvent<TimeoutButtonClickEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] timeoutButtonClick:', result);
+		Logger.printLog(LoggerType.SELPHID, 'timeoutButtonClick', result);
 	}
 
 	function handleErrorTimeout(event: CustomEvent<ErrorTimeoutEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] errorTimeout:', result);
+		Logger.printLog(LoggerType.SELPHID, 'errorTimeout', result);
 	}
 
 	function handleTrackStatus(event: CustomEvent<TrackStatusEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] trackStatus:', result);
+		Logger.printLog(LoggerType.SELPHID, 'trackStatus', result);
 	}
 
 	function handleUserCancel(event: CustomEvent<UserCancelEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #FF00FF;', '[SELPHID] userCancel:', result);
+		Logger.printLog(LoggerType.SELPHID, 'userCancel', result);
 	}
 
 	return (

@@ -2,6 +2,7 @@
 import { FacephiSdkProvider, TypeFamily } from '@facephi/sdk-web-react';
 import { defineCustomElements } from '@facephi/sdk-web-wc/loader';
 import { useState, type ReactNode } from 'react';
+import { Logger, LoggerType } from '../../utils/Logger';
 
 export default function SdkProvider({ children }: { children: ReactNode }) {
 	defineCustomElements(window);
@@ -12,32 +13,17 @@ export default function SdkProvider({ children }: { children: ReactNode }) {
 	// PRVIDER Events
 	function handleEmitData(event: CustomEvent<{ operationId: string; sessionId: string; extraData: string }>) {
 		const result = event.detail;
-		console.log(
-			'%c%s%s\n%s\n%s\n%s',
-			'color: #00FF00;',
-			'[PROVIDER] onEmitData:',
-			'',
-			`operationId: ${result.operationId}`,
-			`sessionId: ${result.sessionId}`,
-			`extraData: ${result.extraData}`,
-		);
+		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitData', result);
 	}
 
 	function handleEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
 		const result = event.detail;
-		console.log(
-			'%c%s%s\n%s',
-			'color: #00FF00;',
-			'[PROVIDER] onEmitError:',
-			'',
-			`statusCode: ${result.statusCode}`,
-			`message: ${result.message}`,
-		);
+		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitError', result);
 	}
 
 	function handleEmitOperationId(event: CustomEvent<string>) {
 		const result = event.detail;
-		console.log('%c%s%s\n%s', 'color: #00FF00;', '[PROVIDER] onEmitOperationId:', '', `operationId: ${result}`);
+		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitOperationId', result);
 		// Set widget as active only after provider is loaded to ensure proper initialization order
 		setWidgetIsActive(true);
 	}

@@ -5,5 +5,5 @@ defineCustomElements(window);
 
 const copyrightYearElement = document.getElementById('copyright-year');
 if (copyrightYearElement) {
-	copyrightYearElement.textContent = new Date().getFullYear().toString();
+	copyrightYearElement.insertAdjacentHTML('afterbegin', new Date().getFullYear());
 }

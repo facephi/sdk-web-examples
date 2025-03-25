@@ -5,6 +5,7 @@ import {
 	type ExtractionFinishEvent,
 	type ExtractionTimeoutEvent,
 } from '@facephi/selphi-web-component';
+import { Logger, LoggerType } from '../utils/Logger';
 
 const SELPHI_CONFIG = `
     <facephi-selphi-widget 
@@ -24,24 +25,24 @@ export function initSelphiWidget(sdkProvider: { innerHTML: string }) {
 	//SELPHI EVENTS
 	function handleExtractionFinish(event: CustomEvent<ExtractionFinishEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] extractionFinish:', result);
+		Logger.printLog(LoggerType.SELPHI, 'extractionFinish', result);
 
 		sdkProvider.innerHTML = '<div class="onboarding-finished">ONBOARDING FINISHED</div>';
 	}
 
 	function handleExtractionTimeout(event: CustomEvent<ExtractionTimeoutEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] extractionTimeout:', result);
+		Logger.printLog(LoggerType.SELPHI, 'extractionTimeout', result);
 	}
 
 	function handleExceptionCaptured(event: CustomEvent<ExceptionCapturedEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] exceptionCaptured:', result);
+		Logger.printLog(LoggerType.SELPHI, 'exceptionCaptured', result);
 	}
 
 	function handleErrorTimeout(event: CustomEvent<ErrorTimeoutEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] errorTimeout:', result);
+		Logger.printLog(LoggerType.SELPHI, 'errorTimeout', result);
 	}
 
 	if (selphiWidget) {

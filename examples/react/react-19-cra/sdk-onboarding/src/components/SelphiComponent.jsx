@@ -1,12 +1,14 @@
+import { Logger, LoggerType } from '../utils/Logger';
+
 export default function SelphiComponent({ setWidget }) {
 	// Selphi Events
 	function handleModuleLoaded(event) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] widgetLoaded:', result);
+		Logger.printLog(LoggerType.SELPHI, 'widgetLoaded', result);
 	}
 	function handleExtractionFinish(event) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] extractionFinish:', result);
+		Logger.printLog(LoggerType.SELPHI, 'extractionFinish', result);
 
 		// Redirect to the finish component
 		setWidget('finish');
@@ -14,17 +16,17 @@ export default function SelphiComponent({ setWidget }) {
 
 	function handleExtractionTimeout(event) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] extractionTimeout:', result);
+		Logger.printLog(LoggerType.SELPHI, 'extractionTimeout', result);
 	}
 
 	function handleExceptionCaptured(event) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] exceptionCaptured:', result);
+		Logger.printLog(LoggerType.SELPHI, 'exceptionCaptured', result);
 	}
 
 	function handleErrorTimeout(event) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] errorTimeout:', result);
+		Logger.printLog(LoggerType.SELPHI, 'errorTimeout', result);
 	}
 
 	function handleTimeoutButtonClick(event) {
@@ -34,17 +36,17 @@ export default function SelphiComponent({ setWidget }) {
 
 	function handleUserCancel(event) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] userCancel:', result);
+		Logger.printLog(LoggerType.SELPHI, 'userCancel', result);
 	}
 
 	function handleTrackStatus(event) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] trackStatus:', result);
+		Logger.printLog(LoggerType.SELPHI, 'trackStatus', result);
 	}
 
 	function handleStabilizing(event) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] stabilizing:', result);
+		Logger.printLog(LoggerType.SELPHI, 'stabilizing', result);
 	}
 
 	return (

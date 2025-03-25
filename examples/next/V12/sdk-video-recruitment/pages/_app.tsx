@@ -1,12 +1,8 @@
-import '../styles/styles.css';
+import '../styles/next.css';
 import type { AppProps } from 'next/app';
 
 function MyApp({ Component, pageProps }: AppProps) {
-	return (
-		<div id='app'>
-			<Component {...pageProps} />
-		</div>
-	);
+	return <Component {...pageProps} />;
 }
 
 export default MyApp;

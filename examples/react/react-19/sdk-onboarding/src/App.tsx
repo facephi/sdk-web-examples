@@ -11,6 +11,7 @@
  *
  */
 import { Language, TypeFamily } from '@facephi/sdk-web-wc';
+import { Logger, LoggerType } from './utils/Logger';
 import SelphiComponent from './components/SelphiComponent';
 import SelphIDComponent from './components/SelphIDComponent';
 import { useState } from 'react';
@@ -22,31 +23,15 @@ export default function App() {
 	// Provider Events
 	function handleEmitData(event: CustomEvent<{ operationId: string; sessionId: string; extraData: string }>) {
 		const result = event.detail;
-		console.log(
-			'%c%s%s\n%s\n%s\n%s',
-			'color: #00FF00;',
-			'[PROVIDER] onEmitData:',
-			'',
-			`operationId: ${result.operationId}`,
-			`sessionId: ${result.sessionId}`,
-			`extraData: ${result.extraData}`,
-		);
+		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitData', result);
 	}
 
 	function handleEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
 		const result = event.detail;
-		console.log(
-			'%c%s%s\n%s',
-			'color: #00FF00;',
-			'[PROVIDER] onEmitError:',
-			'',
-			`statusCode: ${result.statusCode}`,
-			`message: ${result.message}`,
-		);
+		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitError', result);
 	}
-
 	return (
-		<main>
+		<main className='main'>
 			<section className='sdk-section'>
 				<facephi-sdk-provider
 					apiKey={licenseKey}
