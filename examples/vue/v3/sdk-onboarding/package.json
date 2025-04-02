@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview",
-    "clean": "rm -rf dist node_modules package-lock.json bun.lockb yarn.lock"
+    "clean": "rm -rf dist node_modules package-lock.json bun.lock yarn.lock"
   },
   "dependencies": {
     "@facephi/sdk-web-wc": "*",

@@ -10,7 +10,6 @@ export default function SelphIDComponent({ setWidget }) {
 	function handleExtractionFinish(event) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHID, 'extractionFinish', result);
-
 		// Redirect to Selphi
 		setWidget('selphi');
 	}
@@ -18,7 +17,6 @@ export default function SelphIDComponent({ setWidget }) {
 	function handleExtractionTimeout(event) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHID, 'extractionTimeout', result);
-		Logger.printLog(LoggerType.SELPHID, 'extractionFinish', result);
 	}
 
 	function handleExceptionCaptured(event) {

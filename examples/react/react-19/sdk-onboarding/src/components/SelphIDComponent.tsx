@@ -20,7 +20,6 @@ export default function SelphIDComponent({ setWidget }: { setWidget: React.Dispa
 	function handleExtractionFinish(event: CustomEvent<ExtractionFinishEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHID, 'extractionFinish', result);
-
 		// Redirect to Selphi
 		setWidget('selphi');
 	}
@@ -28,7 +27,6 @@ export default function SelphIDComponent({ setWidget }: { setWidget: React.Dispa
 	function handleExtractionTimeout(event: CustomEvent<ExtractionTimeoutEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHID, 'extractionTimeout', result);
-		Logger.printLog(LoggerType.SELPHID, 'extractionFinish', result);
 	}
 
 	function handleExceptionCaptured(event: CustomEvent<ExceptionCapturedEvent>) {

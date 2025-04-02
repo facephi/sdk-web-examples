@@ -23,17 +23,11 @@ import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 	templateUrl: './app.component.html',
 })
 export class AppComponent {
-	operationId = '';
-
 	@ViewChild('videoProvider') videoProvider!: ElementRef;
 
 	// Router to redirect to SelphID when the video provider is loaded
 	router = inject(Router);
 	currentRoute = inject(ActivatedRoute);
-
-	// Variable to show the button to get the recorded video when the process is completed
-	isFinished = false;
-	videoUrl = '';
 
 	// Provider data
 	provider = {
@@ -48,8 +42,6 @@ export class AppComponent {
 	onEmitData(event: CustomEvent<{ operationId: string; sessionId: string; extraData: string }>) {
 		const result = event.detail;
 		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitData', result);
-
-		this.operationId = result.operationId;
 	}
 
 	onEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
@@ -77,8 +69,6 @@ export class AppComponent {
 		// When the process has finished, the video provider must be stopped
 		if (this.router.url === '/finish') {
 			await this.videoProvider.nativeElement.stopVideo();
-
-			this.isFinished = true;
 		}
 	}
 }

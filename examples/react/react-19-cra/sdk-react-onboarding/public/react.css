@@ -1,0 +1,31 @@
+@import "./global.css";
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.framework {
+  background-color: #58c4dc;
+  color: black;
+}
+
+/* Selphi and SelphID Component styles */
+facephi-selphi {
+  --color-primary: #139eca;
+  --color-progress-bar: #139eca;
+  --color-hover: #139eca77;
+  --color-loading: #139eca;
+  --color-tutorial-tshirt: #139eca;
+  --color-tutorial-progress: #139eca;
+  --display-logo: "block";
+}
+facephi-selphid {
+  --color-primary: #139eca;
+  --color-hover: #139eca77;
+  --color-loading: #139eca;
+  --color-tutorial-background: #139eca;
+  --display-logo: "block";
+}

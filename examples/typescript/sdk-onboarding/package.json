@@ -1,19 +1,19 @@
 {
-	"name": "typescript-sdk",
-	"private": true,
-	"version": "1.0.0",
-	"type": "module",
-	"scripts": {
-		"dev": "vite --open",
-		"build": "tsc && vite build",
-		"preview": "vite preview",
-		"clean": "rm -rf dist node_modules package-lock.json bun.lockb yarn.lock"
-	},
-	"dependencies": {
-		"@facephi/sdk-web-wc": "*"
-	},
-	"devDependencies": {
-		"typescript": "5.7.3",
-		"vite": "6.2.0"
-	}
+  "name": "typescript-sdk",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --open",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "clean": "rm -rf dist node_modules package-lock.json bun.lock yarn.lock"
+  },
+  "dependencies": {
+    "@facephi/sdk-web-wc": "*"
+  },
+  "devDependencies": {
+    "typescript": "5.7.3",
+    "vite": "6.2.0"
+  }
 }

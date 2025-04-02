@@ -18,7 +18,6 @@ function setCopyrightYear(elementId = 'copyright-year') {
 
 setCopyrightYear();
 
-// biome-ignore lint/style/noNonNullAssertion: <explanation>
 createRoot(document.getElementById('app')!).render(
 	<StrictMode>
 		<App />

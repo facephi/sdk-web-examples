@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "clean": "rm -rf .next out node_modules package-lock.json bun.lockb yarn.lock bun.lock"
+    "clean": "rm -rf .next out node_modules package-lock.json bun.lock yarn.lock bun.lock"
   },
   "dependencies": {
     "@facephi/sdk-web-react": "*",

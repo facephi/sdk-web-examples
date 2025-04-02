@@ -8,6 +8,7 @@ import {
 	type TimeoutButtonClickEvent,
 	type TrackStatusEvent,
 	type UserCancelEvent,
+	type StabilizingEvent,
 } from '@facephi/selphi-web-component';
 import { Logger, LoggerType } from '../utils/Logger';
 
@@ -21,7 +22,6 @@ export default function SelphiComponent({ setWidget }: { setWidget: React.Dispat
 	function handleExtractionFinish(event: CustomEvent<ExtractionFinishEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHI, 'extractionFinish', result);
-
 		// Redirect to the finish component
 		setWidget('finish');
 	}
@@ -43,7 +43,7 @@ export default function SelphiComponent({ setWidget }: { setWidget: React.Dispat
 
 	function handleTimeoutButtonClick(event: CustomEvent<TimeoutButtonClickEvent>) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] timeoutButtonClick:', result);
+		Logger.printLog(LoggerType.SELPHI, 'timeoutButtonClick:', result);
 	}
 
 	function handleUserCancel(event: CustomEvent<UserCancelEvent>) {
@@ -54,6 +54,11 @@ export default function SelphiComponent({ setWidget }: { setWidget: React.Dispat
 	function handleTrackStatus(event: CustomEvent<TrackStatusEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHI, 'trackStatus', result);
+	}
+
+	function handleStabilizing(event: CustomEvent<StabilizingEvent>) {
+		const result = event.detail.detail;
+		Logger.printLog(LoggerType.SELPHI, 'stabilizing:', result);
 	}
 
 	return (
@@ -72,6 +77,7 @@ export default function SelphiComponent({ setWidget }: { setWidget: React.Dispat
 			ontimeoutErrorButtonClick={handleTimeoutButtonClick}
 			ontrackStatus={handleTrackStatus}
 			onuserCancel={handleUserCancel}
+			onstabilizing={handleStabilizing}
 		/>
 	);
 }

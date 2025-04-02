@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "clean": "rm -rf dist node_modules package-lock.json bun.lockb yarn.lock"
+    "clean": "rm -rf dist node_modules package-lock.json bun.lock yarn.lock"
   },
   "dependencies": {
     "@facephi/sdk-web-wc": "*",
@@ -15,6 +15,7 @@
     "react-dom": "19.0.0"
   },
   "devDependencies": {
+    "@types/node": "22.13.10",
     "@types/react": "19.0.10",
     "@types/react-dom": "19.0.4",
     "@vitejs/plugin-react": "4.3.4",

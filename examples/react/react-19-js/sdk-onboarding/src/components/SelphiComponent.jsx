@@ -9,7 +9,6 @@ export default function SelphiComponent({ setWidget }) {
 	function handleExtractionFinish(event) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHI, 'extractionFinish', result);
-
 		// Redirect to the finish component
 		setWidget('finish');
 	}
@@ -31,7 +30,7 @@ export default function SelphiComponent({ setWidget }) {
 
 	function handleTimeoutButtonClick(event) {
 		const result = event.detail.detail;
-		console.log('%c%s', 'color: #00FFFF;', '[SELPHI] timeoutButtonClick:', result);
+		Logger.printLog(LoggerType.SELPHI, 'timeoutButtonClick:', result);
 	}
 
 	function handleUserCancel(event) {
