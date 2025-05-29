@@ -10,7 +10,7 @@
     "clean": "rm -rf dist node_modules package-lock.json bun.lock yarn.lock"
   },
   "dependencies": {
-    "@facephi/sdk-web-react": "*",
+    "@facephi/sdk-web-react": "latest",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },
