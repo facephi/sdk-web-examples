@@ -10,7 +10,7 @@
  * We recommend to remove all the console logs and use actual code.
  *
  */
-import React from 'react';
+
 import { useState } from 'react';
 import { FacephiSdkProvider, Language, TypeFamily } from '@facephi/sdk-web-react';
 import SelphiComponent from './components/SelphiComponent';
@@ -26,6 +26,7 @@ function App() {
 		const result = event.detail;
 		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitData', result);
 	}
+
 	function handleEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
 		const result = event.detail;
 		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitError', result);
@@ -45,7 +46,7 @@ function App() {
 				>
 					{widget === 'selphid' && <SelphIDComponent setWidget={setWidget} />}
 					{widget === 'selphi' && <SelphiComponent setWidget={setWidget} />}
-					{widget === 'finish' && <div>The process has been completed</div>}
+					{widget === 'finish' && <div className='onboarding-finished'>ONBOARDING FINISHED</div>}
 				</FacephiSdkProvider>
 			</section>
 		</main>

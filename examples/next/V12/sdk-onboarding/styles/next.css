@@ -13,6 +13,15 @@
   height: calc(100vh - calc(var(--header-height-mobile) + var(--footer-height)));
 }
 
+.onboarding-finished {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-weight: bold;
+  color: #343a40;
+}
+
 @media screen and (orientation: landscape) {
   #__next {
     min-height: 480px;

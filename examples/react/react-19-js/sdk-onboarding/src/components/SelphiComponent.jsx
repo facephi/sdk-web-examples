@@ -6,6 +6,7 @@ export default function SelphiComponent({ setWidget }) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHI, 'widgetLoaded', result);
 	}
+
 	function handleExtractionFinish(event) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHI, 'extractionFinish', result);

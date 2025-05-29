@@ -18,6 +18,11 @@ import {
 	type ExtractionTimeoutEvent as SelphiExtractionTimeoutEvent,
 	type ExceptionCapturedEvent as SelphiExceptionCapturedEvent,
 	type ErrorTimeoutEvent as SelphiErrorTimeoutEvent,
+	type WidgetLoadedEvent as SelphiWidgetLoadedEvent,
+	type StabilizingEvent as SelphiStabilizingEvent,
+	type TimeoutButtonClickEvent as SelphiTimeoutButtonClickEvent,
+	type TrackStatusEvent as SelphiTrackStatusEvent,
+	type UserCancelEvent as SelphiUserCancelEvent,
 } from '@facephi/selphi-web-component';
 import {
 	Language as LenguageSelphid,
@@ -25,6 +30,10 @@ import {
 	type ExtractionTimeoutEvent as SelphidExtractionTimeoutEvent,
 	type ExceptionCapturedEvent as SelphidExceptionCapturedEvent,
 	type ErrorTimeoutEvent as SelphidErrorTimeoutEvent,
+	type WidgetLoadedEvent as SelphidWidgetLoadedEvent,
+	type TimeoutButtonClickEvent as SelphidTimeoutButtonClickEvent,
+	type TrackStatusEvent as SelphidTrackStatusEvent,
+	type UserCancelEvent as SelphidUserCancelEvent,
 } from '@facephi/selphid-web-component';
 import facephiLogo from '@/assets/facephi_logo.svg';
 import { Logger, LoggerType } from './utils/Logger';
@@ -69,6 +78,31 @@ function handleSelphiErrorTimeout(event: CustomEvent<SelphiErrorTimeoutEvent>) {
 	Logger.printLog(LoggerType.SELPHI, 'errorTimeout', result);
 }
 
+function handleSelphiModuleLoaded(event: CustomEvent<SelphiWidgetLoadedEvent>) {
+	const result = event.detail.detail;
+	Logger.printLog(LoggerType.SELPHI, 'widgetLoaded', result);
+}
+
+function handleSelphiTimeoutErrorButtonClick(event: CustomEvent<SelphiTimeoutButtonClickEvent>) {
+	const result = event.detail.detail;
+	Logger.printLog(LoggerType.SELPHI, 'timeoutErrorButtonClick', result);
+}
+
+function handleSelphiUserCancel(event: CustomEvent<SelphiUserCancelEvent>) {
+	const result = event.detail.detail;
+	Logger.printLog(LoggerType.SELPHI, 'userCancel', result);
+}
+
+function handleSelphiTrackStatus(event: CustomEvent<SelphiTrackStatusEvent>) {
+	const result = event.detail.detail;
+	Logger.printLog(LoggerType.SELPHI, 'trackStatus', result);
+}
+
+function handleSelphiStabilizing(event: CustomEvent<SelphiStabilizingEvent>) {
+	const result = event.detail.detail;
+	Logger.printLog(LoggerType.SELPHI, 'stabilizing', result);
+}
+
 // SELPHID event handlers
 function handleSelphidExtractionFinish(event: CustomEvent<SelphidExtractionFinishEvent>) {
 	const result = event.detail.detail;
@@ -90,6 +124,26 @@ function handleSelphidExceptionCaptured(event: CustomEvent<SelphidExceptionCaptu
 function handleSelphidErrorTimeout(event: CustomEvent<SelphidErrorTimeoutEvent>) {
 	const result = event.detail.detail;
 	Logger.printLog(LoggerType.SELPHID, 'errorTimeout', result);
+}
+
+function handleSelphidModuleLoaded(event: CustomEvent<SelphidWidgetLoadedEvent>) {
+	const result = event.detail.detail;
+	Logger.printLog(LoggerType.SELPHID, 'widgetLoaded', result);
+}
+
+function handleSelphidTimeoutErrorButtonClick(event: CustomEvent<SelphidTimeoutButtonClickEvent>) {
+	const result = event.detail.detail;
+	Logger.printLog(LoggerType.SELPHID, 'timeoutErrorButtonClick', result);
+}
+
+function handleSelphidUserCancel(event: CustomEvent<SelphidUserCancelEvent>) {
+	const result = event.detail.detail;
+	Logger.printLog(LoggerType.SELPHID, 'userCancel', result);
+}
+
+function handleSelphidTrackStatus(event: CustomEvent<SelphidTrackStatusEvent>) {
+	const result = event.detail.detail;
+	Logger.printLog(LoggerType.SELPHID, 'trackStatus', result);
 }
 </script>
 
@@ -125,6 +179,10 @@ function handleSelphidErrorTimeout(event: CustomEvent<SelphidErrorTimeoutEvent>)
               @extractionTimeout="handleSelphidExtractionTimeout($event)"
               @exceptionCaptured="handleSelphidExceptionCaptured($event)"
               @errorTimeout="handleSelphidErrorTimeout($event)"
+			  @moduleLoaded="handleSelphidModuleLoaded($event)"
+			  @timeoutErrorButtonClick="handleSelphidTimeoutErrorButtonClick($event)"
+			  @userCancel="handleSelphidUserCancel($event)"
+			  @trackStatus="handleSelphidTrackStatus($event)"
             >
           </facephi-selphid-widget>
 
@@ -141,10 +199,15 @@ function handleSelphidErrorTimeout(event: CustomEvent<SelphidErrorTimeoutEvent>)
               @extractionTimeout="handleSelphiExtractionTimeout($event)"
               @exceptionCaptured="handleSelphiExceptionCaptured($event)"
               @errorTimeout="handleSelphiErrorTimeout($event)"
+              @moduleLoaded="handleSelphiModuleLoaded($event)"
+              @timeoutErrorButtonClick="handleSelphiTimeoutErrorButtonClick($event)"
+              @userCancel="handleSelphiUserCancel($event)"
+              @trackStatus="handleSelphiTrackStatus($event)"
+              @stabilizing="handleSelphiStabilizing($event)"
               >
             </facephi-selphi-widget>
 
-            <div v-if="widget === 'finish'">The process has been completed</div>
+            <div class="onboarding-finished" v-if="widget === 'finish'">ONBOARDING FINISHED</div>
             
           </facephi-sdk-provider>
         </section>

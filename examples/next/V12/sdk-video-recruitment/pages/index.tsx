@@ -16,14 +16,14 @@ import dynamic from 'next/dynamic';
 
 // Using dynamic imports for SDK components to prevent SSR issues in Next.js 12
 const SdkProvider = dynamic(() => import('../components/Provider-component/SDKProvider.component'), { ssr: false });
-const VideoRecluiment = dynamic(() => import('../components/VideoRecruitment-component/VideoRecruitment.component'), {
+const VideoRecruitment = dynamic(() => import('../components/VideoRecruitment-component/VideoRecruitment.component'), {
 	ssr: false,
 });
 
 const Home: NextPage = () => {
 	return (
 		<SdkProvider>
-			<VideoRecluiment />
+			<VideoRecruitment />
 		</SdkProvider>
 	);
 };

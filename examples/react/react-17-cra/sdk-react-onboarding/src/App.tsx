@@ -35,18 +35,18 @@ function App() {
 	return (
 		<main>
 			<section className='sdk-section'>
-        <FacephiSdkProvider
-          apikey={apiKey}
-          steps='START,SELPHI_WIDGET,SELPHID_WIDGET,FINISH'
-          type={TypeFamily.onboarding}
-          customerId='facephi-sdk-react-react17-cra-example'
-          language={Language.es}
+				<FacephiSdkProvider
+					apikey={apiKey}
+					steps='START,SELPHI_WIDGET,SELPHID_WIDGET,FINISH'
+					type={TypeFamily.onboarding}
+					customerId='facephi-sdk-react-react17-cra-example'
+					language={Language.es}
 					onEmitData={handleEmitData}
 					onEmitError={handleEmitError}
 				>
 					{widget === 'selphid' && <SelphIDComponent setWidget={setWidget} />}
 					{widget === 'selphi' && <SelphiComponent setWidget={setWidget} />}
-					{widget === 'finish' && <div>The process has been completed</div>}
+					{widget === 'finish' && <div className='onboarding-finished'>ONBOARDING FINISHED</div>}
 				</FacephiSdkProvider>
 			</section>
 		</main>

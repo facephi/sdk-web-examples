@@ -20,32 +20,32 @@ function App() {
 	const apiKey = process.env.REACT_APP_LICENSE_KEY || '';
 	const [widget, setWidget] = useState('selphid');
 
-		// Provider Events
-		function handleEmitData(event: CustomEvent<{ operationId: string; sessionId: string; extraData: string }>) {
-			const result = event.detail;
-			Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitData', result);
-		}
-	
-		function handleEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
-			const result = event.detail;
-			Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitError', result);
-		}
+	// Provider Events
+	function handleEmitData(event: CustomEvent<{ operationId: string; sessionId: string; extraData: string }>) {
+		const result = event.detail;
+		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitData', result);
+	}
+
+	function handleEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
+		const result = event.detail;
+		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitError', result);
+	}
 
 	return (
 		<main>
 			<section className='sdk-section'>
-        <FacephiSdkProvider
-          apikey={apiKey}
-          steps='START,SELPHI_WIDGET,SELPHID_WIDGET,FINISH'
-          type={TypeFamily.onboarding}
-          customerId='facephi-sdk-react-react18-cra-example'
-          language={Language.es}
+				<FacephiSdkProvider
+					apikey={apiKey}
+					steps='START,SELPHI_WIDGET,SELPHID_WIDGET,FINISH'
+					type={TypeFamily.onboarding}
+					customerId='facephi-sdk-react-react18-cra-example'
+					language={Language.es}
 					onEmitData={handleEmitData}
 					onEmitError={handleEmitError}
 				>
 					{widget === 'selphid' && <SelphIDComponent setWidget={setWidget} />}
 					{widget === 'selphi' && <SelphiComponent setWidget={setWidget} />}
-					{widget === 'finish' && <div>The process has been completed</div>}
+					{widget === 'finish' && <div className='onboarding-finished'>ONBOARDING FINISHED</div>}
 				</FacephiSdkProvider>
 			</section>
 		</main>

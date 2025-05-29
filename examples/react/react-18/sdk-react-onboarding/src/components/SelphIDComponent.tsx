@@ -18,6 +18,7 @@ export default function SelphIDComponent({ setWidget }: { setWidget: React.Dispa
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHID, 'widgetLoaded', result);
 	}
+
 	function handleExtractionFinish(event: CustomEvent<ExtractionFinishEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHID, 'extractionFinish', result);

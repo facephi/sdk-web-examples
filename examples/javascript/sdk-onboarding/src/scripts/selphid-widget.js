@@ -40,10 +40,34 @@ export function initSelphidWidget(sdkProvider) {
 		Logger.printLog(LoggerType.SELPHID, 'errorTimeout', result);
 	}
 
+	function handleModuleLoaded(event) {
+		const result = event.detail.detail;
+		Logger.printLog(LoggerType.SELPHID, 'widgetLoaded', result);
+	}
+
+	function handleTimeoutErrorButtonClick(event) {
+		const result = event.detail.detail;
+		Logger.printLog(LoggerType.SELPHID, 'timeoutErrorButtonClick', result);
+	}
+
+	function handleUserCancel(event) {
+		const result = event.detail.detail;
+		Logger.printLog(LoggerType.SELPHID, 'userCancel', result);
+	}
+
+	function handleTrackStatus(event) {
+		const result = event.detail.detail;
+		Logger.printLog(LoggerType.SELPHID, 'trackStatus', result);
+	}
+
 	if (selphidWidget) {
 		selphidWidget.addEventListener('extractionFinish', handleExtractionFinish);
 		selphidWidget.addEventListener('extractionTimeout', handleExtractionTimeout);
 		selphidWidget.addEventListener('exceptionCaptured', handleExceptionCaptured);
 		selphidWidget.addEventListener('errorTimeout', handleErrorTimeout);
+		selphidWidget.addEventListener('moduleLoaded', handleModuleLoaded);
+		selphidWidget.addEventListener('timeoutErrorButtonClick', handleTimeoutErrorButtonClick);
+		selphidWidget.addEventListener('userCancel', handleUserCancel);
+		selphidWidget.addEventListener('trackStatus', handleTrackStatus);
 	}
 }

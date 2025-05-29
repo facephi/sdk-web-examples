@@ -2,7 +2,7 @@
 import { FacephiVideoRecruitmentWidget } from '@facephi/sdk-web-react';
 import { Logger, LoggerType } from '../../utils/Logger';
 
-export default function VideoRecluiment() {
+export default function VideoRecruitment() {
 	// Video Recruitment Widget Events
 	function handleFinishVideo(event: CustomEvent<boolean>) {
 		const result = event;

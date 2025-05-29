@@ -14,15 +14,4 @@ export class VideoRecruitmentComponent {
 		const result = event;
 		Logger.printLog(LoggerType.VIDEO_RECRUITMENT, 'FinishVideo', result);
 	}
-
-	handleUserCancel(event: Event) {
-		const result = event;
-		Logger.printLog(LoggerType.VIDEO_RECRUITMENT, 'UserCancel', result);
-	}
-
-	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-	handleErrorException(event: any) {
-		const result = event;
-		Logger.printLog(LoggerType.VIDEO_RECRUITMENT, 'ErrorException', result);
-	}
 }

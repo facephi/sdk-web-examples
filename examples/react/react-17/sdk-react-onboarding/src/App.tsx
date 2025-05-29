@@ -17,6 +17,7 @@ import { useState } from 'react';
 import { Logger, LoggerType } from './utils/Logger';
 
 export default function App() {
+	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 	const licenseKey = (import.meta as any).env.VITE_LICENSE_KEY || '';
 	const [widget, setWidget] = useState('selphid');
 
@@ -45,7 +46,7 @@ export default function App() {
 				>
 					{widget === 'selphid' && <SelphIDComponent setWidget={setWidget} />}
 					{widget === 'selphi' && <SelphiComponent setWidget={setWidget} />}
-					{widget === 'finish' && <div>The process has been completed</div>}
+					{widget === 'finish' && <div className='onboarding-finished'>ONBOARDING FINISHED</div>}
 				</FacephiSdkProvider>
 			</section>
 		</main>

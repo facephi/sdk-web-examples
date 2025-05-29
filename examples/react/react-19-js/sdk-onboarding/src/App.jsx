@@ -44,7 +44,7 @@ export default function App() {
 				>
 					{widget === 'selphid' && <SelphIDComponent setWidget={setWidget} />}
 					{widget === 'selphi' && <SelphiComponent setWidget={setWidget} />}
-					{widget === 'finish' && <div>The process has been completed</div>}
+					{widget === 'finish' && <div className='onboarding-finished'>ONBOARDING FINISHED</div>}
 				</facephi-sdk-provider>
 			</section>
 		</main>

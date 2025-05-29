@@ -34,7 +34,7 @@ const Home: NextPage = () => {
 		<SdkProvider>
 			{currentStep === 'selphid' && <Selphid onComplete={handleSelphidComplete} />}
 			{currentStep === 'selphi' && <Selphi onComplete={handleSelphiComplete} />}
-			{currentStep === 'completed' && <div>The process has been completed</div>}
+			{currentStep === 'completed' && <div className='onboarding-finished'>ONBOARDING FINISHED</div>}
 		</SdkProvider>
 	);
 };

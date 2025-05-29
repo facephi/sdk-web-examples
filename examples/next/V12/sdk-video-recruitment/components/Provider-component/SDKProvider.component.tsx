@@ -10,7 +10,7 @@ export default function SdkProvider({ children }: { children: ReactNode }) {
 	const [widgetIsActive, setWidgetIsActive] = useState(false);
 	const apiKey = process.env.NEXT_PUBLIC_API_KEY ?? '';
 
-	// PRVIDER Events
+	// PROVIDER Events
 	function handleEmitData(event: CustomEvent<{ operationId: string; sessionId: string; extraData: string }>) {
 		const result = event.detail;
 		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitData', result);

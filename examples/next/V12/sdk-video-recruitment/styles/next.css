@@ -12,6 +12,15 @@
   height: 100%;
 }
 
+.onboarding-finished {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-weight: bold;
+  color: #343a40;
+}
+
 .framework {
   background-color: #000000;
   color: #ffffff;

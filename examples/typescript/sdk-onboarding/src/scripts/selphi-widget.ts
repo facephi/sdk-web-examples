@@ -1,5 +1,10 @@
 import {
 	Language,
+	type StabilizingEvent,
+	type TimeoutButtonClickEvent,
+	type TrackStatusEvent,
+	type UserCancelEvent,
+	type WidgetLoadedEvent,
 	type ErrorTimeoutEvent,
 	type ExceptionCapturedEvent,
 	type ExtractionFinishEvent,
@@ -45,10 +50,40 @@ export function initSelphiWidget(sdkProvider: { innerHTML: string }) {
 		Logger.printLog(LoggerType.SELPHI, 'errorTimeout', result);
 	}
 
+	function handleModuleLoaded(event: CustomEvent<WidgetLoadedEvent>) {
+		const result = event.detail.detail;
+		Logger.printLog(LoggerType.SELPHI, 'widgetLoaded', result);
+	}
+
+	function handleTimeoutErrorButtonClick(event: CustomEvent<TimeoutButtonClickEvent>) {
+		const result = event.detail.detail;
+		Logger.printLog(LoggerType.SELPHI, 'timeoutErrorButtonClick', result);
+	}
+
+	function handleUserCancel(event: CustomEvent<UserCancelEvent>) {
+		const result = event.detail.detail;
+		Logger.printLog(LoggerType.SELPHI, 'userCancel', result);
+	}
+
+	function handleTrackStatus(event: CustomEvent<TrackStatusEvent>) {
+		const result = event.detail.detail;
+		Logger.printLog(LoggerType.SELPHI, 'trackStatus', result);
+	}
+
+	function handleStabilizing(event: CustomEvent<StabilizingEvent>) {
+		const result = event.detail.detail;
+		Logger.printLog(LoggerType.SELPHI, 'stabilizing', result);
+	}
+
 	if (selphiWidget) {
 		selphiWidget.addEventListener('extractionFinish', handleExtractionFinish);
 		selphiWidget.addEventListener('extractionTimeout', handleExtractionTimeout);
 		selphiWidget.addEventListener('exceptionCaptured', handleExceptionCaptured);
 		selphiWidget.addEventListener('errorTimeout', handleErrorTimeout);
+		selphiWidget.addEventListener('moduleLoaded', handleModuleLoaded);
+		selphiWidget.addEventListener('timeoutErrorButtonClick', handleTimeoutErrorButtonClick);
+		selphiWidget.addEventListener('userCancel', handleUserCancel);
+		selphiWidget.addEventListener('trackStatus', handleTrackStatus);
+		selphiWidget.addEventListener('stabilizing', handleStabilizing);
 	}
 }
