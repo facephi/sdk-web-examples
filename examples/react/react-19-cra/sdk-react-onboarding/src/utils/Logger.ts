@@ -13,6 +13,7 @@ enum LoggerType {
 	VIDEO_PROVIDER = 'VIDEO_PROVIDER',
 	VIDEO_ASSISTANT = 'VIDEO_ASSISTANT',
 	WORKFLOW = 'WORKFLOW',
+	VIDEOID = 'VIDEOID',
 }
 
 // Type for color configuration
@@ -57,6 +58,10 @@ const LOGGER_COLORS: Record<LoggerType, ThemeColorConfig> = {
 		dark: { text: '#d9f99d', background: '#3f6212' },
 	},
 	[LoggerType.WORKFLOW]: {
+		light: { text: '#bc6c25', background: '#fff3e0' },
+		dark: { text: '#fff3e0', background: '#bc6c25' },
+	},
+	[LoggerType.VIDEOID]: {
 		light: { text: '#bc6c25', background: '#fff3e0' },
 		dark: { text: '#fff3e0', background: '#bc6c25' },
 	},

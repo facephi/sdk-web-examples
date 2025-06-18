@@ -1,0 +1,13 @@
+<facephi-video-id
+  [operationId]="operationId"
+  [tenantId]="tenantId"
+  [customerId]="customerId"
+  [videoRecordingUrl]="videoRecordingUrl"
+  [apiKey]="apiKey"
+  [license]="license"
+  [language]="language"
+  (extractionFinish)="onExtractionFinish($event)"
+  (userCancel)="onUserCancel()"
+  (extractionTimeout)="onExtractionTimeout()"
+  (exceptionCaptured)="onExceptionCaptured()"
+/>
