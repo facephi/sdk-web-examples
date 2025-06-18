@@ -10,15 +10,14 @@
  * We recommend to remove all the console logs and use actual code.
  *
  */
-
 import type { NextPage } from 'next';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
 
-// Using dynamic imports for SDK components to prevent SSR issues in Next.js 12
+// Using dynamic imports for SDK components to prevent SSR issues in Next.js 15
 const SdkProvider = dynamic(() => import('../components/Provider-component/SDKProvider.component'), { ssr: false });
 const Selphi = dynamic(() => import('../components/Selphi-component/Selphi.component'), { ssr: false });
-const Selphid = dynamic(() => import('../components/Selphid-component/Selphid.component'), { ssr: false });
+const Selphid = dynamic(() => import('../components/SelphId-component/Selphid.component'), { ssr: false });
 
 const Home: NextPage = () => {
 	const [currentStep, setCurrentStep] = useState<'selphi' | 'selphid' | 'completed'>('selphid');

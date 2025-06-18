@@ -1,6 +1,6 @@
-# SDK-REACT Web WebComponents in Next 12
+# SDK-REACT Web WebComponents in Next 15
 
-Integration with Next 12
+Integration with Next 15
 
 > [!NOTE]
 > More information about the widgets please check [SDK-REACT Web WebComponents](https://docs.identity-platform.io/docs/SDK_Web/React/)
@@ -36,10 +36,11 @@ Run `npm run dev` for a dev server. Navigate to `http://localhost:3000/`. The ap
 
 Run `npm run build` to build the project. The build artifacts will be stored in the `.next` directory.
 
-## Widget Customisation in Next 12
+## Widget Customisation in Next 15
 
 > [!IMPORTANT]  
-> When styling Web Components in Next.js 12, consider the following:
+> When styling Web Components in Next.js 15, consider the following:
 > - Use global CSS for widget customization through CSS variables
 > - Custom styles should be applied using the supported CSS variables documented in the SDK documentation
 > - For layout positioning, you can wrap the widgets in styled containers
+

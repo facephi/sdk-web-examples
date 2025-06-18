@@ -6,8 +6,8 @@ declare module 'react/jsx-runtime' {
 			'facephi-selphi-widget': any;
 			'facephi-selphid-widget': any;
 			main: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-            section: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
-            div: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+			section: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+			div: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 		}
 	}
 }

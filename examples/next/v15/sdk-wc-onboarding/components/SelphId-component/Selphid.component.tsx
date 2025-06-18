@@ -1,6 +1,5 @@
 'use client';
-import { FacephiSelphidWidget } from '@facephi/sdk-web-react';
-
+import React from 'react';
 import {
 	type WidgetLoadedEvent,
 	type ExtractionFinishEvent,
@@ -18,7 +17,7 @@ interface SelphidProps {
 	onComplete: () => void;
 }
 
-export default function Selphi({ onComplete }: SelphidProps) {
+export default function SelphID({ onComplete }: SelphidProps) {
 	// SelphID Events
 	function handleModuleLoaded(event: CustomEvent<WidgetLoadedEvent>) {
 		const result = event.detail.detail;
@@ -34,7 +33,6 @@ export default function Selphi({ onComplete }: SelphidProps) {
 	function handleExtractionTimeout(event: CustomEvent<ExtractionTimeoutEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHID, 'extractionTimeout', result);
-		Logger.printLog(LoggerType.SELPHID, 'extractionFinish', result);
 	}
 
 	function handleExceptionCaptured(event: CustomEvent<ExceptionCapturedEvent>) {
@@ -63,7 +61,7 @@ export default function Selphi({ onComplete }: SelphidProps) {
 	}
 
 	return (
-		<FacephiSelphidWidget
+		<facephi-selphid-widget
 			country={'ES'}
 			language={Language.ES}
 			previewCapture={true}

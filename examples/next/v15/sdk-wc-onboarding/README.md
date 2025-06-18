@@ -1,9 +1,9 @@
-# SDK-REACT Web WebComponents in Next 12
+# SDK Web WebComponents in Next 15
 
-Integration with Next 12
+Integration with Next 15
 
 > [!NOTE]
-> More information about the widgets please check [SDK-REACT Web WebComponents](https://docs.identity-platform.io/docs/SDK_Web/React/)
+> More information about the widgets please check [SDK Web WebComponents](https://docs.identity-platform.io/docs/SDK_Web/Web_Components/)
 
 ## Prod installation credentials
 
