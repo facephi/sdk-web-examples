@@ -90,7 +90,7 @@ export class App extends LitElement {
       <main class="main">
         <section class="sdk-section">
           <facephi-sdk-provider
-            apiKey="${this.licenseKey}"
+            apikey="${this.licenseKey}"
             steps="START,SELPHID_WIDGET,SELPHI_WIDGET,FINISH"
             type="ONBOARDING"
             customer-id="facephi-video-provider-sdk-lit-example"

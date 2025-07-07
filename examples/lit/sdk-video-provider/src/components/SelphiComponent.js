@@ -92,12 +92,12 @@ export class SelphiComponent extends LitElement {
   render() {
     return html`
       <facephi-selphi-widget
-        stabilizationStage="${this.stabilizationStage}"
+        stabilization-stage="${this.stabilizationStage}"
         language="${this.language}"
         interactible="${this.interactible}"
-        previewCapture="${this.previewCapture}"
+        preview-capture="${this.previewCapture}"
         timeout="${this.timeout}"
-        showLog="${this.showLog}"
+        show-log="${this.showLog}"
         @moduleLoaded=${this.handleModuleLoaded}
         @extractionFinish=${this.handleExtractionFinish}
         @extractionTimeout=${this.handleExtractionTimeout}

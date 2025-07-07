@@ -89,10 +89,10 @@ export class SelphIDComponent extends LitElement {
       <facephi-selphid-widget
         country="${this.country}"
         language="${this.language}"
-        previewCapture="${this.previewCapture}"
-        captureTimeout="${this.captureTimeout}"
-        captureRetries="${this.captureRetries}"
-        showLog="${this.showLog}"
+        preview-capture="${this.previewCapture}"
+        capture-timeout="${this.captureTimeout}"
+        capture-retries="${this.captureRetries}"
+        show-log="${this.showLog}"
         @moduleLoaded=${this.handleModuleLoaded}
         @extractionFinish=${this.handleExtractionFinish}
         @extractionTimeout=${this.handleExtractionTimeout}

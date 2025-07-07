@@ -23,6 +23,14 @@ export class App extends LitElement {
     super();
     this.widget = 'selphid';
     this.licenseKey = import.meta.env.VITE_LICENSE_KEY || '';
+    this.showLog = false;
+    this.language = 'es';
+    this.previewCapture = true;
+    this.captureTimeout = 10;
+    this.captureRetries = 3;
+    this.stabilizationStage = true;
+    this.interactible = false;
+    this.timeout = 30000;
   }
 
   // Renders the content in the main DOM instead of using shadow DOM.
@@ -77,20 +85,20 @@ export class App extends LitElement {
       <main class="main">
         <section class="sdk-section">
           <facephi-sdk-provider
-            apiKey="${this.licenseKey}"
+            apikey="${this.licenseKey}"
             steps="START,SELPHID_WIDGET,SELPHI_WIDGET,FINISH"
             type="ONBOARDING"
             customer-id="facephi-sdk-lit-example"
-            language="es"
+            language="${this.language}"
           >
             ${this.widget === 'selphid' ? html`
               <facephi-selphid-widget
-                country="ES"
-                language="ES"
-                previewCapture="true"
-                captureTimeout="10"
-                captureRetries="3"
-                showLog="false"
+                country="${this.country}"
+                language="${this.language}"
+                preview-capture="${this.previewCapture}"
+                capture-timeout="${this.captureTimeout}"
+                capture-retries="${this.captureRetries}"
+                show-log="${this.showLog}"
                 @moduleLoaded=${this.handleSelphidEvents}
                 @extractionFinish=${this.handleSelphidEvents}
                 @extractionTimeout=${this.handleSelphidEvents}
@@ -104,12 +112,12 @@ export class App extends LitElement {
 
             ${this.widget === 'selphi' ? html`
               <facephi-selphi-widget
-                stabilizationStage="true"
+                stabilization-stage="${this.stabilizationStage}"
                 language="ES"
-                interactible="true"
-                previewCapture="true"
-                timeout="30000"
-                showLog="false"
+                interactible="${this.interactible}"
+                preview-capture="${this.previewCapture}"
+                timeout="${this.timeout}"
+                show-log="${this.showLog}"
                 @moduleLoaded=${this.handleSelphiEvents}
                 @extractionFinish=${this.handleSelphiEvents}
                 @extractionTimeout=${this.handleSelphiEvents}
