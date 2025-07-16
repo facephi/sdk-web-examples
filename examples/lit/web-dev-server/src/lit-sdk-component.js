@@ -13,7 +13,7 @@
 import { LitElement, html } from 'lit';
 import { Logger, LoggerType } from './utils/Logger.js';
 
-export class App extends LitElement {
+export class LitSdkComponent extends LitElement {
   static properties = {
     widget: { type: String },
     licenseKey: { type: String }
@@ -22,8 +22,7 @@ export class App extends LitElement {
   constructor() {
     super();
     this.widget = 'selphid';
-    this.licenseKey = import.meta.env.VITE_LICENSE_KEY || '';
-    this.showLog = false;
+    this.licenseKey = 'PUT_YOUR_LICENSE_KEY_HERE';
     this.language = 'es';
     this.previewCapture = true;
     this.captureTimeout = 10;
@@ -33,7 +32,6 @@ export class App extends LitElement {
     this.timeout = 30000;
   }
 
-  // Renders the content in the main DOM instead of using shadow DOM.
   createRenderRoot() {
     return this;
   }
@@ -52,6 +50,41 @@ export class App extends LitElement {
     });
   }
 
+  async initializeSDK() {
+    try {
+      await customElements.whenDefined('facephi-sdk-provider');
+      
+      const sdkProvider = this.querySelector('facephi-sdk-provider');
+      
+      sdkProvider.innerHTML = `<facephi-selphid-widget
+      ></facephi-selphid-widget>`;
+
+      this.setupEventListeners(sdkProvider);
+
+
+    } catch (error) {
+      console.error('Error initializing SDK:', error);
+    }
+  }
+
+  setupEventListeners(sdkProvider) {
+
+    const emitData = (event) => {
+      console.log('Emit Data:', event.detail);
+      this.emitData = event.detail;
+      this.requestUpdate();
+    };
+
+    const emitError = (event) => {
+      console.log('Emit Error:', event.detail);
+      this.emitError = event.detail;
+      this.requestUpdate();
+    };
+
+    sdkProvider.addEventListener('emitData', emitData);
+    sdkProvider.addEventListener('emitError', emitError);
+  }
+
   handleEmitData(event) {
     const result = event.detail;
     Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitData', result);
@@ -63,6 +96,7 @@ export class App extends LitElement {
   }
 
   handleSelphidEvents(e) {
+    console.log('handleSelphidEvents', e);
     const type = e.type;
     const result = e.detail?.detail;
     Logger.printLog(LoggerType.SELPHID, type, result);
@@ -72,6 +106,7 @@ export class App extends LitElement {
   }
 
   handleSelphiEvents(e) {
+    console.log('handleSelphiEvents', e);
     const type = e.type;
     const result = e.detail?.detail;
     Logger.printLog(LoggerType.SELPHI, type, result);
@@ -79,18 +114,17 @@ export class App extends LitElement {
       this.widget = 'finish';
     }
   }
+  
 
   render() {
     return html`
       <main class="main">
         <section class="sdk-section">
-          <facephi-sdk-provider
-            apikey="${this.licenseKey}"
-            steps="START,SELPHID_WIDGET,SELPHI_WIDGET,FINISH"
-            type="ONBOARDING"
-            customer-id="facephi-sdk-lit-example"
-            language="${this.language}"
-          >
+          <facephi-sdk-provider 
+            apikey="${this.licenseKey}" 
+            customerId="sdk-wc-lit-component-example"
+            steps="START,SELPHID_WIDGET,SELPHI_WIDGET,VIDEO_CONTRACTING,FINISH"
+            language="${this.language}">
             ${this.widget === 'selphid' ? html`
               <facephi-selphid-widget
                 country="${this.country}"
@@ -113,7 +147,7 @@ export class App extends LitElement {
             ${this.widget === 'selphi' ? html`
               <facephi-selphi-widget
                 stabilization-stage="${this.stabilizationStage}"
-                language="${this.language}"
+                language="ES"
                 interactible="${this.interactible}"
                 preview-capture="${this.previewCapture}"
                 timeout="${this.timeout}"
@@ -140,4 +174,4 @@ export class App extends LitElement {
   }
 }
 
-customElements.define('app-component', App);
+customElements.define('app-component', LitSdkComponent); 
