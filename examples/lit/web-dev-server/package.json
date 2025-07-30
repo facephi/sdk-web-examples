@@ -5,11 +5,9 @@
   "type": "module",
   "main": "src/main.js",
   "scripts": {
-    "dev": "npm run compile && npm run copy-assets && npm run serve",
-    "compile": "rollup -c",
-    "build": "npm run compile && npm run copy-assets",
+    "dev": "npm run copy-assets && npm run serve",
     "copy-assets": "cp -r assets dist/ && cp index.html dist/",
-    "serve": "web-dev-server --config web-dev-server.config.js",
+    "serve": "web-dev-server --open index.html --node-resolve",
     "clean": "rm -rf dist node_modules package-lock.json bun.lock yarn.lock"
   },
   "dependencies": {
@@ -17,9 +15,6 @@
     "lit": "3.1.4"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "28.0.6",
-    "@rollup/plugin-node-resolve": "16.0.1",
-    "@web/dev-server": "0.4.6",
-    "rollup": "3.29.4"
+    "@web/dev-server": "0.4.6"
   }
 }
