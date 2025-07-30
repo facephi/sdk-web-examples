@@ -5,8 +5,7 @@
   "type": "module",
   "main": "src/main.js",
   "scripts": {
-    "dev": "npm run copy-assets && npm run serve",
-    "copy-assets": "cp -r assets dist/ && cp index.html dist/",
+    "dev": "npm run serve",
     "serve": "web-dev-server --open index.html --node-resolve",
     "clean": "rm -rf dist node_modules package-lock.json bun.lock yarn.lock"
   },

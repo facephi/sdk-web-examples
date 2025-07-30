@@ -1,3 +1,4 @@
+import '@facephi/sdk-web-wc/bundle';
 import { defineCustomElements } from '@facephi/sdk-web-wc/bundle';
 import './lit-sdk-component.js';
 
