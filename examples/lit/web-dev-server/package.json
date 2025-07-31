@@ -6,7 +6,7 @@
   "main": "src/main.js",
   "scripts": {
     "dev": "npm run serve",
-    "serve": "web-dev-server --open index.html --node-resolve",
+    "serve": "web-dev-server --open index.html --node-resolve --port 3000",
     "clean": "rm -rf dist node_modules package-lock.json bun.lock yarn.lock"
   },
   "dependencies": {
