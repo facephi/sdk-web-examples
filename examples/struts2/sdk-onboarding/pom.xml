@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.example</groupId>
+    <artifactId>sdk-onboarding</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <!-- Requirement for jetty -->
+    <packaging>war</packaging>
+
+    <properties>
+        <!-- Project -->
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Dependencies -->
+        <struts2.version>7.0.3</struts2.version>
+        <servlet.version>6.1.0</servlet.version>
+        <thymeleaf.version>3.1.3.RELEASE</thymeleaf.version>
+        <log4j.version>2.25.1</log4j.version>
+        <dotenvjava.version>3.2.0</dotenvjava.version>
+
+        <!-- Plugins -->
+        <jetty.version>11.0.25</jetty.version>
+        <ant.version>3.1.0</ant.version>
+    </properties>
+
+    <build>
+        <!-- Plugins -->
+        <plugins>
+            <!-- Web Server and servlet container-->
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jetty.version}</version>
+                <configuration>
+                    <httpConnector>
+                        <port>3000</port>
+                    </httpConnector>
+                    <webApp>
+                        <contextPath>/struts2-example</contextPath> <!-- Base URL -->
+                    </webApp>
+                </configuration>
+            </plugin>
+
+            <!-- Copy frontend sdk web bundle -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>${ant.version}</version>
+                <executions>
+                    <execution>
+                        <id>copy-frontend</id>
+                        <phase>generate-resources</phase>
+                        <configuration>
+                            <target>
+                                <!-- Target: mvn generate-resources -->
+                                <copy todir="${project.basedir}/src/main/webapp/assets/bundle" overwrite="true">
+                                    <!-- Source -->
+                                    <fileset dir="${project.basedir}/frontend/node_modules/@facephi/sdk-web-wc/bundle" />
+                                </copy>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- Dependencies -->
+    <dependencies>
+        <!-- Struts2 -->
+        <dependency>
+            <groupId>org.apache.struts</groupId>
+            <artifactId>struts2-core</artifactId>
+            <version>${struts2.version}</version>
+        </dependency>
+
+        <!-- Servlet -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>${servlet.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Thymeleaf -->
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf</artifactId>
+            <version>${thymeleaf.version}</version>
+        </dependency>
+
+        <!-- Optional: Log -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <!-- Dotenv to use .env files -->
+        <dependency>
+            <groupId>io.github.cdimascio</groupId>
+            <artifactId>dotenv-java</artifactId>
+            <version>${dotenvjava.version}</version>
+        </dependency>
+
+    </dependencies>
+</project>

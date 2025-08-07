@@ -29,7 +29,6 @@ export class AppComponent {
 	provider = {
 		// biome-ignore lint/complexity/useLiteralKeys: <explanation>
 		apiKey: process.env['NG_APP_API_KEY'] || 'your_default_api_key_here', // Required license
-		// apiKey: 'yuo3wRjIzFjIF7ary8SYdOvu19nzaijY8AgTwFBy',
 		steps: 'START,SELPHID_WIDGET,SELPHI_WIDGET,FINISH', //Order in platform
 		type: TypeFamily.onboarding, // onboarding or authentication
 		customerId: 'facephi-sdk-angular17-example', // Unique user id

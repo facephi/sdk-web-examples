@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDK Web Struts2 and Thymeleaf Example</title>
+    <link rel="icon" type="image/x-icon" th:href="@{assets/favicon.ico}">
+    <!-- Styles -->
+    <link th:href="@{assets/css/java.css}" rel="stylesheet" />
+    <!-- SDK Web WC Package -->
+    <script
+            type="module"
+            th:src="@{assets/bundle/index.js}">
+    </script>
+</head>
+<body>
+    <header class="header">
+        <img th:src="@{assets/facephi_logo.svg}" alt="Facephi logo" height="60" class="logo" />
+    </header>
+
+    <div id="app">
+        <main class="main">
+            <section class="sdk-section">
+                <!-- SDK Provider -->
+                <facephi-sdk-provider
+                        th:attr="apikey=${apiKey}"
+                        steps="START,SELPHID_WIDGET,SELPHI_WIDGET,FINISH"
+                        type="ONBOARDING"
+                        customer-id="facephi-sdk-struts2-example"
+                        language="es">
+                </facephi-sdk-provider>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div>
+            <p id="copyright-year"> ©FacePhi. All rights reserved.</p>
+        </div>
+        <div class="framework">
+            <p>Struts2 | Thymeleaf</p>
+        </div>
+    </footer>
+
+</body>
+<!-- JS -->
+<script
+        type="module"
+        th:src="@{assets/scripts/main.js}">
+</script>
+</html>

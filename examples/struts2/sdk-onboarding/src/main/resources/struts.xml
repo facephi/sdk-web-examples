@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 6.0//EN"
+        "https://struts.apache.org/dtds/struts-6.0.dtd">
+<struts>
+    <constant name="struts.devMode" value="true" />
+
+    <!-- Package name is defined in the pom file -->
+    <package name="struts2-example" namespace="/" extends="struts-default">
+        <action name="index" class="org.example.actions.IndexAction" />
+    </package>
+</struts>
