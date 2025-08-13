@@ -5,6 +5,8 @@ Integration with Next 15
 > [!NOTE]
 > More information about the widgets please check [SDK-REACT Web WebComponents](https://docs.identity-platform.io/docs/SDK_Web/React/)
 
+> Despite using React 19, it is necessary to use the sdk-react version to implement the Facephi SDK Provider.
+
 ## Prod installation credentials
 
 Create a **.npmrc** file in the root project directory.
