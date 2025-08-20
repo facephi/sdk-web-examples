@@ -1,0 +1,45 @@
+<main>
+    <section class="sdk-section">
+        
+        <!-- SDK Provider -->
+        <facephi-sdk-provider
+            *ngIf="isEnabled"
+            #sdkProvider
+            [apikey]="provider.apiKey"
+            [steps]="provider.steps"
+            [type]="provider.type"
+            [customerId]="provider.customerId"
+            [language]="provider.language"
+        >
+            <!-- Inject widgets through router -->
+            <router-outlet />
+        </facephi-sdk-provider>
+
+    </section>
+    <section class="button-section">
+        <h2>SDK Provider Demo</h2>
+        <div>
+            <button class="button button-start" (click)="startOnboarding()" [disabled]="isEnabled">Start Onboarding</button>
+            <button class="button button-stop" (click)="stopOnboarding()" [disabled]="!isEnabled">Stop Onboarding</button>
+            <div>
+                Start/Stop Onboarding process. Use the buttons below to download widget engines before starting the process.<br>
+                This will reduce the widget loading times.
+            </div>
+        </div>
+        <hr>
+        <h3>Generate Browser Cache</h3>
+        <div>
+            <button class="button button-selphid" (click)="generateSelphIDCache()" [disabled]="isEnabled">Generate SelphID Cache</button>
+            <div>
+                Download SelphID required resources in the Browser Cache.
+            </div>
+        </div>
+        <br>
+        <div>
+            <button class="button button-selphi" (click)="generateSelphiCache()" [disabled]="isEnabled">Generate Selphi Cache</button>
+            <div>
+                Download Selphi required resources in the Browser Cache.
+            </div>
+        </div>
+    </section>
+</main>

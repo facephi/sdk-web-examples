@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Calibri, Verdana, Geneva, Tahoma, sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+
+
+.sdk-section {
+  width: 70%;
+  padding: 1em;
+  border: solid grey 1px;
+}
+
+.button-section {
+  height: 100%;
+  width: 30%;
+  padding: 1em;
+}
+
+.button {
+  height: 3em;
+  width: 100%;
+  margin: 1em auto;
+  border: none;
+  cursor: pointer;
+  color: #FFFFFF;
+  border-radius: 0.5em;
+}
+.button:disabled {
+  cursor: default;
+  background-color: #00000055;
+}
+
+.button-start {
+  background-color: #42936e;
+}
+.button-stop {
+  background-color: #dc3545;
+}
+
+.button-selphid {
+  background-color: #7636FC;
+}
+
+.button-selphi {
+  background-color: #3167FC;
+}
+
+hr {
+  margin: 1em 0;
+}
