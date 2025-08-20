@@ -4,7 +4,7 @@ const SELPHI_CONFIG = `
         stabilization-stage="true" 
         language="ES" 
         interactible="true" 
-        preview-capture="true" 
+        preview-image="true" 
         timeout="30000" 
         show-log="false">
     </facephi-selphi-widget>

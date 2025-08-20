@@ -32,7 +32,7 @@ export class SelphiComponent {
 		stabilizationStage: true,
 		language: '/i18n/selphi/custom-strings.json',
 		interactible: true,
-		previewCapture: true,
+		previewImage: true,
 		timeout: 30000,
 		showLog: false,
 

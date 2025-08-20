@@ -49,7 +49,7 @@ export default function SelphIDComponent({ setWidget }) {
 		<facephi-selphid-widget
 			country={'ES'}
 			language='ES'
-			previewCapture={true}
+			previewImage={true}
 			captureTimeout={10}
 			captureRetries={3}
 			showLog={false}

@@ -170,7 +170,7 @@ function handleSelphidTrackStatus(event: CustomEvent<SelphidTrackStatusEvent>) {
               v-if="widget === 'selphid'"
               country="ES"
               :language="LenguageSelphid.ES"
-              preview-capture="true"
+              preview-image="true"
               capture-timeout="10"
               capture-retries="3"
               show-log="false"
@@ -191,7 +191,7 @@ function handleSelphidTrackStatus(event: CustomEvent<SelphidTrackStatusEvent>) {
               stabilization-stage="true"
               :language="LenguageSelphi.ES"
               interactible="true"
-              preview-capture="true"
+              preview-image="true"
               timeout="30000"
               show-log="false"
 

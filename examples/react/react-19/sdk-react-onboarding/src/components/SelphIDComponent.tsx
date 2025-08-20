@@ -60,7 +60,7 @@ export default function SelphIDComponent({ setWidget }: { setWidget: React.Dispa
 		<FacephiSelphidWidget
 			country={'ES'}
 			language={Language.ES}
-			previewCapture={true}
+			previewImage={true}
 			captureTimeout={10}
 			captureRetries={3}
 			showLog={false}

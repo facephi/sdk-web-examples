@@ -5,7 +5,7 @@ export class SelphIDComponent extends LitElement {
   static properties = {
     country: { type: String },
     language: { type: String },
-    previewCapture: { type: Boolean },
+    previewImage: { type: Boolean },
     captureTimeout: { type: Number },
     captureRetries: { type: Number },
     showLog: { type: Boolean }
@@ -28,7 +28,7 @@ export class SelphIDComponent extends LitElement {
     super();
     this.country = 'ES';
     this.language = 'ES';
-    this.previewCapture = true;
+    this.previewImage = true;
     this.captureTimeout = 10;
     this.captureRetries = 3;
     this.showLog = false;
@@ -89,7 +89,7 @@ export class SelphIDComponent extends LitElement {
       <facephi-selphid-widget
         country="${this.country}"
         language="${this.language}"
-        preview-capture="${this.previewCapture}"
+        preview-image="${this.previewImage}"
         capture-timeout="${this.captureTimeout}"
         capture-retries="${this.captureRetries}"
         show-log="${this.showLog}"

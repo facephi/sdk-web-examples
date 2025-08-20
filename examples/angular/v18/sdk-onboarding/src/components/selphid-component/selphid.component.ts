@@ -31,7 +31,7 @@ export class SelphIDComponent {
 	selphid = {
 		country: 'ES',
 		language: Language.ES,
-		previewCapture: true,
+		previewImage: true,
 		captureTimeout: 10,
 		captureRetries: 3,
 		showLog: false,

@@ -30,7 +30,7 @@ export class SelphIDComponent {
 	selphid = {
 		country: 'ES',
 		language: '/i18n/selphid/custom-strings.json',
-		previewCapture: true,
+		previewImage: true,
 		captureTimeout: 10,
 		captureRetries: 3,
 		showLog: false,

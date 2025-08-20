@@ -71,7 +71,7 @@ export default function Selphi({ onComplete }: SelphiProps) {
 			stabilizationStage={true}
 			language={Language.ES}
 			interactible={true}
-			previewCapture={true}
+			previewImage={true}
 			timeout={30000}
 			showLog={false}
 			onModuleLoaded={handleModuleLoaded}

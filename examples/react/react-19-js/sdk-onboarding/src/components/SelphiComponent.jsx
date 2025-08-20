@@ -54,7 +54,7 @@ export default function SelphiComponent({ setWidget }) {
 			stabilizationStage={true}
 			language='ES'
 			interactible={true}
-			previewCapture={true}
+			previewImage={true}
 			timeout={30000}
 			showLog={false}
 			onmoduleLoaded={handleModuleLoaded}

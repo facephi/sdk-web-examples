@@ -25,7 +25,7 @@ export class App extends LitElement {
     this.licenseKey = import.meta.env.VITE_LICENSE_KEY || '';
     this.showLog = false;
     this.language = 'es';
-    this.previewCapture = true;
+    this.previewImage = true;
     this.captureTimeout = 10;
     this.captureRetries = 3;
     this.stabilizationStage = true;
@@ -95,7 +95,7 @@ export class App extends LitElement {
               <facephi-selphid-widget
                 country="${this.country}"
                 language="${this.language}"
-                preview-capture="${this.previewCapture}"
+                preview-image="${this.previewImage}"
                 capture-timeout="${this.captureTimeout}"
                 capture-retries="${this.captureRetries}"
                 show-log="${this.showLog}"
@@ -115,7 +115,7 @@ export class App extends LitElement {
                 stabilization-stage="${this.stabilizationStage}"
                 language="${this.language}"
                 interactible="${this.interactible}"
-                preview-capture="${this.previewCapture}"
+                preview-image="${this.previewImage}"
                 timeout="${this.timeout}"
                 show-log="${this.showLog}"
                 @moduleLoaded=${this.handleSelphiEvents}

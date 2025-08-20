@@ -24,7 +24,7 @@ export class LitSdkComponent extends LitElement {
     this.widget = 'selphid';
     this.licenseKey = 'PUT_YOUR_LICENSE_KEY_HERE';
     this.language = 'es';
-    this.previewCapture = true;
+    this.previewImage = true;
     this.captureTimeout = 10;
     this.captureRetries = 3;
     this.stabilizationStage = true;
@@ -129,7 +129,7 @@ export class LitSdkComponent extends LitElement {
               <facephi-selphid-widget
                 country="${this.country}"
                 language="${this.language}"
-                preview-capture="${this.previewCapture}"
+                preview-image="${this.previewImage}"
                 capture-timeout="${this.captureTimeout}"
                 capture-retries="${this.captureRetries}"
                 show-log="${this.showLog}"
@@ -149,7 +149,7 @@ export class LitSdkComponent extends LitElement {
                 stabilization-stage="${this.stabilizationStage}"
                 language="ES"
                 interactible="${this.interactible}"
-                preview-capture="${this.previewCapture}"
+                preview-image="${this.previewImage}"
                 timeout="${this.timeout}"
                 show-log="${this.showLog}"
                 @moduleLoaded=${this.handleSelphiEvents}

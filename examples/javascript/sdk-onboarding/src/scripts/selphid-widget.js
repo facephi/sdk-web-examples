@@ -5,7 +5,7 @@ const SELPHID_CONFIG = `
     <facephi-selphid-widget 
         country="ES" 
         language="ES" 
-        preview-capture="true" 
+        preview-image="true" 
         capture-timeout="10" 
         capture-retries="3" 
         show-log="false">

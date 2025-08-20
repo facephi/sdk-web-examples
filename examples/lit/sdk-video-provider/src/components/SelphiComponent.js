@@ -6,7 +6,7 @@ export class SelphiComponent extends LitElement {
     stabilizationStage: { type: Boolean },
     language: { type: String },
     interactible: { type: Boolean },
-    previewCapture: { type: Boolean },
+    previewImage: { type: Boolean },
     timeout: { type: Number },
     showLog: { type: Boolean }
   };
@@ -29,7 +29,7 @@ export class SelphiComponent extends LitElement {
     this.stabilizationStage = true;
     this.language = 'ES';
     this.interactible = true;
-    this.previewCapture = true;
+    this.previewImage = true;
     this.timeout = 30000;
     this.showLog = false;
   }
@@ -95,7 +95,7 @@ export class SelphiComponent extends LitElement {
         stabilization-stage="${this.stabilizationStage}"
         language="${this.language}"
         interactible="${this.interactible}"
-        preview-capture="${this.previewCapture}"
+        preview-image="${this.previewImage}"
         timeout="${this.timeout}"
         show-log="${this.showLog}"
         @moduleLoaded=${this.handleModuleLoaded}

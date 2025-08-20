@@ -79,7 +79,7 @@ export class AppComponent {
 							//SelphID Widget Config
 							country: 'ES',
 							language: SelphIDLanguage.ES,
-							previewCapture: true,
+							previewImage: true,
 							captureTimeout: 10,
 							captureRetries: 3,
 							showLog: false,
@@ -115,7 +115,7 @@ export class AppComponent {
 							stabilizationStage: true,
 							language: SelphiLanguage.ES,
 							interactible: true,
-							previewCapture: true,
+							previewImage: true,
 							timeout: 30000,
 							showLog: false,
 						},
