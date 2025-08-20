@@ -10,7 +10,7 @@
  * We recommend to remove all the console logs and use actual code.
  *
  */
-import { Language, TypeFamily } from '@facephi/sdk-web-wc';
+import { ErrorData, Language, TypeFamily } from '@facephi/sdk-web-wc';
 import { Logger, LoggerType } from './utils/Logger';
 import SelphiComponent from './components/SelphiComponent';
 import SelphIDComponent from './components/SelphIDComponent';
@@ -26,7 +26,7 @@ export default function App() {
 		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitData', result);
 	}
 
-	function handleEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
+	function handleEmitError(event: CustomEvent<ErrorData>) {
 		const result = event.detail;
 		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitError', result);
 	}

@@ -12,7 +12,7 @@
  */
 
 import { useState } from 'react';
-import { FacephiSdkProvider, Language, TypeFamily } from '@facephi/sdk-web-react';
+import { ErrorData, FacephiSdkProvider, Language, TypeFamily } from '@facephi/sdk-web-react';
 import SelphiComponent from './components/SelphiComponent';
 import SelphIDComponent from './components/SelphIDComponent';
 import { Logger, LoggerType } from './utils/Logger';
@@ -27,7 +27,7 @@ function App() {
 		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitData', result);
 	}
 
-	function handleEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
+	function handleEmitError(event: CustomEvent<ErrorData>) {
 		const result = event.detail;
 		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitError', result);
 	}

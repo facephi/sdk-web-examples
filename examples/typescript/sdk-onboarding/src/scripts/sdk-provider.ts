@@ -12,6 +12,7 @@
  */
 import { initSelphidWidget } from './selphid-widget';
 import { Logger, LoggerType } from '../utils/Logger';
+import { ErrorData } from '@facephi/sdk-web-wc';
 
 (async () => {
 	await customElements.whenDefined('facephi-sdk-provider');
@@ -22,7 +23,7 @@ import { Logger, LoggerType } from '../utils/Logger';
 		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitData', result);
 	}
 
-	function handleEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
+	function handleEmitError(event: CustomEvent<ErrorData>) {
 		const result = event.detail;
 		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitError', result);
 	}

@@ -11,7 +11,7 @@
  *
  */
 <script setup lang="ts">
-import { Language, TypeFamily } from '@facephi/sdk-web-wc';
+import { Language, TypeFamily, type ErrorData } from '@facephi/sdk-web-wc';
 import {
 	Language as LenguageSelphi,
 	type ExtractionFinishEvent as SelphiExtractionFinishEvent,
@@ -50,7 +50,7 @@ function handleEmitData(event: CustomEvent<{ operationId: string; sessionId: str
 	Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitData', result);
 }
 
-function handleEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
+function handleEmitError(event: CustomEvent<ErrorData>) {
 	const result = event.detail;
 	Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitError', result);
 }

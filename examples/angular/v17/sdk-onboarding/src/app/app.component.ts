@@ -12,7 +12,7 @@
  */
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Language, TypeFamily } from '@facephi/sdk-web-wc';
+import { ErrorData, Language, TypeFamily } from '@facephi/sdk-web-wc';
 import { Logger, LoggerType } from '../utils/Logger';
 
 declare const process: { env: { [key: string]: string } };
@@ -41,9 +41,8 @@ export class AppComponent {
 		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitData', result);
 	}
 
-	onEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
+	onEmitError(event: CustomEvent<ErrorData>) {
 		const result = event.detail;
-		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitError', result);
 		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitError', result);
 	}
 }

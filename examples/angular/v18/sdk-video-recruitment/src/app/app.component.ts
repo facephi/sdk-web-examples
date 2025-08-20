@@ -19,7 +19,7 @@ import {
 	type OnInit,
 	ViewChild,
 } from '@angular/core';
-import { Language } from '@facephi/sdk-web-wc';
+import { ErrorData, Language } from '@facephi/sdk-web-wc';
 import { VideoRecruitmentComponent } from '../components/video-recruitment/video-recruitment.component';
 import { NgIf, NgFor } from '@angular/common';
 import { Logger, LoggerType } from '../utils/Logger';
@@ -50,7 +50,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitData', result);
 	}
 
-	handleEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
+	handleEmitError(event: CustomEvent<ErrorData>) {
 		const result = event.detail;
 		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitError', result);
 	}

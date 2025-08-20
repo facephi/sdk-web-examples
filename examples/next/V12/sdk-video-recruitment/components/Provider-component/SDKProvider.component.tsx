@@ -1,5 +1,9 @@
 'use client';
-import { FacephiSdkProvider, TypeFamily } from '@facephi/sdk-web-react';
+import {
+	ErrorData,
+	FacephiSdkProvider,
+	TypeFamily,
+} from '@facephi/sdk-web-react';
 import { defineCustomElements } from '@facephi/sdk-web-wc/loader';
 import { useState, type ReactNode } from 'react';
 import { Logger, LoggerType } from '../../utils/Logger';
@@ -16,7 +20,7 @@ export default function SdkProvider({ children }: { children: ReactNode }) {
 		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitData', result);
 	}
 
-	function handleEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
+	function handleEmitError(event: CustomEvent<ErrorData>) {
 		const result = event.detail;
 		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitError', result);
 	}

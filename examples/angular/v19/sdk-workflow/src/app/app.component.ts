@@ -11,7 +11,7 @@
  *
  */
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { Language, TypeFamily, type WorkflowEvent, WorkflowEventType, Widgets } from '@facephi/sdk-web-wc';
+import { Language, TypeFamily, type WorkflowEvent, WorkflowEventType, Widgets, ErrorData } from '@facephi/sdk-web-wc';
 import { Language as SelphiLanguage } from '@facephi/selphi-web-component';
 import { Language as SelphIDLanguage } from '@facephi/selphid-web-component';
 import { Logger, LoggerType } from '../utils/Logger';
@@ -163,7 +163,7 @@ export class AppComponent {
 		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitData', result);
 	}
 
-	onEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
+	onEmitError(event: CustomEvent<ErrorData>) {
 		const result = event.detail;
 		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitError', result);
 	}

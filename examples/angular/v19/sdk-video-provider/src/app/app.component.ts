@@ -11,7 +11,7 @@
  *
  */
 import { Component, CUSTOM_ELEMENTS_SCHEMA, type ElementRef, inject, ViewChild } from '@angular/core';
-import { Language, TypeFamily } from '@facephi/sdk-web-wc';
+import { ErrorData, Language, TypeFamily } from '@facephi/sdk-web-wc';
 import { Logger, LoggerType } from '../utils/Logger';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 
@@ -44,7 +44,7 @@ export class AppComponent {
 		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitData', result);
 	}
 
-	onEmitError(event: CustomEvent<{ statusCode: number; message: string }>) {
+	onEmitError(event: CustomEvent<ErrorData>) {
 		const result = event.detail;
 		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitError', result);
 	}
