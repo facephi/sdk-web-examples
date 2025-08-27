@@ -7,6 +7,36 @@
   font-style: normal;
 }
 
+/* SelphID Component styles */
+facephi-sdk-provider {
+  /* Colour styles */
+  --wrapper-color-primary: #323232;
+  --wrapper-color-hover: #323232b6;
+  --wrapper-color-loading: #323232;
+  --wrapper-color-background: #eae7dd;
+  --wrapper-color-progress-bar: #323232;
+  --wrapper-color-loading: #323232;
+  /* Loading animation color */
+  --wrapper-color-loading: #323232;
+  /* Tutorial animation colours */
+  --wrapper-color-tutorial-background: #ddd0c8;
+  --wrapper-color-tutorial-tshirt: #99775c;
+  --wrapper-color-tutorial-progress: #99775c;
+  --wrapper-color-tutorial-earrings: #99775c;
+  /* Toggle Facephi logo */
+  --wrapper-display-logo: "block";
+  /* Text */
+  --wrapper-text-font-size: 1.2em;
+  --wrapper-title-font-size: 1.4em;
+  --title-font-size-mobile: 1.2em;
+  --wrapper-line-height: 1.5em;
+  /* Miscellaneous */
+  --wrapper-document-border-width: 0.5em;
+  --wrapper-diagnostic-border-width: 0.5em;
+  --wrapper-border-radius: 1em;
+  --wrapper-progress-bar-width: 0.8em;
+}
+
 .framework {
   background-color: #dd1c16;
   color: #fff;

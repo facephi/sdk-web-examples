@@ -22,19 +22,13 @@
 }
 
 /* Selphi and SelphID Component styles */
-facephi-selphi {
-  --color-primary: #139eca;
-  --color-progress-bar: #139eca;
-  --color-hover: #139eca77;
-  --color-loading: #139eca;
-  --color-tutorial-tshirt: #139eca;
-  --color-tutorial-progress: #139eca;
-  --display-logo: "block";
-}
-facephi-selphid {
-  --color-primary: #139eca;
-  --color-hover: #139eca77;
-  --color-loading: #139eca;
-  --color-tutorial-background: #139eca;
-  --display-logo: "block";
+facephi-sdk-provider {
+  --wrapper-color-primary: #139eca;
+  --wrapper-color-hover: #139eca77;
+  --wrapper-color-loading: #139eca;
+  --wrapper-color-tutorial-background: #139eca;
+  --wrapper-display-logo: "block";
+  --wrapper-color-progress-bar: #139eca;
+  --wrapper-color-tutorial-tshirt: #139eca;
+  --wrapper-color-tutorial-progress: #139eca;
 }
