@@ -1,0 +1,18 @@
+{
+ "name": "lit-storybook",
+ "version": "1.0.0",
+ "private": true,
+ "type": "module",
+   "scripts": {
+    "start": "web-dev-server --open index.html --port 3000 --node-resolve",
+    "storybook": "web-dev-server --config .storybook/server.config.mjs --port 3000 --open '/?path=/story/components-sdkwrapper--default'"
+  },
+ "dependencies": {
+  "@facephi/sdk-web-wc": "latest",
+  "lit": "^3.1.4"
+ },
+ "devDependencies": {
+  "@web/dev-server": "0.4.6",
+  "@web/dev-server-storybook": "2.0.3"
+ }
+}
