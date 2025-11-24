@@ -13,6 +13,8 @@ const LoggerType = {
 	VIDEO_PROVIDER: 'VIDEO_PROVIDER',
 	VIDEO_ASSISTANT: 'VIDEO_ASSISTANT',
 	WORKFLOW: 'WORKFLOW',
+	VIDEOID: 'VIDEOID',
+	FILE_UPLOADER: 'FILE_UPLOADER',
 };
 
 // Centralized color configuration
@@ -44,6 +46,14 @@ const LOGGER_COLORS = {
 	[LoggerType.WORKFLOW]: {
 		light: { text: '#bc6c25', background: '#fff3e0' },
 		dark: { text: '#fff3e0', background: '#bc6c25' },
+	},
+	[LoggerType.VIDEOID]: {
+		light: { text: '#bc6c25', background: '#fff3e0' },
+		dark: { text: '#fff3e0', background: '#bc6c25' },
+	},
+	[LoggerType.FILE_UPLOADER]: {
+		light: { text: '#f1eafe', background: '#2a169bff' },
+		dark: { text: '#edf1fe', background: '#473995bf' },
 	},
 };
 

@@ -72,7 +72,7 @@ export class App extends LitElement {
 
   handleUploadError(event) {
     const result = event.detail;
-    Logger.printLog(LoggerType.SDK_PROVIDER, "uploadError", result);
+    Logger.printLog(LoggerType.FILE_UPLOADER, "uploadError", result);
   }
 
   handleSelphidEvents(e) {
@@ -95,11 +95,10 @@ export class App extends LitElement {
 
   handleFileUpload(e) {
     const type = e.type;
-    const result = e.detail?.detail;
-    Logger.printLog(LoggerType.SELPHI, type, result);
+    const result = e.detail;
+    Logger.printLog(LoggerType.FILE_UPLOADER, type, result);
     if (type === "uploadFinish") {
       this.widget = "selphid";
-      console.log("fileUploaded:", e.detail);
     }
   }
 
