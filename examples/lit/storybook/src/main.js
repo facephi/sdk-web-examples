@@ -1,6 +1,5 @@
 import { defineCustomElements } from '@facephi/sdk-web-wc/bundle/';
 import { SdkWrapper } from './SdkWrapper.js';
-import { Onboarding } from './Onboarding.js';
 
 async function initializeApp() {
   try {
@@ -14,11 +13,6 @@ async function initializeApp() {
       
     }
     
-    if (!customElements.get('onboarding-component')) {
-      customElements.define('onboarding-component', Onboarding);
-      
-    }
-    
     if (document.readyState === 'loading') {
       await new Promise(resolve => {
         document.addEventListener('DOMContentLoaded', resolve);
@@ -28,13 +22,13 @@ async function initializeApp() {
     const appElement = document.getElementById('app');
     
     if (appElement) {
-      appElement.innerHTML = '<onboarding-component></onboarding-component>';
+      appElement.innerHTML = '<sdk-wrapper></sdk-wrapper>';
 
     } else {
       const newAppElement = document.createElement('div');
       newAppElement.id = 'app';
       document.body.appendChild(newAppElement);
-      newAppElement.innerHTML = '<onboarding-component></onboarding-component>';
+      newAppElement.innerHTML = '<sdk-wrapper></sdk-wrapper>';
     }
 
     const copyrightYearElement = document.getElementById('copyright-year');

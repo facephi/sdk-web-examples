@@ -11,8 +11,8 @@ export const Default = () => {
   }
   
   const element = document.createElement('sdk-wrapper');
-  element.widget = 'selphid';
-  element.licenseKey = 'PUT_YOUR_LICENSE_KEY_HERE';
+  element.widget = 'loading';
+  element.licenseKey = 'YOUR_LICENSE_KEY';
   
   return element;
 };

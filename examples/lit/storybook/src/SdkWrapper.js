@@ -27,8 +27,8 @@ export class SdkWrapper extends LitElement {
 
   constructor() {
     super();
-    this.widget = 'selphid';
-    this.licenseKey = 'PUT_YOUR_LICENSE_KEY_HERE';
+    this.widget = 'loading';
+    this.licenseKey = 'YOUR_LICENSE_KEY';
     this.showLog = false;
     this.language = 'es';
     this.previewCapture = true;
@@ -83,6 +83,35 @@ export class SdkWrapper extends LitElement {
     Logger.printLog(LoggerType.SELPHI, type, result);
     if (type === 'extractionFinish') {
       this.widget = 'finish';
+      this.stopVideoProvider();
+    }
+  }
+
+   // Video Provider Events
+  handleChangeChannel(event) {
+    const result = event.detail;
+    Logger.printLog(LoggerType.VIDEO_PROVIDER, 'onChangeChannel', result);
+  }
+
+  handleChangeLoading(event) {
+    const result = event.detail;
+    Logger.printLog(LoggerType.VIDEO_PROVIDER, 'onChangeLoading', result);
+    
+    if (!result) {
+      this.videoProviderLoaded = true;
+      this.widget = 'selphid';
+    }
+  }
+
+  async stopVideoProvider() {
+    const videoProvider = this.querySelector('facephi-video-provider');
+    if (videoProvider && videoProvider.stopVideo) {
+      try {
+        await videoProvider.stopVideo();
+        Logger.printLog(LoggerType.VIDEO_PROVIDER, 'Video stopped successfully', null);
+      } catch (error) {
+        Logger.printLog(LoggerType.VIDEO_PROVIDER, 'Error stopping video', error);
+      }
     }
   }
 
@@ -95,51 +124,56 @@ export class SdkWrapper extends LitElement {
             apikey="${this.licenseKey}"
             steps="START,SELPHID_WIDGET,SELPHI_WIDGET,FINISH"
             type="ONBOARDING"
-            customer-id="facephi-sdk-lit-example"
+            customer-id="facephi-sdk-lit-nomar"
             language="${this.language}"
           >
-            ${this.widget === 'selphid' ? html`
-              <facephi-selphid-widget
-                country="${this.country}"
-                language="${this.language}"
-                preview-capture="${this.previewCapture}"
-                capture-timeout="${this.captureTimeout}"
-                capture-retries="${this.captureRetries}"
-                show-log="${this.showLog}"
-                @moduleLoaded=${this.handleSelphidEvents}
-                @extractionFinish=${this.handleSelphidEvents}
-                @extractionTimeout=${this.handleSelphidEvents}
-                @exceptionCaptured=${this.handleSelphidEvents}
-                @timeoutErrorButtonClick=${this.handleSelphidEvents}
-                @errorTimeout=${this.handleSelphidEvents}
-                @trackStatus=${this.handleSelphidEvents}
-                @userCancel=${this.handleSelphidEvents}
-              ></facephi-selphid-widget>
-            ` : ''}
+            <facephi-video-provider
+              @changeChannel=${this.handleChangeChannel}
+              @changeLoading=${this.handleChangeLoading}
+            >
+              ${this.widget === 'selphid' ? html`
+                <facephi-selphid-widget
+                  country="${this.country}"
+                  language="${this.language}"
+                  preview-capture="${this.previewCapture}"
+                  capture-timeout="${this.captureTimeout}"
+                  capture-retries="${this.captureRetries}"
+                  show-log="${this.showLog}"
+                  @moduleLoaded=${this.handleSelphidEvents}
+                  @extractionFinish=${this.handleSelphidEvents}
+                  @extractionTimeout=${this.handleSelphidEvents}
+                  @exceptionCaptured=${this.handleSelphidEvents}
+                  @timeoutErrorButtonClick=${this.handleSelphidEvents}
+                  @errorTimeout=${this.handleSelphidEvents}
+                  @trackStatus=${this.handleSelphidEvents}
+                  @userCancel=${this.handleSelphidEvents}
+                ></facephi-selphid-widget>
+              ` : ''}
 
-            ${this.widget === 'selphi' ? html`
-              <facephi-selphi-widget
-                stabilization-stage="${this.stabilizationStage}"
-                language="${this.language}"
-                interactible="${this.interactible}"
-                preview-capture="${this.previewCapture}"
-                timeout="${this.timeout}"
-                show-log="${this.showLog}"
-                @moduleLoaded=${this.handleSelphiEvents}
-                @extractionFinish=${this.handleSelphiEvents}
-                @extractionTimeout=${this.handleSelphiEvents}
-                @exceptionCaptured=${this.handleSelphiEvents}
-                @timeoutErrorButtonClick=${this.handleSelphiEvents}
-                @errorTimeout=${this.handleSelphiEvents}
-                @userCancel=${this.handleSelphiEvents}
-                @trackStatus=${this.handleSelphiEvents}
-                @stabilizing=${this.handleSelphiEvents}
-              ></facephi-selphi-widget>
-            ` : ''}
+              ${this.widget === 'selphi' ? html`
+                <facephi-selphi-widget
+                  stabilization-stage="${this.stabilizationStage}"
+                  language="${this.language}"
+                  interactible="${this.interactible}"
+                  preview-capture="${this.previewCapture}"
+                  timeout="${this.timeout}"
+                  show-log="${this.showLog}"
+                  @moduleLoaded=${this.handleSelphiEvents}
+                  @extractionFinish=${this.handleSelphiEvents}
+                  @extractionTimeout=${this.handleSelphiEvents}
+                  @exceptionCaptured=${this.handleSelphiEvents}
+                  @timeoutErrorButtonClick=${this.handleSelphiEvents}
+                  @errorTimeout=${this.handleSelphiEvents}
+                  @userCancel=${this.handleSelphiEvents}
+                  @trackStatus=${this.handleSelphiEvents}
+                  @stabilizing=${this.handleSelphiEvents}
+                ></facephi-selphi-widget>
+              ` : ''}
 
-            ${this.widget === 'finish' ? html`
-              <div class="onboarding-finished">ONBOARDING FINISHED</div>
-            ` : ''}
+              ${this.widget === 'finish' ? html`
+                <div class="onboarding-finished">ONBOARDING FINISHED</div>
+              ` : ''}
+            </facephi-video-provider>
           </facephi-sdk-provider>
         </section>
       </main>

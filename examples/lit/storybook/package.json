@@ -1,5 +1,5 @@
 {
- "name": "lit-storybook",
+ "name": "@facephi/lit-storybook",
  "version": "1.0.0",
  "private": true,
  "type": "module",
