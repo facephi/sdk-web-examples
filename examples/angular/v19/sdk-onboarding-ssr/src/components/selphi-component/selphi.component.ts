@@ -1,7 +1,18 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, ViewEncapsulation } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Logger, LoggerType } from '../../utils/Logger';
-import { SelphiErrorTimeoutEvent, SelphiExceptionCapturedEvent, SelphiExtractionFinishDetail, SelphiExtractionTimeoutEvent, SelphiStabilizingEvent, SelphiTimeoutButtonClickEvent, SelphiTrackStatusEvent, SelphiUserCancelEvent, SelphiWidgetLoadedEvent } from '@facephi/sdk-web-wc';
+import type {
+	SelphiWidgetLoadedEvent,
+	SelphiExtractionFinishEvent,
+	SelphiExtractionTimeoutEvent,
+	SelphiExceptionCapturedEvent,
+	SelphiErrorTimeoutEvent,
+	SelphiTimeoutButtonClickEvent,
+	SelphiUserCancelEvent,
+	SelphiStabilizingEvent,
+	SelphiTrackStatusEvent,
+	FacephiSelphiWidgetCustomEvent,
+} from '@facephi/sdk-web-wc';
 
 @Component({
 	selector: 'selphi-component',
@@ -10,7 +21,6 @@ import { SelphiErrorTimeoutEvent, SelphiExceptionCapturedEvent, SelphiExtraction
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 	templateUrl: './selphi.component.html',
 	styleUrl: './selphi.component.css',
-	encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class SelphiComponent {
 	// Router to redirect to the finish component when finished
@@ -27,49 +37,49 @@ export class SelphiComponent {
 	};
 
 	// Selphi Events
-	handleModuleLoaded(event: CustomEvent<SelphiWidgetLoadedEvent>) {
+	handleModuleLoaded(event: FacephiSelphiWidgetCustomEvent<SelphiWidgetLoadedEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHI, 'widgetLoaded', result);
 	}
 
-	handleExtractionFinish(event: CustomEvent) {
-		const result: SelphiExtractionFinishDetail = event.detail.detail;
+	handleExtractionFinish(event: FacephiSelphiWidgetCustomEvent<SelphiExtractionFinishEvent>) {
+		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHI, 'extractionFinish', result);
 		// Redirect to the finish component
 		this.router.navigate(['/finish']);
 	}
 
-	handleExtractionTimeout(event: CustomEvent<SelphiExtractionTimeoutEvent>) {
+	handleExtractionTimeout(event: FacephiSelphiWidgetCustomEvent<SelphiExtractionTimeoutEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHI, 'extractionTimeout', result);
 	}
 
-	handleExceptionCaptured(event: CustomEvent<SelphiExceptionCapturedEvent>) {
+	handleExceptionCaptured(event: FacephiSelphiWidgetCustomEvent<SelphiExceptionCapturedEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHI, 'exceptionCaptured', result);
 	}
 
-	handleErrorTimeout(event: CustomEvent<SelphiErrorTimeoutEvent>) {
+	handleErrorTimeout(event: FacephiSelphiWidgetCustomEvent<SelphiErrorTimeoutEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHI, 'errorTimeout', result);
 	}
 
-	handleTimeoutErrorButtonClick(event: CustomEvent<SelphiTimeoutButtonClickEvent>) {
+	handleTimeoutErrorButtonClick(event: FacephiSelphiWidgetCustomEvent<SelphiTimeoutButtonClickEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHI, 'timeoutErrorButtonClick', result);
 	}
 
-	handleUserCancel(event: CustomEvent<SelphiUserCancelEvent>) {
+	handleUserCancel(event: FacephiSelphiWidgetCustomEvent<SelphiUserCancelEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHI, 'userCancel', result);
 	}
 
-	handleTrackStatus(event: CustomEvent<SelphiTrackStatusEvent>) {
+	handleTrackStatus(event: FacephiSelphiWidgetCustomEvent<SelphiTrackStatusEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHI, 'trackStatus', result);
 	}
 
-	handleStabilizing(event: CustomEvent<SelphiStabilizingEvent>) {
+	handleStabilizing(event: FacephiSelphiWidgetCustomEvent<SelphiStabilizingEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHI, 'stabilizing', result);
 	}

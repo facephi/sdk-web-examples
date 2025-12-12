@@ -12,7 +12,7 @@
  */
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ErrorData, Language, TypeFamily } from '@facephi/sdk-web-wc';
+import { type ErrorData, TypeFamily } from '@facephi/sdk-web-wc';
 import { Logger, LoggerType } from '../utils/Logger';
 
 @Component({
@@ -29,7 +29,7 @@ export class AppComponent {
 		steps: 'START,SELPHID_WIDGET,SELPHI_WIDGET,FINISH', //Order in platform
 		type: TypeFamily.onboarding, // onboarding or authentication
 		customerId: 'facephi-custom-sdk-angular19-example', //Unique user id
-		language: Language.es, // Main language in sdk and widgets
+		language: '/i18n/custom-strings.json', // Main language in sdk and widgets
 	};
 
 	// Provider Events

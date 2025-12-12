@@ -38,5 +38,4 @@ Run `npm run build` to build the project. The build artifacts will be stored in 
 
 ## Widget Customisation in Angular 18
 
-> [!IMPORTANT]
-> It is important to correctly configure the encapsulation of styles in the framework/component. For example, adding the encapsulation to the component file that renders the widget is required in Angular 18.
+With the latest releases, the Selphi and SelphID Widgets can be customized with the following [CSS variables](https://docs.identity-platform.io/docs/SDK_Web/Web_Components/3.0.x/Components/SDKProvider/provider-Customization#styling-customization) applied to the facephi-sdk-provider tag.

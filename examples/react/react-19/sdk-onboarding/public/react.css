@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: "Poppins";
-  src: url("./assets/fonts/Poppins-Regular.ttf");
+  src: url("../public/fonts/Poppins-Regular.ttf");
   font-weight: normal;
   font-style: normal;
 }
@@ -10,6 +10,15 @@
 .framework {
   background-color: #58c4dc;
   color: black;
+}
+
+.onboarding-finished {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-weight: bold;
+  color: #343a40;
 }
 
 /* Selphi and SelphID Component styles */

@@ -1,16 +1,17 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, ViewEncapsulation } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Logger, LoggerType } from '../../utils/Logger';
 import type {
-	ExceptionCapturedEvent,
-	ExtractionFinishEvent,
-	ExtractionTimeoutEvent,
-	ErrorTimeoutEvent,
-	TimeoutButtonClickEvent,
-	TrackStatusEvent,
-	UserCancelEvent,
-	WidgetLoadedEvent,
-} from '@facephi/selphid-web-component';
+	SelphidWidgetLoadedEvent,
+	FacephiSelphidWidgetCustomEvent,
+	SelphidExtractionFinishEvent,
+	SelphidExtractionTimeoutEvent,
+	SelphidExceptionCapturedEvent,
+	SelphidErrorTimeoutEvent,
+	SelphidTimeoutButtonClickEvent,
+	SelphidUserCancelEvent,
+	SelphidTrackStatusEvent,
+} from '@facephi/sdk-web-wc';
 
 @Component({
 	selector: 'app-selphid-component',
@@ -19,7 +20,6 @@ import type {
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 	templateUrl: './selphid.component.html',
 	styleUrl: './selphid.component.css',
-	encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class SelphIDComponent {
 	// Router to redirect to Selphi when finished
@@ -29,7 +29,6 @@ export class SelphIDComponent {
 	// SelphID data
 	selphid = {
 		country: 'ES',
-		language: '/i18n/selphid/custom-strings.json',
 		previewImage: true,
 		captureTimeout: 10,
 		captureRetries: 3,
@@ -41,12 +40,12 @@ export class SelphIDComponent {
 	};
 
 	// SelphID Events
-	handleModuleLoaded(event: CustomEvent<WidgetLoadedEvent>) {
+	handleModuleLoaded(event: FacephiSelphidWidgetCustomEvent<SelphidWidgetLoadedEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHID, 'widgetLoaded', result);
 	}
 
-	handleExtractionFinish(event: CustomEvent<ExtractionFinishEvent>) {
+	handleExtractionFinish(event: FacephiSelphidWidgetCustomEvent<SelphidExtractionFinishEvent>) {
 		const result = event.detail.detail;
 
 		Logger.printLog(LoggerType.SELPHID, 'extractionFinish', result);
@@ -54,32 +53,32 @@ export class SelphIDComponent {
 		this.router.navigate(['/selphi']);
 	}
 
-	handleExtractionTimeout(event: CustomEvent<ExtractionTimeoutEvent>) {
+	handleExtractionTimeout(event: FacephiSelphidWidgetCustomEvent<SelphidExtractionTimeoutEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHID, 'extractionTimeout', result);
 	}
 
-	handleExceptionCaptured(event: CustomEvent<ExceptionCapturedEvent>) {
+	handleExceptionCaptured(event: FacephiSelphidWidgetCustomEvent<SelphidExceptionCapturedEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHID, 'exceptionCaptured', result);
 	}
 
-	handleErrorTimeout(event: CustomEvent<ErrorTimeoutEvent>) {
+	handleErrorTimeout(event: FacephiSelphidWidgetCustomEvent<SelphidErrorTimeoutEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHID, 'errorTimeout', result);
 	}
 
-	handleTimeoutErrorButtonClick(event: CustomEvent<TimeoutButtonClickEvent>) {
+	handleTimeoutErrorButtonClick(event: FacephiSelphidWidgetCustomEvent<SelphidTimeoutButtonClickEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHID, 'timeoutErrorButtonClick', result);
 	}
 
-	handleUserCancel(event: CustomEvent<UserCancelEvent>) {
+	handleUserCancel(event: FacephiSelphidWidgetCustomEvent<SelphidUserCancelEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHID, 'userCancel', result);
 	}
 
-	handleTrackStatus(event: CustomEvent<TrackStatusEvent>) {
+	handleTrackStatus(event: FacephiSelphidWidgetCustomEvent<SelphidTrackStatusEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHID, 'trackStatus', result);
 	}

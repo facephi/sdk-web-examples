@@ -11,30 +11,32 @@
  *
  */
 <script setup lang="ts">
-import { Language, TypeFamily, type ErrorData } from '@facephi/sdk-web-wc';
 import {
-	Language as LenguageSelphi,
-	type ExtractionFinishEvent as SelphiExtractionFinishEvent,
-	type ExtractionTimeoutEvent as SelphiExtractionTimeoutEvent,
-	type ExceptionCapturedEvent as SelphiExceptionCapturedEvent,
-	type ErrorTimeoutEvent as SelphiErrorTimeoutEvent,
-	type WidgetLoadedEvent as SelphiWidgetLoadedEvent,
-	type StabilizingEvent as SelphiStabilizingEvent,
-	type TimeoutButtonClickEvent as SelphiTimeoutButtonClickEvent,
-	type TrackStatusEvent as SelphiTrackStatusEvent,
-	type UserCancelEvent as SelphiUserCancelEvent,
-} from '@facephi/selphi-web-component';
-import {
-	Language as LenguageSelphid,
-	type ExtractionFinishEvent as SelphidExtractionFinishEvent,
-	type ExtractionTimeoutEvent as SelphidExtractionTimeoutEvent,
-	type ExceptionCapturedEvent as SelphidExceptionCapturedEvent,
-	type ErrorTimeoutEvent as SelphidErrorTimeoutEvent,
-	type WidgetLoadedEvent as SelphidWidgetLoadedEvent,
-	type TimeoutButtonClickEvent as SelphidTimeoutButtonClickEvent,
-	type TrackStatusEvent as SelphidTrackStatusEvent,
-	type UserCancelEvent as SelphidUserCancelEvent,
-} from '@facephi/selphid-web-component';
+	Language,
+	TypeFamily,
+	type ErrorData,
+	/** SelphID imports */
+	type SelphidWidgetLoadedEvent,
+	type SelphidExtractionFinishEvent,
+	type SelphidExtractionTimeoutEvent,
+	type SelphidExceptionCapturedEvent,
+	type SelphidErrorTimeoutEvent,
+	type SelphidTimeoutButtonClickEvent,
+	type SelphidTrackStatusEvent,
+	type SelphidUserCancelEvent,
+	/** Selphi imports */
+	type SelphiWidgetLoadedEvent,
+	type SelphiExtractionFinishEvent,
+	type SelphiExtractionTimeoutEvent,
+	type SelphiExceptionCapturedEvent,
+	type SelphiErrorTimeoutEvent,
+	type SelphiStabilizingEvent,
+	type SelphiTimeoutButtonClickEvent,
+	type SelphiTrackStatusEvent,
+	type SelphiUserCancelEvent,
+	type FacephiSelphiWidgetCustomEvent,
+	type FacephiSelphidWidgetCustomEvent,
+} from '@facephi/sdk-web-wc';
 import facephiLogo from '@/assets/facephi_logo.svg';
 import { Logger, LoggerType } from './utils/Logger';
 import { ref } from 'vue';
@@ -56,92 +58,92 @@ function handleEmitError(event: CustomEvent<ErrorData>) {
 }
 
 // SELPHI event handlers
-function handleSelphiExtractionFinish(event: CustomEvent<SelphiExtractionFinishEvent>) {
+function handleSelphiExtractionFinish(event: FacephiSelphiWidgetCustomEvent<SelphiExtractionFinishEvent>) {
 	const result = event.detail.detail;
 	Logger.printLog(LoggerType.SELPHI, 'extractionFinish', result);
 	// Redirect to the finish component
 	widget.value = 'finish';
 }
 
-function handleSelphiExtractionTimeout(event: CustomEvent<SelphiExtractionTimeoutEvent>) {
+function handleSelphiExtractionTimeout(event: FacephiSelphiWidgetCustomEvent<SelphiExtractionTimeoutEvent>) {
 	const result = event.detail.detail;
 	Logger.printLog(LoggerType.SELPHI, 'extractionTimeout', result);
 }
 
-function handleSelphiExceptionCaptured(event: CustomEvent<SelphiExceptionCapturedEvent>) {
+function handleSelphiExceptionCaptured(event: FacephiSelphiWidgetCustomEvent<SelphiExceptionCapturedEvent>) {
 	const result = event.detail.detail;
 	Logger.printLog(LoggerType.SELPHI, 'exceptionCaptured', result);
 }
 
-function handleSelphiErrorTimeout(event: CustomEvent<SelphiErrorTimeoutEvent>) {
+function handleSelphiErrorTimeout(event: FacephiSelphiWidgetCustomEvent<SelphiErrorTimeoutEvent>) {
 	const result = event.detail.detail;
 	Logger.printLog(LoggerType.SELPHI, 'errorTimeout', result);
 }
 
-function handleSelphiModuleLoaded(event: CustomEvent<SelphiWidgetLoadedEvent>) {
+function handleSelphiModuleLoaded(event: FacephiSelphiWidgetCustomEvent<SelphiWidgetLoadedEvent>) {
 	const result = event.detail.detail;
 	Logger.printLog(LoggerType.SELPHI, 'widgetLoaded', result);
 }
 
-function handleSelphiTimeoutErrorButtonClick(event: CustomEvent<SelphiTimeoutButtonClickEvent>) {
+function handleSelphiTimeoutErrorButtonClick(event: FacephiSelphiWidgetCustomEvent<SelphiTimeoutButtonClickEvent>) {
 	const result = event.detail.detail;
 	Logger.printLog(LoggerType.SELPHI, 'timeoutErrorButtonClick', result);
 }
 
-function handleSelphiUserCancel(event: CustomEvent<SelphiUserCancelEvent>) {
+function handleSelphiUserCancel(event: FacephiSelphiWidgetCustomEvent<SelphiUserCancelEvent>) {
 	const result = event.detail.detail;
 	Logger.printLog(LoggerType.SELPHI, 'userCancel', result);
 }
 
-function handleSelphiTrackStatus(event: CustomEvent<SelphiTrackStatusEvent>) {
+function handleSelphiTrackStatus(event: FacephiSelphiWidgetCustomEvent<SelphiTrackStatusEvent>) {
 	const result = event.detail.detail;
 	Logger.printLog(LoggerType.SELPHI, 'trackStatus', result);
 }
 
-function handleSelphiStabilizing(event: CustomEvent<SelphiStabilizingEvent>) {
+function handleSelphiStabilizing(event: FacephiSelphiWidgetCustomEvent<SelphiStabilizingEvent>) {
 	const result = event.detail.detail;
 	Logger.printLog(LoggerType.SELPHI, 'stabilizing', result);
 }
 
 // SELPHID event handlers
-function handleSelphidExtractionFinish(event: CustomEvent<SelphidExtractionFinishEvent>) {
+function handleSelphidExtractionFinish(event: FacephiSelphidWidgetCustomEvent<SelphidExtractionFinishEvent>) {
 	const result = event.detail.detail;
 	Logger.printLog(LoggerType.SELPHID, 'extractionFinish', result);
 	// Redirect to Selphi
 	widget.value = 'selphi';
 }
 
-function handleSelphidExtractionTimeout(event: CustomEvent<SelphidExtractionTimeoutEvent>) {
+function handleSelphidExtractionTimeout(event: FacephiSelphidWidgetCustomEvent<SelphidExtractionTimeoutEvent>) {
 	const result = event.detail.detail;
 	Logger.printLog(LoggerType.SELPHID, 'extractionTimeout', result);
 }
 
-function handleSelphidExceptionCaptured(event: CustomEvent<SelphidExceptionCapturedEvent>) {
+function handleSelphidExceptionCaptured(event: FacephiSelphidWidgetCustomEvent<SelphidExceptionCapturedEvent>) {
 	const result = event.detail.detail;
 	Logger.printLog(LoggerType.SELPHID, 'exceptionCaptured', result);
 }
 
-function handleSelphidErrorTimeout(event: CustomEvent<SelphidErrorTimeoutEvent>) {
+function handleSelphidErrorTimeout(event: FacephiSelphidWidgetCustomEvent<SelphidErrorTimeoutEvent>) {
 	const result = event.detail.detail;
 	Logger.printLog(LoggerType.SELPHID, 'errorTimeout', result);
 }
 
-function handleSelphidModuleLoaded(event: CustomEvent<SelphidWidgetLoadedEvent>) {
+function handleSelphidModuleLoaded(event: FacephiSelphidWidgetCustomEvent<SelphidWidgetLoadedEvent>) {
 	const result = event.detail.detail;
 	Logger.printLog(LoggerType.SELPHID, 'widgetLoaded', result);
 }
 
-function handleSelphidTimeoutErrorButtonClick(event: CustomEvent<SelphidTimeoutButtonClickEvent>) {
+function handleSelphidTimeoutErrorButtonClick(event: FacephiSelphidWidgetCustomEvent<SelphidTimeoutButtonClickEvent>) {
 	const result = event.detail.detail;
 	Logger.printLog(LoggerType.SELPHID, 'timeoutErrorButtonClick', result);
 }
 
-function handleSelphidUserCancel(event: CustomEvent<SelphidUserCancelEvent>) {
+function handleSelphidUserCancel(event: FacephiSelphidWidgetCustomEvent<SelphidUserCancelEvent>) {
 	const result = event.detail.detail;
 	Logger.printLog(LoggerType.SELPHID, 'userCancel', result);
 }
 
-function handleSelphidTrackStatus(event: CustomEvent<SelphidTrackStatusEvent>) {
+function handleSelphidTrackStatus(event: FacephiSelphidWidgetCustomEvent<SelphidTrackStatusEvent>) {
 	const result = event.detail.detail;
 	Logger.printLog(LoggerType.SELPHID, 'trackStatus', result);
 }
@@ -169,7 +171,6 @@ function handleSelphidTrackStatus(event: CustomEvent<SelphidTrackStatusEvent>) {
           <facephi-selphid-widget
               v-if="widget === 'selphid'"
               country="ES"
-              :language="LenguageSelphid.ES"
               preview-image="true"
               capture-timeout="10"
               capture-retries="3"
@@ -189,7 +190,6 @@ function handleSelphidTrackStatus(event: CustomEvent<SelphidTrackStatusEvent>) {
             <facephi-selphi-widget
               v-if="widget === 'selphi'"
               stabilization-stage="true"
-              :language="LenguageSelphi.ES"
               interactible="true"
               preview-image="true"
               timeout="30000"

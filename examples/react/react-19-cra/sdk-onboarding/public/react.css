@@ -12,6 +12,15 @@
   color: black;
 }
 
+.onboarding-finished {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-weight: bold;
+  color: #343a40;
+}
+
 /* Selphi and SelphID Component styles */
 facephi-sdk-provider {
   --wrapper-color-primary: #139eca;

@@ -2,7 +2,6 @@ import { Logger, LoggerType } from '../utils/Logger.js';
 const SELPHI_CONFIG = `
     <facephi-selphi-widget 
         stabilization-stage="true" 
-        language="ES" 
         interactible="true" 
         preview-image="true" 
         timeout="30000" 

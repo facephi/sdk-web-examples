@@ -128,7 +128,6 @@ export class LitSdkComponent extends LitElement {
             ${this.widget === 'selphid' ? html`
               <facephi-selphid-widget
                 country="${this.country}"
-                language="${this.language}"
                 preview-image="${this.previewImage}"
                 capture-timeout="${this.captureTimeout}"
                 capture-retries="${this.captureRetries}"
@@ -147,7 +146,6 @@ export class LitSdkComponent extends LitElement {
             ${this.widget === 'selphi' ? html`
               <facephi-selphi-widget
                 stabilization-stage="${this.stabilizationStage}"
-                language="ES"
                 interactible="${this.interactible}"
                 preview-image="${this.previewImage}"
                 timeout="${this.timeout}"

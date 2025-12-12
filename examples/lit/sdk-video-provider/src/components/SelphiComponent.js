@@ -4,7 +4,6 @@ import { Logger, LoggerType } from '../utils/Logger.js';
 export class SelphiComponent extends LitElement {
   static properties = {
     stabilizationStage: { type: Boolean },
-    language: { type: String },
     interactible: { type: Boolean },
     previewImage: { type: Boolean },
     timeout: { type: Number },
@@ -27,7 +26,6 @@ export class SelphiComponent extends LitElement {
   constructor() {
     super();
     this.stabilizationStage = true;
-    this.language = 'ES';
     this.interactible = true;
     this.previewImage = true;
     this.timeout = 30000;
@@ -93,7 +91,6 @@ export class SelphiComponent extends LitElement {
     return html`
       <facephi-selphi-widget
         stabilization-stage="${this.stabilizationStage}"
-        language="${this.language}"
         interactible="${this.interactible}"
         preview-image="${this.previewImage}"
         timeout="${this.timeout}"

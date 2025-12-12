@@ -3,7 +3,6 @@ import { Logger, LoggerType } from '../utils/Logger.js';
 
 const SELPHID_CONFIG = `
     <facephi-selphid-widget
-        language="ES" 
         preview-capture="true" 
         capture-timeout="10" 
         capture-retries="3" 

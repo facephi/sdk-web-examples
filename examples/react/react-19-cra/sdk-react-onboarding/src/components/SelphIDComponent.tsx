@@ -1,56 +1,56 @@
 import { FacephiSelphidWidget } from '@facephi/sdk-web-react';
 import {
-	type ExtractionFinishEvent,
-	type ExtractionTimeoutEvent,
-	type ExceptionCapturedEvent,
-	type ErrorTimeoutEvent,
-	Language,
-	type TimeoutButtonClickEvent,
-	type TrackStatusEvent,
-	type UserCancelEvent,
-	type WidgetLoadedEvent,
-} from '@facephi/selphid-web-component';
+	SelphidWidgetLoadedEvent,
+	FacephiSelphidWidgetCustomEvent,
+	SelphidExtractionFinishEvent,
+	SelphidExtractionTimeoutEvent,
+	SelphidExceptionCapturedEvent,
+	SelphidErrorTimeoutEvent,
+	SelphidTimeoutButtonClickEvent,
+	SelphidUserCancelEvent,
+	SelphidTrackStatusEvent,
+} from '@facephi/sdk-web-wc';
 import { Logger, LoggerType } from '../utils/Logger';
 
 export default function SelphIDComponent({ setWidget }: { setWidget: React.Dispatch<React.SetStateAction<string>> }) {
-	function handleModuleLoaded(event: CustomEvent<WidgetLoadedEvent>) {
+	function handleModuleLoaded(event: FacephiSelphidWidgetCustomEvent<SelphidWidgetLoadedEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHID, 'widgetLoaded', result);
 	}
 
-	function handleExtractionFinish(event: CustomEvent<ExtractionFinishEvent>) {
+	function handleExtractionFinish(event: FacephiSelphidWidgetCustomEvent<SelphidExtractionFinishEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHID, 'extractionFinish', result);
 		// Redirect to Selphi
 		setWidget('selphi');
 	}
 
-	function handleExtractionTimeout(event: CustomEvent<ExtractionTimeoutEvent>) {
+	function handleExtractionTimeout(event: FacephiSelphidWidgetCustomEvent<SelphidExtractionTimeoutEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHID, 'extractionTimeout', result);
 	}
 
-	function handleExceptionCaptured(event: CustomEvent<ExceptionCapturedEvent>) {
+	function handleExceptionCaptured(event: FacephiSelphidWidgetCustomEvent<SelphidExceptionCapturedEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHID, 'exceptionCaptured', result);
 	}
 
-	function handleTimeoutButtonClick(event: CustomEvent<TimeoutButtonClickEvent>) {
+	function handleTimeoutButtonClick(event: FacephiSelphidWidgetCustomEvent<SelphidTimeoutButtonClickEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHID, 'timeoutButtonClick', result);
 	}
 
-	function handleErrorTimeout(event: CustomEvent<ErrorTimeoutEvent>) {
+	function handleErrorTimeout(event: FacephiSelphidWidgetCustomEvent<SelphidErrorTimeoutEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHID, 'errorTimeout', result);
 	}
 
-	function handleTrackStatus(event: CustomEvent<TrackStatusEvent>) {
+	function handleTrackStatus(event: FacephiSelphidWidgetCustomEvent<SelphidTrackStatusEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHID, 'trackStatus', result);
 	}
 
-	function handleUserCancel(event: CustomEvent<UserCancelEvent>) {
+	function handleUserCancel(event: FacephiSelphidWidgetCustomEvent<SelphidUserCancelEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHID, 'userCancel', result);
 	}
@@ -58,7 +58,6 @@ export default function SelphIDComponent({ setWidget }: { setWidget: React.Dispa
 	return (
 		<FacephiSelphidWidget
 			country={'ES'}
-			language={Language.ES}
 			previewImage={true}
 			captureTimeout={10}
 			captureRetries={3}

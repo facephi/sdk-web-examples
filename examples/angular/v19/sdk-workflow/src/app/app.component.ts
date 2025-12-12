@@ -12,8 +12,6 @@
  */
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Language, TypeFamily, type WorkflowEvent, WorkflowEventType, Widgets, ErrorData } from '@facephi/sdk-web-wc';
-import { Language as SelphiLanguage } from '@facephi/selphi-web-component';
-import { Language as SelphIDLanguage } from '@facephi/selphid-web-component';
 import { Logger, LoggerType } from '../utils/Logger';
 
 @Component({
@@ -78,7 +76,6 @@ export class AppComponent {
 						general: {
 							//SelphID Widget Config
 							country: 'ES',
-							language: SelphIDLanguage.ES,
 							previewImage: true,
 							captureTimeout: 10,
 							captureRetries: 3,
@@ -113,7 +110,6 @@ export class AppComponent {
 						general: {
 							//Selphi Widget Config
 							stabilizationStage: true,
-							language: SelphiLanguage.ES,
 							interactible: true,
 							previewImage: true,
 							timeout: 30000,

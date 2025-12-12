@@ -1,21 +1,20 @@
-import {
-	Language,
-	type StabilizingEvent,
-	type TimeoutButtonClickEvent,
-	type TrackStatusEvent,
-	type UserCancelEvent,
-	type WidgetLoadedEvent,
-	type ErrorTimeoutEvent,
-	type ExceptionCapturedEvent,
-	type ExtractionFinishEvent,
-	type ExtractionTimeoutEvent,
-} from '@facephi/selphi-web-component';
+import type {
+	SelphiWidgetLoadedEvent,
+	SelphiExtractionFinishEvent,
+	SelphiExtractionTimeoutEvent,
+	SelphiExceptionCapturedEvent,
+	SelphiErrorTimeoutEvent,
+	SelphiTimeoutButtonClickEvent,
+	SelphiUserCancelEvent,
+	SelphiStabilizingEvent,
+	SelphiTrackStatusEvent,
+	FacephiSelphiWidgetCustomEvent,
+} from '@facephi/sdk-web-wc';
 import { Logger, LoggerType } from '../utils/Logger';
 
 const SELPHI_CONFIG = `
     <facephi-selphi-widget 
         stabilization-stage="true" 
-        language="${Language.ES}" 
         interactible="true" 
         preview-image="true" 
         timeout="30000" 
@@ -28,49 +27,49 @@ export function initSelphiWidget(sdkProvider: { innerHTML: string }) {
 	const selphiWidget = document.querySelector('facephi-selphi-widget');
 
 	//SELPHI EVENTS
-	function handleExtractionFinish(event: CustomEvent<ExtractionFinishEvent>) {
+	function handleExtractionFinish(event: FacephiSelphiWidgetCustomEvent<SelphiExtractionFinishEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHI, 'extractionFinish', result);
 
 		sdkProvider.innerHTML = '<div class="onboarding-finished">ONBOARDING FINISHED</div>';
 	}
 
-	function handleExtractionTimeout(event: CustomEvent<ExtractionTimeoutEvent>) {
+	function handleExtractionTimeout(event: FacephiSelphiWidgetCustomEvent<SelphiExtractionTimeoutEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHI, 'extractionTimeout', result);
 	}
 
-	function handleExceptionCaptured(event: CustomEvent<ExceptionCapturedEvent>) {
+	function handleExceptionCaptured(event: FacephiSelphiWidgetCustomEvent<SelphiExceptionCapturedEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHI, 'exceptionCaptured', result);
 	}
 
-	function handleErrorTimeout(event: CustomEvent<ErrorTimeoutEvent>) {
+	function handleErrorTimeout(event: FacephiSelphiWidgetCustomEvent<SelphiErrorTimeoutEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHI, 'errorTimeout', result);
 	}
 
-	function handleModuleLoaded(event: CustomEvent<WidgetLoadedEvent>) {
+	function handleModuleLoaded(event: FacephiSelphiWidgetCustomEvent<SelphiWidgetLoadedEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHI, 'widgetLoaded', result);
 	}
 
-	function handleTimeoutErrorButtonClick(event: CustomEvent<TimeoutButtonClickEvent>) {
+	function handleTimeoutErrorButtonClick(event: FacephiSelphiWidgetCustomEvent<SelphiTimeoutButtonClickEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHI, 'timeoutErrorButtonClick', result);
 	}
 
-	function handleUserCancel(event: CustomEvent<UserCancelEvent>) {
+	function handleUserCancel(event: FacephiSelphiWidgetCustomEvent<SelphiUserCancelEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHI, 'userCancel', result);
 	}
 
-	function handleTrackStatus(event: CustomEvent<TrackStatusEvent>) {
+	function handleTrackStatus(event: FacephiSelphiWidgetCustomEvent<SelphiTrackStatusEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHI, 'trackStatus', result);
 	}
 
-	function handleStabilizing(event: CustomEvent<StabilizingEvent>) {
+	function handleStabilizing(event: FacephiSelphiWidgetCustomEvent<SelphiStabilizingEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHI, 'stabilizing', result);
 	}

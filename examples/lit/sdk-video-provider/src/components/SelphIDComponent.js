@@ -4,7 +4,6 @@ import { Logger, LoggerType } from '../utils/Logger.js';
 export class SelphIDComponent extends LitElement {
   static properties = {
     country: { type: String },
-    language: { type: String },
     previewImage: { type: Boolean },
     captureTimeout: { type: Number },
     captureRetries: { type: Number },
@@ -27,7 +26,6 @@ export class SelphIDComponent extends LitElement {
   constructor() {
     super();
     this.country = 'ES';
-    this.language = 'ES';
     this.previewImage = true;
     this.captureTimeout = 10;
     this.captureRetries = 3;
@@ -88,7 +86,6 @@ export class SelphIDComponent extends LitElement {
     return html`
       <facephi-selphid-widget
         country="${this.country}"
-        language="${this.language}"
         preview-image="${this.previewImage}"
         capture-timeout="${this.captureTimeout}"
         capture-retries="${this.captureRetries}"

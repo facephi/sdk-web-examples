@@ -52,7 +52,6 @@ export default function SelphiComponent({ setWidget }) {
 	return (
 		<facephi-selphi-widget
 			stabilizationStage={true}
-			language='ES'
 			interactible={true}
 			previewImage={true}
 			timeout={30000}
