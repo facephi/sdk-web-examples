@@ -3,7 +3,13 @@
 Integration with Angular 20 SSR
 
 > [!NOTE]
-> For more information about the widgets please check [SDK Web WebComponents](https://docs.identity-platform.io/docs/SDK_Web/Web_Components/)
+> For more information about the widgets please check [SDK Web WebComponents](https://docs.identity-platform.io/docs/SDK_Web/Web_Components/).
+
+## Requirements
+
+  - Node22+.
+
+  - A frontend browser in latest version.
 
 ## Prod installation credentials
 

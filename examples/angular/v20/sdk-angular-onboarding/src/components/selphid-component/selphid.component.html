@@ -1,0 +1,16 @@
+<facephi-selphid-widget
+    [country]="selphid.country"
+    [previewImage]="selphid.previewImage"
+    [captureTimeout]="selphid.captureTimeout"
+    [captureRetries]="selphid.captureRetries"
+    [showLog]="selphid.showLog"
+
+    (moduleLoaded)="handleModuleLoaded($event)"
+    (extractionFinish)="handleExtractionFinish($event)"
+    (extractionTimeout)="handleExtractionTimeout($event)"
+    (exceptionCaptured)="handleExceptionCaptured($event)"
+    (errorTimeout)="handleErrorTimeout($event)"
+    (timeoutErrorButtonClick)="handleTimeoutErrorButtonClick($event)"
+    (userCancel)="handleUserCancel($event)"
+	(trackStatus)="handleTrackStatus($event)"
+/>

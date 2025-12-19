@@ -1,15 +1,15 @@
-# SDK Web WebComponents in Angular 20
+# SDK Web WebComponents in Angular 18
 
-Integration with Angular 20
+Integration with Angular 18
 
 > [!NOTE]
 > For more information about the widgets please check [SDK Web WebComponents](https://docs.identity-platform.io/docs/SDK_Web/Web_Components/).
 
-## Requirements
+> [!TIP]
+> Install the "Angular Language Service" extension to access all available development tools for Angular implementations.
 
-  - Node22+.
-
-  - A frontend browser in latest version.
+>[!WARNING]
+> This implementation demonstrates how to integrate the library using NgModules instead of standalone components. It is recommended to use standalone components instead.
 
 ## Prod installation credentials
 
@@ -42,7 +42,6 @@ Run `npm run dev` for a dev server. Navigate to `http://localhost:3000/`. The ap
 
 Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Widget Customisation in Angular 20
+## Widget Customisation in Angular 18
 
-> [!IMPORTANT]
-> It is important to correctly configure the encapsulation of styles in the framework/component. For example, adding the encapsulation to the component file that renders the widget is required in Angular 20.
+With the latest releases, the Selphi and SelphID Widgets can be customized with the following [CSS variables](https://docs.identity-platform.io/docs/SDK_Web/Web_Components/3.0.x/Components/SDKProvider/provider-Customization#styling-customization) applied to the facephi-sdk-provider tag.

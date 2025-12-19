@@ -1,0 +1,16 @@
+<facephi-selphi-widget
+    [stabilizationStage]="selphi.stabilization"
+    [interactible]="selphi.interactible"
+    [previewImage]="selphi.previewImage"
+    [timeout]="selphi.timeout"
+
+    (moduleLoaded)="handleModuleLoaded($event)"
+    (extractionFinish)="handleExtractionFinish($event)"
+    (extractionTimeout)="handleExtractionTimeout($event)"
+    (exceptionCaptured)="handleExceptionCaptured($event)"
+    (errorTimeout)="handleErrorTimeout($event)"
+    (timeoutErrorButtonClick)="handleTimeoutErrorButtonClick($event)"
+    (userCancel)="handleUserCancel($event)"
+	(trackStatus)="handleTrackStatus($event)"
+	(stabilizing)="handleStabilizing($event)"
+/>
