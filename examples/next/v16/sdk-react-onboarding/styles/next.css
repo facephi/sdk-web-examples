@@ -1,0 +1,47 @@
+@import "./global.css";
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../public/fonts/Poppins-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Next.js 16 App Router: styles are applied directly to body/main elements */
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.onboarding-finished {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-weight: bold;
+  color: #343a40;
+}
+
+@media screen and (orientation: landscape) {
+  .sdk-section {
+    min-height: 480px;
+  }
+}
+
+.framework {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Selphi and SelphID Component styles */
+facephi-sdk-provider {
+  --wrapper-color-primary: #000000;
+  --wrapper-color-hover: #7f7f7f;
+  --wrapper-color-loading: #000000;
+  --wrapper-color-tutorial-background: #000000;
+  --wrapper-display-logo: "block";
+  --wrapper-color-progress-bar: #000000;
+  --wrapper-color-tutorial-tshirt: #000000;
+  --wrapper-color-tutorial-progress: #000000;
+}

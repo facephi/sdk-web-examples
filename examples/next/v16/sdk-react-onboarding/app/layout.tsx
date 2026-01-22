@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import '../styles/next.css';
 
 export const metadata: Metadata = {
-	title: 'Facephi - SDK Next 15',
+	title: 'Facephi - SDK Next 16',
 };
 
 export default function RootLayout({
@@ -24,7 +24,7 @@ export default function RootLayout({
 						<p>{new Date().getFullYear()} ©FacePhi. All rights reserved.</p>
 					</div>
 					<div className='framework'>
-						<p>NextJS 15</p>
+						<p>NextJS 16</p>
 					</div>
 				</footer>
 			</body>
