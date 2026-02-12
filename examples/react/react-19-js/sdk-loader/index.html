@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/react.css">
+  <title>Facephi - SDK Loader React 19 JS</title>
+</head>
+
+<body>
+
+  <header class="header">
+    <img src="/assets/facephi_logo.svg" alt="Facephi logo" height="60" class="logo" />
+  </header>
+
+  <!-- App -->
+  <div id="app"></div>
+
+  <footer class="footer">
+    <div>
+      <p id="copyright-year"> ©FacePhi. All rights reserved.</p>
+    </div>
+    <div class="framework">
+      <p>React 19 JS - SDK Loader</p>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('copyright-year').insertAdjacentHTML('afterbegin', new Date().getFullYear());
+  </script>
+  <script type="module" src="./src/main.jsx"></script>
+</body>
+
+</html>

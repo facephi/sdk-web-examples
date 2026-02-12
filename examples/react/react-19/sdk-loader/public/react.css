@@ -1,0 +1,25 @@
+@import "./global.css";
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../public/fonts/Poppins-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.framework {
+  background-color: #58c4dc;
+  color: black;
+}
+
+/* SDK Provider Component styles */
+facephi-sdk-provider {
+  --wrapper-color-primary: #139eca;
+  --wrapper-color-hover: #139eca77;
+  --wrapper-color-loading: #139eca;
+  --wrapper-color-tutorial-background: #139eca;
+  --wrapper-display-logo: "block";
+  --wrapper-color-progress-bar: #139eca;
+  --wrapper-color-tutorial-tshirt: #139eca;
+  --wrapper-color-tutorial-progress: #139eca;
+}

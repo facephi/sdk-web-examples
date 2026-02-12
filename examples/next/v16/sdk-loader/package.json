@@ -1,0 +1,23 @@
+{
+  "name": "next16-sdk-loader",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port=3000 --webpack",
+    "build": "next build --webpack",
+    "start": "next start",
+    "clean": "rm -rf .next out node_modules package-lock.json yarn.lock bun.lock"
+  },
+  "dependencies": {
+    "@facephi/sdk-loader": "1.1.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "next": "16.1.1"
+  },
+  "devDependencies": {
+    "typescript": "5.7.3",
+    "@types/node": "20",
+    "@types/react": "19.1.0",
+    "@types/react-dom": "19.1.0"
+  }
+}
