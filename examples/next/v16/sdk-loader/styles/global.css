@@ -112,7 +112,3 @@
     height: calc(100vh - calc(var(--header-height-desktop) + var(--footer-height)));
   }
 }
-
-app-video-recruitment {
-  height: 100%;
-}
