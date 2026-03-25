@@ -1,0 +1,14 @@
+
+<facephi-sdk-provider
+    [apikey]="provider.apiKey"
+    [steps]="provider.steps"
+    [type]="provider.type"
+    [customerId]="provider.customerId"
+    [language]="provider.language"
+
+    (emitData)="onEmitData($event)"
+    (emitError)="onEmitError($event)"
+>
+    <!-- Router: / (file uploader) → /selphi; finish at /finish -->
+    <router-outlet />
+</facephi-sdk-provider>
