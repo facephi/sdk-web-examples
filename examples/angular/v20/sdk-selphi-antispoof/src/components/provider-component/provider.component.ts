@@ -1,5 +1,5 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, } from '@angular/core';
-import { ErrorData, Language, TypeFamily } from '@facephi/sdk-web-wc';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ErrorData, ExportData, Language, TypeFamily } from '@facephi/sdk-web-wc';
 import { Logger, LoggerType } from '../../utils/Logger';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -10,20 +10,19 @@ import { CommonModule } from '@angular/common';
 	imports: [CommonModule, RouterOutlet],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 	templateUrl: './provider.component.html',
-	styleUrl: './provider.component.css',
 })
 export class ProviderComponent {
 	// Provider data
 	provider = {
-		apiKey: import.meta.env.NG_APP_API_KEY, // Required license
-		steps: 'START,SELPHI_WIDGET,FINISH', //Order in platform
+		apiKey: import.meta.env.NG_APP_API_KEY || '', // Required license
+		steps: 'START,SELPHI_WIDGET,FINISH',
 		type: TypeFamily.onboarding, // onboarding or authentication
-		customerId: 'facephi-sdk-angular20-file-uploader-example', // Unique user id
+		customerId: 'facephi-sdk-selphi-antispoof-angular20-example', // Unique user id
 		language: Language.es, // Main language in sdk and widgets
 	};
 
 	// Provider Events
-	onEmitData(event: CustomEvent<{ operationId: string; sessionId: string; extraData: string }>) {
+	onEmitData(event: CustomEvent<ExportData>) {
 		const result = event.detail;
 		Logger.printLog(LoggerType.SDK_PROVIDER, 'onEmitData', result);
 	}

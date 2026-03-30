@@ -8,5 +8,4 @@ import { defineCustomElements as defineFacephiCustomElements } from '@facephi/sd
 bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));
 
-// Bind the custom elements to the window object
 defineFacephiCustomElements(window);

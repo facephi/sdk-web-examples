@@ -4,6 +4,7 @@
     [previewImage]="selphi.previewImage"
     [timeout]="selphi.timeout"
     [showLog]="selphi.showLog"
+    [antispoof]="selphi.antispoof"
 
     (moduleLoaded)="handleModuleLoaded($event)"
     (extractionFinish)="handleExtractionFinish($event)"
@@ -12,6 +13,6 @@
     (errorTimeout)="handleErrorTimeout($event)"
     (timeoutErrorButtonClick)="handleTimeoutErrorButtonClick($event)"
     (userCancel)="handleUserCancel($event)"
-	(trackStatus)="handleTrackStatus($event)"
-	(stabilizing)="handleStabilizing($event)"
+    (trackStatus)="handleTrackStatus($event)"
+    (stabilizing)="handleStabilizing($event)"
 />

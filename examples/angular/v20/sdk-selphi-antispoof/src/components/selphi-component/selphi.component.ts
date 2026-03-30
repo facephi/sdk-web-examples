@@ -1,7 +1,18 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Logger, LoggerType } from '../../utils/Logger';
-import { FacephiSelphiWidgetCustomEvent, SelphiErrorTimeoutEvent, SelphiExceptionCapturedEvent, SelphiExtractionFinishEvent, SelphiExtractionTimeoutEvent, SelphiStabilizingEvent, SelphiTimeoutButtonClickEvent, SelphiTrackStatusEvent, SelphiUserCancelEvent, SelphiWidgetLoadedEvent } from '@facephi/sdk-web-wc';
+import {
+	FacephiSelphiWidgetCustomEvent,
+	SelphiErrorTimeoutEvent,
+	SelphiExceptionCapturedEvent,
+	SelphiExtractionFinishEvent,
+	SelphiExtractionTimeoutEvent,
+	SelphiStabilizingEvent,
+	SelphiTimeoutButtonClickEvent,
+	SelphiTrackStatusEvent,
+	SelphiUserCancelEvent,
+	SelphiWidgetLoadedEvent,
+} from '@facephi/sdk-web-wc';
 
 @Component({
 	selector: 'selphi-component',
@@ -12,19 +23,17 @@ import { FacephiSelphiWidgetCustomEvent, SelphiErrorTimeoutEvent, SelphiExceptio
 	styleUrl: './selphi.component.css',
 })
 export class SelphiComponent {
-	// Router to redirect to the finish component when finished
 	router = inject(Router);
 
-	// Selphi data
 	selphi = {
 		stabilization: true,
 		interactible: true,
 		previewImage: true,
 		timeout: 30000,
 		showLog: false,
+		antispoof: true,
 	};
 
-	// Selphi Events
 	handleModuleLoaded(event: FacephiSelphiWidgetCustomEvent<SelphiWidgetLoadedEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHI, 'widgetLoaded', result);
@@ -33,7 +42,6 @@ export class SelphiComponent {
 	handleExtractionFinish(event: FacephiSelphiWidgetCustomEvent<SelphiExtractionFinishEvent>) {
 		const result = event.detail.detail;
 		Logger.printLog(LoggerType.SELPHI, 'extractionFinish', result);
-		// Redirect to the finish component
 		this.router.navigate(['/finish']);
 	}
 

@@ -11,6 +11,8 @@ Integration with Angular 20
 
   - A frontend browser in latest version.
 
+  - Angular Language Service extension in your IDE (recommended).
+
 ## Prod installation credentials
 
 Create a **.npmrc** file in the root project directory.

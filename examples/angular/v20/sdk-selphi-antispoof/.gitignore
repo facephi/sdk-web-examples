@@ -28,16 +28,6 @@ yarn-error.log
 !.vscode/extensions.json
 .history/*
 
-# Local env (API key; never commit)
-.env
-.env.local
-.env.*.local
-
-# Local env (API key; never commit)
-.env
-.env.local
-.env.*.local
-
 # Miscellaneous
 /.angular/cache
 .sass-cache/
