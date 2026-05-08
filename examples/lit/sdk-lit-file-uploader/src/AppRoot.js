@@ -93,13 +93,23 @@ export class App extends LitElement {
     }
   }
 
-  handleFileUpload(e) {
+    handleUploadFinish(e) {
     const type = e.type;
     const result = e.detail;
     Logger.printLog(LoggerType.FILE_UPLOADER, type, result);
     if (type === "uploadFinish") {
       this.widget = "selphid";
     }
+  }
+
+  handleUploadUserCancel(event) {
+    const result = event.detail;
+    Logger.printLog(LoggerType.FILE_UPLOADER, "uploadUserCancel", result);
+  }
+
+  handleUploadWidgetLoaded(event) {
+    const result = event.detail;
+    Logger.printLog(LoggerType.FILE_UPLOADER, "uploadWidgetLoaded", result);
   }
 
   render() {
@@ -118,8 +128,10 @@ export class App extends LitElement {
                   <facephi-file-uploader-widget
                     max-files="${this.maxFiles}"
                     max-file-size="${this.maxFileSize}"
-                    @uploadFinish=${this.handleFileUpload}
+                    @uploadFinish=${this.handleUploadFinish}
                     @uploadError=${this.handleUploadError}
+                    @uploadUserCancel=${this.handleUploadUserCancel}
+                    @uploadWidgetLoaded=${this.handleUploadWidgetLoaded}
                   ></facephi-file-uploader-widget>
                 `
               : ""}
