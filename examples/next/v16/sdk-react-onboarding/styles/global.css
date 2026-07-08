@@ -1,6 +1,5 @@
 /* CSS Custom Properties (Variables) */
 :root {
-  --font-family: "Poppins", sans-serif;
   --font-size-base: 16px;
   --font-size-small: 0.8rem;
   --font-size-medium: 0.9rem;
@@ -20,7 +19,6 @@
 
 /* Reset and Base Styles */
 * {
-  font-family: var(--font-family);
   font-size: var(--font-size-base);
   box-sizing: border-box;
   margin: 0;
@@ -63,6 +61,7 @@
 
 /* Footer Styles */
 .footer {
+  font-family: "Montserrat", sans-serif;
   max-height: var(--footer-height);
   display: flex;
   justify-content: space-between;
@@ -111,4 +110,9 @@
   .sdk-section {
     height: calc(100vh - calc(var(--header-height-desktop) + var(--footer-height)));
   }
+}
+
+app-finish-component {
+  height: 100%;
+  width: 100%;
 }

@@ -1,11 +1,5 @@
 @import "./global.css";
 
-@font-face {
-  font-family: "Poppins";
-  src: url("../assets/fonts/Poppins-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
 .framework {
   background-color: #3fb883;
   color: #fff;

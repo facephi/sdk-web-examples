@@ -1,12 +1,5 @@
 @import "./global.css";
 
-@font-face {
-  font-family: "Poppins";
-  src: url("../public/fonts/Poppins-Regular.ttf");
-  font-weight: normal;
-  font-style: normal;
-}
-
 #__next {
   width: 100%;
   /* 90px accounts for header + footer height */
