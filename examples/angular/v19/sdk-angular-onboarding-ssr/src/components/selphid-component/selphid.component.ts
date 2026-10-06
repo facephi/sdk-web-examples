@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Logger, LoggerType } from '../../utils/Logger';
 import { FacephiSelphidWidget } from '@facephi/sdk-web-angular';
 import type {
+	CodeReader,
 	SelphidWidgetLoadedEvent,
 	FacephiSelphidWidgetCustomEvent,
 	SelphidExtractionFinishEvent,
@@ -34,6 +35,7 @@ export class SelphIDComponent {
 		captureTimeout: 10,
 		captureRetries: 3,
 		showLog: false,
+		codeReader: 'off' as CodeReader,
 	};
 
 	// SelphID Events

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Logger, LoggerType } from '../../utils/Logger';
-import { SelphidWidgetLoadedEvent, SelphidExtractionFinishEvent, SelphidExtractionTimeoutEvent, SelphidExceptionCapturedEvent, SelphidErrorTimeoutEvent, SelphidTimeoutButtonClickEvent, SelphidUserCancelEvent, SelphidTrackStatusEvent } from '@facephi/sdk-web-wc';
+import { CodeReader, SelphidWidgetLoadedEvent, SelphidExtractionFinishEvent, SelphidExtractionTimeoutEvent, SelphidExceptionCapturedEvent, SelphidErrorTimeoutEvent, SelphidTimeoutButtonClickEvent, SelphidUserCancelEvent, SelphidTrackStatusEvent } from '@facephi/sdk-web-wc';
 import { FacephiSelphidWidget } from '@facephi/sdk-web-angular';
 
 @Component({
@@ -24,6 +24,7 @@ export class SelphIDComponent {
 		captureTimeout: 10,
 		captureRetries: 3,
 		showLog: false,
+		codeReader: 'off' as CodeReader,
 	};
 
 	// SelphID Events

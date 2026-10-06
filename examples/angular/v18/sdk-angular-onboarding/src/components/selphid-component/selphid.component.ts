@@ -2,9 +2,8 @@ import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Logger, LoggerType } from '../../utils/Logger';
 import type {
+	CodeReader,
 	SelphidWidgetLoadedEvent,
-	SelphidExtractionFinishEvent,
-	SelphidExtractionTimeoutEvent,
 	SelphidExceptionCapturedEvent,
 	SelphidErrorTimeoutEvent,
 	SelphidTimeoutButtonClickEvent,
@@ -29,6 +28,7 @@ export class SelphIDComponent {
 		captureTimeout: 10,
 		captureRetries: 3,
 		showLog: false,
+		codeReader: 'off' as CodeReader,
 	};
 
 	// SelphID Events

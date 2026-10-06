@@ -2,6 +2,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Logger, LoggerType } from '../../utils/Logger';
 import type {
+	CodeReader,
 	SelphidWidgetLoadedEvent,
 	FacephiSelphidWidgetCustomEvent,
 	SelphidExtractionFinishEvent,
@@ -33,6 +34,7 @@ export class SelphIDComponent {
 		captureTimeout: 10,
 		captureRetries: 3,
 		showLog: false,
+		codeReader: 'off' as CodeReader,
 
 		/** Customisation */
 		logo: '/favicon.ico',
