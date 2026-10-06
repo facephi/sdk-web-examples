@@ -18,7 +18,8 @@ const SELPHID_CONFIG = `
         preview-image="true" 
         capture-timeout="10" 
         capture-retries="3" 
-        show-log="false">
+        show-log="false"
+        code-reader="off">
     </facephi-selphid-widget>
 `;
 

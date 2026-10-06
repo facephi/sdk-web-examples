@@ -1,5 +1,6 @@
 import { FacephiSelphidWidget } from '@facephi/sdk-web-react';
 import {
+	type CodeReader,
 	SelphidWidgetLoadedEvent,
 	FacephiSelphidWidgetCustomEvent,
 	SelphidExtractionFinishEvent,
@@ -62,6 +63,7 @@ export default function SelphIDComponent({ setWidget }: { setWidget: React.Dispa
 			captureTimeout={10}
 			captureRetries={3}
 			showLog={false}
+			codeReader={'off' as CodeReader}
 			onModuleLoaded={handleModuleLoaded}
 			onExtractionFinish={handleExtractionFinish}
 			onExtractionTimeout={handleExtractionTimeout}

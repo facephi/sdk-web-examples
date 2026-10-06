@@ -52,6 +52,7 @@ export default function SelphIDComponent({ setWidget }) {
 			captureTimeout={10}
 			captureRetries={3}
 			showLog={false}
+			codeReader={'off'}
 			onmoduleLoaded={handleModuleLoaded}
 			onextractionFinish={handleExtractionFinish}
 			onextractionTimeout={handleExtractionTimeout}
