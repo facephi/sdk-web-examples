@@ -26,6 +26,7 @@ export class App extends LitElement {
     this.maxFiles = 2;
     this.maxFileSize = 5;
     this.showLog = false;
+    this.codeReader = "off";
     this.language = "es";
     this.previewImage = true;
     this.captureTimeout = 10;
@@ -143,6 +144,7 @@ export class App extends LitElement {
                     capture-timeout="${this.captureTimeout}"
                     capture-retries="${this.captureRetries}"
                     show-log="${this.showLog}"
+                    code-reader="${this.codeReader}"
                     @moduleLoaded=${this.handleSelphidEvents}
                     @extractionFinish=${this.handleSelphidEvents}
                     @extractionTimeout=${this.handleSelphidEvents}

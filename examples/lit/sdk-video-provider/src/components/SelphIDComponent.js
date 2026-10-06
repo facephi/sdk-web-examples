@@ -7,7 +7,8 @@ export class SelphIDComponent extends LitElement {
     previewImage: { type: Boolean },
     captureTimeout: { type: Number },
     captureRetries: { type: Number },
-    showLog: { type: Boolean }
+    showLog: { type: Boolean },
+    codeReader: { type: String }
   };
 
   static styles = css`
@@ -30,6 +31,7 @@ export class SelphIDComponent extends LitElement {
     this.captureTimeout = 10;
     this.captureRetries = 3;
     this.showLog = false;
+    this.codeReader = 'off';
   }
 
   // SelphID Events
@@ -90,6 +92,7 @@ export class SelphIDComponent extends LitElement {
         capture-timeout="${this.captureTimeout}"
         capture-retries="${this.captureRetries}"
         show-log="${this.showLog}"
+        code-reader="${this.codeReader}"
         @moduleLoaded=${this.handleModuleLoaded}
         @extractionFinish=${this.handleExtractionFinish}
         @extractionTimeout=${this.handleExtractionTimeout}

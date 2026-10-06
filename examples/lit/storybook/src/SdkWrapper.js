@@ -30,6 +30,7 @@ export class SdkWrapper extends LitElement {
 		this.widget = 'loading';
 		this.licenseKey = 'YOUR_LICENSE_KEY';
 		this.showLog = false;
+		this.codeReader = 'off';
 		this.language = 'es';
 		this.previewCapture = true;
 		this.captureTimeout = 10;
@@ -140,6 +141,7 @@ export class SdkWrapper extends LitElement {
                   capture-timeout="${this.captureTimeout}"
                   capture-retries="${this.captureRetries}"
                   show-log="${this.showLog}"
+                  code-reader="${this.codeReader}"
                   @moduleLoaded=${this.handleSelphidEvents}
                   @extractionFinish=${this.handleSelphidEvents}
                   @extractionTimeout=${this.handleSelphidEvents}

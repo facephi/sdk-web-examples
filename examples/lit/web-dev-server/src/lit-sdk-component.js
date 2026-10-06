@@ -24,6 +24,7 @@ export class LitSdkComponent extends LitElement {
     this.widget = 'selphid';
     this.licenseKey = 'PUT_YOUR_LICENSE_KEY_HERE';
     this.language = 'es';
+    this.codeReader = 'off';
     this.previewImage = true;
     this.captureTimeout = 10;
     this.captureRetries = 3;
@@ -57,6 +58,7 @@ export class LitSdkComponent extends LitElement {
       const sdkProvider = this.querySelector('facephi-sdk-provider');
       
       sdkProvider.innerHTML = `<facephi-selphid-widget
+      code-reader="${this.codeReader}"
       ></facephi-selphid-widget>`;
 
       this.setupEventListeners(sdkProvider);
@@ -132,6 +134,7 @@ export class LitSdkComponent extends LitElement {
                 capture-timeout="${this.captureTimeout}"
                 capture-retries="${this.captureRetries}"
                 show-log="${this.showLog}"
+                code-reader="${this.codeReader}"
                 @moduleLoaded=${this.handleSelphidEvents}
                 @extractionFinish=${this.handleSelphidEvents}
                 @extractionTimeout=${this.handleSelphidEvents}
